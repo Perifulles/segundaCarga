@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Segunda Carga — Baterías de coche con segunda vida para València</title>
+<meta name="description" content="Segunda Carga: almacenamiento energético con baterías de coches eléctricos de segunda vida para hogares, pymes e industria de València. Idea de negocio y Lean Canvas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F3F6F5; --panel:#FFFFFF; --ink:#16303A; --soft:#4F6670; --line:#C9D6D6;
+  --cobalt:#1F4FA3; --charge:#2E8B57; --amber:#B7790B; --risk:#B03A2E;
+  --chip:#E4EEF0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1C22; --panel:#16272E; --ink:#E3ECEE; --soft:#9FB4BA; --line:#2C444C;
+    --cobalt:#7FA6EE; --charge:#5FC48D; --amber:#E0AE45; --risk:#EE7A6E; --chip:#1D343C;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1C22; --panel:#16272E; --ink:#E3ECEE; --soft:#9FB4BA; --line:#2C444C;
+  --cobalt:#7FA6EE; --charge:#5FC48D; --amber:#E0AE45; --risk:#EE7A6E; --chip:#1D343C;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;font-size:1.09rem;line-height:1.62}
+h1,h2,h3,h4,.sans{font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-stretch:88%;line-height:1.15}
+h2{font-size:clamp(1.6rem,3.4vw,2.2rem);margin:3.2rem 0 .8rem;font-weight:750}
+h3{font-size:1.3rem;margin:2rem 0 .5rem;font-weight:700}
+h4{font-size:1.05rem;margin:1.2rem 0 .3rem;font-weight:700}
+p{margin:.55rem 0}
+a{color:var(--cobalt)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+img{max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.25rem}
+.prose{max-width:74ch}
+header.hero{padding:3.5rem 0 2.5rem;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:800;font-stretch:75%;margin:.2rem 0 .6rem;letter-spacing:-.01em}
+.hero .sub{font-size:1.25rem;color:var(--soft);max-width:60ch}
+.meta{font-family:"Archivo",Arial,sans-serif;font-size:.92rem;color:var(--soft);margin-top:1.2rem}
+/* battery signature */
+.cell{display:flex;align-items:center;gap:.5rem;margin:1.8rem 0 .4rem;max-width:620px}
+.cell .body{flex:1;height:54px;border:3px solid var(--ink);border-radius:8px;padding:4px;display:flex;gap:4px}
+.cell .tip{width:10px;height:22px;background:var(--ink);border-radius:0 3px 3px 0}
+.cell .seg{flex:1;border-radius:3px;background:var(--charge);transform-origin:left;animation:fill .5s ease-out both}
+.cell .seg.off{background:transparent;border:1px dashed var(--line)}
+.cell .seg:nth-child(2){animation-delay:.06s}.cell .seg:nth-child(3){animation-delay:.12s}.cell .seg:nth-child(4){animation-delay:.18s}
+.cell .seg:nth-child(5){animation-delay:.24s}.cell .seg:nth-child(6){animation-delay:.30s}.cell .seg:nth-child(7){animation-delay:.36s}
+@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.cell-cap{font-family:"Archivo",Arial,sans-serif;font-size:.9rem;color:var(--soft)}
+nav.toc{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+nav.toc ul{list-style:none;margin:0;padding:.55rem 0;display:flex;gap:1.1rem;overflow-x:auto;white-space:nowrap}
+nav.toc a{font-family:"Archivo",Arial,sans-serif;font-size:.92rem;text-decoration:none;color:var(--ink)}
+nav.toc a:hover{color:var(--cobalt)}
+section{padding-bottom:1rem}
+.practica{font-family:"Archivo",Arial,sans-serif;color:var(--cobalt);font-weight:700;font-size:1rem;margin-top:3.5rem}
+.practica + h2{margin-top:.2rem}
+.note{border-left:4px solid var(--amber);background:var(--panel);padding:.8rem 1rem;margin:1rem 0;max-width:80ch}
+.note.risk{border-color:var(--risk)}
+.note.ok{border-color:var(--charge)}
+.tablewrap{overflow-x:auto;margin:1rem 0;border:1px solid var(--line);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-family:"Archivo",Arial,sans-serif;font-size:.93rem;font-stretch:95%}
+th,td{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--chip);font-weight:700}
+td.n,th.n{text-align:right;white-space:nowrap}
+tr.total td{font-weight:700}
+/* LEAN CANVAS */
+.canvas{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));border:2px solid var(--ink);background:var(--ink);gap:2px;margin:1.2rem 0;min-width:980px}
+.canvas-scroll{overflow-x:auto}
+.bx{background:var(--panel);padding:.8rem .85rem 1rem;position:relative;font-family:"Archivo",Arial,sans-serif;font-size:.86rem;line-height:1.38;font-stretch:95%}
+.bx h4{margin:0 2.2rem .45rem 0;color:var(--risk);font-size:1.02rem}
+.bx .ord{position:absolute;top:.35rem;right:.6rem;font-size:2rem;font-weight:800;color:var(--cobalt);font-stretch:75%}
+.bx ul{margin:.2rem 0 0;padding-left:1.05rem}
+.bx li{margin:.18rem 0}
+.bx .alt{margin-top:.6rem;padding-top:.5rem;border-top:1px dashed var(--line);color:var(--soft)}
+.bx .pv{font-family:"Newsreader",Georgia,serif;font-size:1.12rem;line-height:1.4;font-style:italic}
+.c-prob{grid-column:1/3;grid-row:1/3}
+.c-sol{grid-column:3/5;grid-row:1}
+.c-met{grid-column:3/5;grid-row:2}
+.c-pv{grid-column:5/7;grid-row:1/3}
+.c-ven{grid-column:7/9;grid-row:1}
+.c-can{grid-column:7/9;grid-row:2}
+.c-seg{grid-column:9/11;grid-row:1/3}
+.c-cos{grid-column:1/6;grid-row:3}
+.c-ing{grid-column:6/11;grid-row:3}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+.dafo{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--ink);border:2px solid var(--ink);margin:1rem 0}
+.dafo > div{background:var(--panel);padding:.9rem 1rem;font-family:"Archivo",Arial,sans-serif;font-size:.92rem}
+.dafo h4{margin-top:0}
+.dafo .d h4{color:var(--risk)}.dafo .a h4{color:var(--amber)}.dafo .f h4{color:var(--charge)}.dafo .o h4{color:var(--cobalt)}
+@media (max-width:640px){.dafo{grid-template-columns:1fr}}
+.bars{margin:1rem 0;max-width:760px}
+.bar{display:grid;grid-template-columns:210px 1fr 90px;align-items:center;gap:.6rem;margin:.45rem 0;font-family:"Archivo",Arial,sans-serif;font-size:.9rem}
+.bar .track{height:18px;background:var(--chip);border-radius:3px;overflow:hidden}
+.bar .fillb{height:100%}
+.bar .v{text-align:right;font-weight:700}
+@media (max-width:560px){.bar{grid-template-columns:1fr 70px}.bar .track{grid-column:1/3;grid-row:2}}
+.porter{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:.8rem;align-items:stretch;margin:1rem 0}
+.porter > div{background:var(--panel);border:1px solid var(--line);padding:.8rem;font-family:"Archivo",Arial,sans-serif;font-size:.9rem}
+.porter .center{border:2px solid var(--ink)}
+.lvl{display:inline-block;font-weight:700;padding:.05rem .45rem;border-radius:3px;background:var(--chip)}
+.lvl.h{color:var(--risk)}.lvl.m{color:var(--amber)}.lvl.l{color:var(--charge)}
+@media (max-width:760px){.porter{grid-template-columns:1fr}}
+ol.steps li,ul.plain li{margin:.3rem 0}
+footer{margin-top:4rem;padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--soft);font-size:.95rem}
+@media print{
+  nav.toc{display:none}
+  .canvas{min-width:0}
+  .bx{font-size:.62rem;padding:.45rem .5rem .6rem}
+  .bx h4{font-size:.78rem}.bx .ord{font-size:1.3rem}.bx .pv{font-size:.8rem}
+  .canvas,.dafo,.porter,tr,.note,.bar{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  .cell .seg{animation:none}
+  header.hero{padding-top:1rem}
+  #canvas{break-before:page}
+}
+
+/* ---- v2: tono dinámico ---- */
+.hero{position:relative;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:2.5rem;align-items:center}
+@media (max-width:860px){.hero .grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(3rem,9vw,6.2rem);line-height:.92;margin:.4rem 0 1rem}
+.hero .lead{font-size:clamp(1.2rem,2.2vw,1.45rem);max-width:34ch;margin:0 0 1.4rem}
+.cta{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{font-family:"Archivo",Arial,sans-serif;font-weight:700;text-decoration:none;padding:.7rem 1.15rem;border-radius:6px;border:2px solid var(--ink);color:var(--ink);transition:background .15s,color .15s}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink);margin-top:2.4rem}
+.stats div{padding:.9rem .9rem .2rem 0}
+@media (max-width:560px){.stats{grid-template-columns:1fr}.stats div{display:flex;align-items:baseline;gap:.7rem;padding:.6rem 0 0}.stats b{flex:none}}
+.stats b{display:block;font-family:"Archivo",Arial,sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;font-stretch:75%;color:var(--cobalt);line-height:1}
+.stats span{font-family:"Archivo",Arial,sans-serif;font-size:.9rem;color:var(--soft)}
+.hero .cell{margin:0;max-width:none}
+.hero .cell .body{height:120px;border-width:4px;border-radius:12px;padding:7px;gap:6px}
+.hero .cell .tip{width:16px;height:46px}
+.hero .cell .seg{animation:charge 3.2s ease-in-out infinite;transform:none;opacity:.12}
+.hero .cell .seg.keep{opacity:1;animation:none}
+@keyframes charge{0%,15%{opacity:.1}35%,85%{opacity:.45}100%{opacity:.1}}
+.hero .cell .seg:nth-child(8){animation-delay:.2s}.hero .cell .seg:nth-child(9){animation-delay:.4s}.hero .cell .seg:nth-child(10){animation-delay:.6s}
+.soh{display:flex;justify-content:space-between;font-family:"Archivo",Arial,sans-serif;font-size:.88rem;color:var(--soft);margin-top:.6rem}
+.soh strong{color:var(--charge)}
+.brands{font-family:"Archivo",Arial,sans-serif;font-size:.9rem;color:var(--soft);margin-top:1.4rem;line-height:1.9}
+.brands span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.05rem .6rem;margin:0 .25rem .25rem 0;background:var(--panel);color:var(--ink)}
+nav.toc .lockl{color:var(--soft)}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;background:var(--cobalt);width:0}
+/* ---- próximamente ---- */
+.soon{position:relative;margin:4.5rem 0 1rem;border-radius:14px;overflow:hidden;background:#16303A;color:#E3ECEE;isolation:isolate}
+.soon .ghost{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;padding:2rem;filter:blur(5px);opacity:.45;pointer-events:none;user-select:none}
+.soon .ghost div{border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:1rem;min-height:120px;font-family:"Archivo",Arial,sans-serif}
+.soon .ghost i{display:block;height:8px;border-radius:4px;background:rgba(255,255,255,.35);margin:.55rem 0}
+.soon .veil{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.5rem;
+  background:radial-gradient(circle at 50% 42%,rgba(31,79,163,.55),rgba(22,48,58,.92) 62%)}
+.lock{width:112px;height:136px;flex:none;overflow:visible;cursor:pointer;filter:drop-shadow(0 10px 24px rgba(0,0,0,.45));animation:float 4s ease-in-out infinite}
+.lock .shackle{transition:transform .35s cubic-bezier(.5,-0.6,.4,1.6);transform-origin:70px 60px}
+.lock:focus{outline:none}.lock:focus-visible{outline:3px solid #E0AE45;outline-offset:6px;border-radius:8px}
+.lock:hover .shackle{transform:translateY(-7px)}
+.lock.shake{animation:shake .5s}
+.lock .shine{animation:shine 3.5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}40%{transform:rotate(10deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}}
+@keyframes shine{0%,60%{transform:translateX(-80px)}100%{transform:translateX(120px)}}
+.soon h2{color:#fff;font-size:clamp(2.2rem,6vw,3.6rem);font-stretch:75%;margin:1rem 0 .3rem}
+.soon p{max-width:46ch;color:#C5D6DA;margin:.2rem auto}
+.soon .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:1.2rem;max-width:720px}
+.soon .chips span{font-family:"Archivo",Arial,sans-serif;font-size:.85rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.2rem .7rem;color:#fff}
+.soon .chips svg{width:11px;height:11px;margin-right:.3rem;vertical-align:-1px}
+.soon .hint{font-family:"Archivo",Arial,sans-serif;font-size:.8rem;color:#9FB4BA;margin-top:1rem;min-height:1.2em}
+.soon .ghost{min-height:620px;align-content:center}
+@media (max-width:640px){.soon .ghost{grid-template-columns:1fr 1fr;min-height:720px}}
+@media (prefers-reduced-motion: reduce){.lock,.lock .shine,.hero .cell .seg{animation:none!important}.hero .cell .seg{opacity:1}}
+@media print{.soon{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}.lock{animation:none}.hero .cell .seg{animation:none;opacity:1}.cta{display:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="meta">Práctica de laboratorio 1 · Fundamentos de Organización y Gestión de Empresas · ETSIT-UPV</div>
+        <h1>Segunda Carga</h1>
+        <p class="lead">Las baterías de los coches eléctricos tienen una segunda vida. Nosotros la ponemos a trabajar en tu casa, tu negocio y tu fábrica.</p>
+        <div class="cta">
+          <a class="btn primary" href="#canvas">Ver el Lean Canvas</a>
+          <a class="btn" href="#idea">Conocer la idea</a>
+        </div>
+      </div>
+      <div>
+        <div class="cell" role="img" aria-label="Batería con un 70 % de capacidad disponible">
+          <div class="body">
+            <span class="seg keep"></span><span class="seg keep"></span><span class="seg keep"></span><span class="seg keep"></span>
+            <span class="seg keep"></span><span class="seg keep"></span><span class="seg keep"></span>
+            <span class="seg"></span><span class="seg"></span><span class="seg"></span>
+          </div><div class="tip"></div>
+        </div>
+        <div class="soh"><span>Retirada del coche</span><span><strong>≈70 %</strong> de capacidad lista para trabajar</span></div>
+        <div class="brands">Compatible con <span>Tesla</span><span>Nissan</span><span>Renault</span><span>BYD</span><span>Hyundai</span><span>Kia</span><span>Volkswagen</span><span>MG</span></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div><b>3</b><span>líneas de producto: hogar, pyme e industria</span></div>
+      <div><b>5–700 kWh</b><span>de almacenamiento según el cliente</span></div>
+      <div><b>1 EMS</b><span>propio que decide cuándo cargar y descargar</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Índice" style="position:sticky">
+  <div class="wrap" style="position:relative"><ul>
+    <li><a href="#p1">Smart City</a></li>
+    <li><a href="#ideacion">Ideación</a></li>
+    <li><a href="#idea">La idea</a></li>
+    <li><a href="#canvas">Lean Canvas</a></li>
+    <li><a href="#explicacion">Bloque a bloque</a></li>
+    <li><a href="#conclusiones">Conclusiones</a></li>
+    <li><a class="lockl" href="#proximamente">🔒 Próximamente</a></li>
+  </ul><div class="progress" id="progress"></div></div>
+</nav>
+
+<main class="wrap">
+
+
+<!-- ===================== PRÁCTICA 1 ===================== -->
+<div class="practica" id="p1">Práctica 1 · Generar una idea de negocio y su modelo de negocio</div>
+<h2>De la ciudad inteligente a una idea de negocio</h2>
+
+<div class="prose">
+<h3>Actividades previas: qué es una Smart City</h3>
+<p>Una <strong>Smart City</strong> es una ciudad que usa las TIC (sensores, redes de comunicación, plataformas de datos, IA) para gestionar mejor sus infraestructuras y servicios —energía, movilidad, agua, residuos, edificios— de forma eficiente y sostenible, mejorando la calidad de vida de la ciudadanía y la competitividad de sus empresas.</p>
+<p>Se suele describir con seis dimensiones: economía, movilidad, medio ambiente, ciudadanía, calidad de vida y gobernanza. Los elementos técnicos clave son la captura de datos (IoT), la conectividad (5G, fibra, LoRaWAN), una plataforma que integra los datos y su uso para tomar decisiones y abrir información a la ciudadanía.</p>
+<p>En València, el Ayuntamiento impulsa la plataforma <strong>VLCi (València Ciudad Inteligente)</strong> alineada con el <strong>ODS 11</strong> de la Agenda 2030 (ciudades y comunidades sostenibles). Nuestra idea también toca el ODS 7 (energía asequible y no contaminante), el ODS 9 (industria e infraestructura), el ODS 12 (producción y consumo responsables) y el ODS 13 (acción por el clima).</p>
+
+<h3>Actividades previas: qué es un modelo de negocio y el Lean Canvas</h3>
+<p>El <strong>modelo de negocio</strong> describe cómo una empresa crea, entrega y captura valor. El <strong>Lean Canvas</strong> (Ash Maurya) adapta el Business Model Canvas a startups: sustituye socios, actividades y recursos clave por <em>problema</em>, <em>solución</em>, <em>métricas clave</em> y <em>ventaja competitiva</em>, porque en una empresa nueva lo más arriesgado es no entender bien el problema del cliente. Se rellena en orden: segmentos y problema (1), propuesta de valor (2), solución (3), canales (4), ingresos (5), costes (6), métricas (7) y ventaja competitiva (8).</p>
+
+<h3 id="ideacion">Cómo llegamos a la idea</h3>
+<p>Partimos de una sola pregunta: <em>¿qué problema de València podemos resolver con telecomunicaciones y datos?</em> En una sesión de brainstorming generamos seis ideas, las puntuamos de 1 a 5 en creatividad, viabilidad y utilidad, y nos quedamos con la que mejor combinaba impacto y negocio.</p>
+</div>
+
+<div class="tablewrap"><table>
+<thead><tr><th>Idea generada</th><th>Problema que ataca</th><th class="n">Creativ.</th><th class="n">Viabil.</th><th class="n">Utilidad</th><th class="n">Total</th></tr></thead>
+<tbody>
+<tr><td><strong>Almacenamiento con baterías de coche de segunda vida (hogar, pyme e industria) + EMS conectado</strong></td><td>Factura eléctrica, excedentes solares, residuos de baterías</td><td class="n">5</td><td class="n">3</td><td class="n">5</td><td class="n"><strong>13</strong></td></tr>
+<tr><td>Sensores LoRaWAN de llenado de contenedores con rutas optimizadas</td><td>Recogida de residuos ineficiente</td><td class="n">2</td><td class="n">5</td><td class="n">4</td><td class="n">11</td></tr>
+<tr><td>App de plazas de carga de coche eléctrico compartidas entre vecinos</td><td>Pocos puntos de recarga en barrios</td><td class="n">3</td><td class="n">4</td><td class="n">3</td><td class="n">10</td></tr>
+<tr><td>Comunidad energética de barrio con baterías compartidas</td><td>Pobreza energética</td><td class="n">4</td><td class="n">2</td><td class="n">4</td><td class="n">10</td></tr>
+<tr><td>Riego inteligente de parques con sensores de humedad</td><td>Consumo de agua municipal</td><td class="n">2</td><td class="n">4</td><td class="n">3</td><td class="n">9</td></tr>
+<tr><td>Mapa en tiempo real de ruido y calidad del aire por calle</td><td>Salud urbana</td><td class="n">3</td><td class="n">4</td><td class="n">2</td><td class="n">9</td></tr>
+</tbody></table></div>
+
+<div class="prose">
+<h3 id="idea">La idea: Segunda Carga</h3>
+<p><strong>Segunda Carga</strong> diseña, instala y gestiona sistemas de almacenamiento en baterías (BESS) en el área metropolitana de València usando baterías de coches eléctricos que ya no sirven para circular pero conservan en torno al 70 % de su capacidad. Trabajamos con cualquier marca (Tesla, Nissan, Renault, BYD, Hyundai/Kia, Volkswagen, MG…) y todos los sistemas comparten el mismo <strong>EMS</strong> (sistema de gestión energética) propio, que decide en cada momento si cargar, esperar o descargar.</p>
+<p>Ofrecemos tres líneas de producto, que reutilizan desde módulos sueltos hasta packs completos:</p>
+</div>
+<div class="tablewrap"><table>
+<thead><tr><th>Línea</th><th>Cliente</th><th>Tamaño tipo</th><th>Qué reutiliza</th><th>Uso principal</th></tr></thead>
+<tbody>
+<tr><td><strong>Segunda Carga Hogar</strong></td><td>Viviendas con placas solares</td><td>5–15 kWh útiles, 3–6 kW</td><td>Módulos reacondicionados en un armario certificado</td><td>Guardar el sol del mediodía para la noche y respaldo básico</td></tr>
+<tr><td><strong>Segunda Carga Pyme</strong></td><td>Comercios, talleres, naves, hostelería, pequeñas industrias</td><td>30–200 kWh útiles, 20–100 kW</td><td>1–6 packs completos o grupos de módulos</td><td>Autoconsumo, reducción de potencia contratada y arbitraje</td></tr>
+<tr><td><strong>Segunda Carga Industria</strong></td><td>Fábricas de 500–1.000 kW</td><td>≈700 kWh útiles, 300–400 kW (≈20 packs)</td><td>Packs completos en racks</td><td>Peak shaving, autoconsumo, arbitraje y respaldo parcial</td></tr>
+</tbody></table></div>
+<div class="prose">
+<p><strong>Problema social que resuelve:</strong> reduce el coste energético de familias y empresas locales (ahorro doméstico, empleo y competitividad), aprovecha energía solar que hoy se desperdicia, evita que baterías con vida útil se conviertan en residuo antes de tiempo y hace más resiliente la red de barrios y polígonos ante cortes como el apagón ibérico del 28 de abril de 2025.</p>
+<p><strong>Encaje Smart City:</strong> cada instalación es un nodo IoT que mide consumo, generación, estado de las baterías y CO₂ evitado. Los datos agregados y anonimizados pueden alimentar la plataforma VLCi como indicadores de energía del tejido industrial, y en el futuro cientos de baterías domésticas y de empresas podrían coordinarse como una planta virtual que ayude a la red en las horas de más demanda.</p>
+</div>
+
+<h2 id="canvas">El modelo de negocio en una página</h2>
+<p class="prose">Lean Canvas de Segunda Carga. Los números azules marcan el orden en que construimos cada bloque.</p>
+
+<div class="canvas-scroll">
+<div class="canvas">
+  <div class="bx c-prob"><span class="ord">1</span><h4>Problema</h4>
+    <ul>
+      <li><strong>Sol desperdiciado:</strong> hogares y empresas con placas producen de más a mediodía y el excedente se compensa a precios muy bajos o nulos.</li>
+      <li><strong>Baterías nuevas caras para el hogar:</strong> una batería doméstica instalada ronda los 450–580 €/kWh.</li>
+      <li><strong>Picos de potencia caros</strong> en pymes y fábricas: potencia contratada alta y penalizaciones por excesos.</li>
+      <li><strong>Energía cara en horas punta</strong> y vulnerabilidad ante cortes de suministro.</li>
+      <li>De fondo: miles de baterías de coche que se retiran con capacidad útil.</li>
+    </ul>
+    <div class="alt"><strong>Alternativas actuales:</strong> baterías nuevas (Huawei, BYD, Pylontech, Tesla Powerwall, Sungrow), batería virtual de la comercializadora, subir la potencia contratada, mover turnos de producción, grupos electrógenos diésel o simplemente verter el excedente.</div>
+  </div>
+
+  <div class="bx c-sol"><span class="ord">3</span><h4>Solución</h4>
+    <ul>
+      <li>Baterías modulares de segunda vida de cualquier marca, diagnosticadas una a una, en tres tamaños: hogar, pyme e industria.</li>
+      <li>EMS común con previsión de consumo, sol y precios que automatiza autoconsumo, arbitraje y recorte de picos.</li>
+      <li>App y panel web con el ahorro medido en euros y el CO₂ evitado, con datos exportables a la Smart City.</li>
+    </ul>
+  </div>
+
+  <div class="bx c-met"><span class="ord">7</span><h4>Métricas clave</h4>
+    <ul>
+      <li>€ ahorrados por cliente al año (por línea) y kW de pico recortados.</li>
+      <li>% de autoconsumo solar alcanzado.</li>
+      <li>SOH y ciclos de cada pack; disponibilidad del sistema (%).</li>
+      <li>kWh de baterías reutilizados y t de CO₂ evitadas.</li>
+      <li>Conversión de presupuestos, nº de hogares y empresas instalados y margen por línea.</li>
+    </ul>
+  </div>
+
+  <div class="bx c-pv"><span class="ord">2</span><h4>Propuesta de valor</h4>
+    <p class="pv">Aprovecha todo tu sol y paga menos luz, en casa o en tu empresa, con baterías de coche que merecen una segunda vida: te instalamos el almacenamiento y te enseñamos cada mes cuánto has ahorrado.</p>
+    <p><strong>Concepto de alto nivel:</strong> «la batería circular de València, del tejado de casa a la nave industrial».</p>
+    <p>Diferencia: no vendemos solo hardware; vendemos ahorro medido, gestión continua y un producto de economía circular que el cliente puede mostrar en su casa o en sus informes de sostenibilidad.</p>
+  </div>
+
+  <div class="bx c-ven"><span class="ord">8</span><h4>Ventaja competitiva</h4>
+    <ul>
+      <li>Protocolo propio de diagnóstico y selección de packs (lotes homogéneos).</li>
+      <li>EMS propio entrenado con datos reales de hogares y empresas locales: cuantas más instalaciones, mejores previsiones.</li>
+      <li>Red local de suministro multimarca (desguaces, talleres, concesionarios, flotas).</li>
+      <li>Capacidad de trabajar a nivel de módulo: aprovechamos baterías que otros descartan enteras.</li>
+      <li>Cercanía y respuesta rápida en mantenimiento.</li>
+    </ul>
+  </div>
+
+  <div class="bx c-can"><span class="ord">4</span><h4>Canales</h4>
+    <ul>
+      <li><strong>Hogar:</strong> web con calculadora de ahorro, redes sociales e instaladoras fotovoltaicas.</li>
+      <li><strong>Pyme:</strong> instaladoras, gestorías y asociaciones de comerciantes.</li>
+      <li><strong>Industria:</strong> venta consultiva con auditoría gratuita.</li>
+      <li>Asociaciones de polígonos y patronales industriales.</li>
+      <li>Feria Genera / Egética, LinkedIn y casos de éxito.</li>
+      <li>App, panel web y mantenimiento para fidelizar.</li>
+    </ul>
+  </div>
+
+  <div class="bx c-seg"><span class="ord">9</span><h4>Segmentos de clientes</h4>
+    <ul>
+      <li><strong>Hogares:</strong> viviendas unifamiliares con placas solares que vierten excedentes.</li>
+      <li><strong>Empresas medianas:</strong> comercios, talleres, hostelería, bodegas, naves logísticas y pymes con placas.</li>
+      <li><strong>Industria:</strong> fábricas de 500–1.000 kW y 3–10 GWh/año (metal, plástico, alimentación, química).</li>
+      <li><strong>Early adopters:</strong> clientes que ya tienen fotovoltaica y conocen su consumo.</li>
+      <li><strong>Futuro:</strong> ayuntamientos y comunidades energéticas.</li>
+    </ul>
+    <div class="alt"><strong>Zona:</strong> área metropolitana de València (urbanizaciones y polígonos como Fuente del Jarro, Vara de Quart o Riba-roja).</div>
+  </div>
+
+  <div class="bx c-cos"><span class="ord">6</span><h4>Estructura de costes</h4>
+    <ul>
+      <li><strong>Hogar y pyme:</strong> módulos reacondicionados, armario certificado, inversor híbrido, instalación y legalización.</li>
+      <li><strong>Industria (objetivo ≈240.000 €):</strong> 20 packs (60.000 €), BMS (18.000 €), inversor/PCS 350 kW (45.000 €), armarios y protecciones DC (22.000 €), refrigeración y seguridad contra incendios (18.000 €), cuadro AC (18.000 €), EMS/SCADA (12.000 €), instalación (30.000 €), ingeniería y legalización (17.000 €).</li>
+      <li><strong>Fijos:</strong> ingenieros y técnicos, desarrollo del software EMS, banco de pruebas multimarca para diagnosticar packs y módulos, nave/almacén, seguros de responsabilidad civil y producto.</li>
+      <li><strong>Variables:</strong> transporte de baterías como mercancía peligrosa, packs de reserva, garantías, certificaciones, comerciales.</li>
+    </ul>
+  </div>
+
+  <div class="bx c-ing"><span class="ord">5</span><h4>Fuentes de ingresos</h4>
+    <ul>
+      <li><strong>Hogar:</strong> venta instalada por debajo del precio de una batería nueva equivalente, con cuota opcional de financiación.</li>
+      <li><strong>Pyme:</strong> venta o renting mensual.</li>
+      <li><strong>Industria:</strong> ≈300.000 € por sistema → margen bruto ≈60.000 € (20 %). Retorno para el cliente de ~5–7 años con ~45.000 €/año de ahorro.</li>
+      <li><strong>Energía como servicio (pyme e industria):</strong> instalamos sin coste inicial y cobramos un % del ahorro medido durante 8–10 años.</li>
+      <li><strong>Recurrentes (todas las líneas):</strong> mantenimiento + suscripción a la app/EMS.</li>
+      <li><strong>Otros:</strong> auditorías de pago si el cliente no contrata; venta de packs al final de su vida para reciclaje.</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<h3 id="explicacion">Bloque a bloque</h3>
+<div class="prose">
+<h4>1 · Problema</h4>
+<p>Los problemas son económicos y medibles: regalar la energía solar sobrante, comprar energía en las horas más caras, pagar baterías domésticas nuevas muy caras y, en empresas, pagar por potencia que solo se usa unos minutos. Hoy se resuelven con baterías nuevas, con la «batería virtual» de la comercializadora (que solo compensa en euros), sobredimensionando la potencia contratada o no haciendo nada.</p>
+
+<h4>2 · Propuesta de valor</h4>
+<p>El mensaje sirve igual para una familia que para una fábrica y combina ahorro (lo que decide la compra), resiliencia (lo que preocupa tras el apagón) y sostenibilidad (lo que ayuda a la empresa ante clientes y bancos). El elemento que nos distingue es que el ahorro se <em>mide</em> y se enseña, no solo se promete.</p>
+
+<h4>3 · Solución</h4>
+<p>Las tres características más importantes son: el hardware reutilizado, multimarca y modular (del módulo suelto al pack completo), el software que toma decisiones cada 15 minutos y el panel que traduce kWh en euros. La parte TIC (IoT, comunicaciones Modbus/MQTT, previsiones con datos de precios del mercado y meteorología) es la que conecta la idea con la Smart City y con nuestra titulación.</p>
+
+<h4>4 · Canales</h4>
+<p>Cada segmento necesita su canal. Al hogar se llega con una web que calcula el ahorro con la factura, redes sociales y recomendaciones. A la pyme, a través de instaladoras y asociaciones. A la industria, con venta consultiva: nadie compra un sistema de 300.000 € por un anuncio, y la puerta de entrada es una auditoría gratuita. Las instaladoras fotovoltaicas son el socio natural en los tres casos, porque ya han instalado placas en nuestros clientes.</p>
+
+<h4>5 · Fuentes de ingresos</h4>
+<p>El hogar aporta volumen y ventas rápidas; la industria, proyectos grandes y poco frecuentes. Combinamos ingresos puntuales (la venta) con ingresos recurrentes (mantenimiento y software), que dan estabilidad. El modelo de energía como servicio elimina la barrera de la inversión inicial, aunque exige financiación propia o de un socio.</p>
+
+<h4>6 · Estructura de costes</h4>
+<p>En la industria las baterías suponen solo una cuarta parte del coste. El resto (electrónica de potencia, seguridad, instalación, ingeniería) no se abarata por usar packs usados, e incluso el BMS y el diagnóstico son costes extra frente a un sistema nuevo. Este punto resulta decisivo en la Práctica 2.</p>
+
+<h4>7 · Métricas clave</h4>
+<p>Medimos lo que le importa al cliente (euros, kW recortados), lo que importa a la seguridad y vida útil (SOH, temperatura, disponibilidad), el impacto Smart City (CO₂, kWh reutilizados) y la salud del negocio (conversión comercial y margen).</p>
+
+<h4>8 · Ventaja competitiva</h4>
+<p>Es el bloque más débil de la primera versión: comprar baterías usadas lo puede hacer cualquiera. Lo difícil de copiar es el conocimiento acumulado para diagnosticar y combinar baterías de muchas marcas de forma segura y un EMS que mejora con los datos de cada instalación.</p>
+
+<h4>9 · Segmentos de clientes</h4>
+<p>Tenemos tres segmentos con necesidades distintas. El <strong>hogar</strong> quiere usar de noche lo que produce de día y pagar menos que por una batería nueva; decide rápido y compra por precio y confianza. La <strong>empresa mediana</strong> busca bajar la factura y la potencia contratada con una inversión pequeña y un retorno claro. La <strong>industria</strong> necesita recortar picos y cuantifica todo con su curva cuartohoraria. En los tres casos, los early adopters son quienes ya tienen placas solares, porque entienden el lenguaje energético y ya han pasado por una inversión parecida. En el Canvas este bloque lleva el número 9 porque lo cerramos al final, una vez vimos que el producto podía escalar del hogar a la fábrica.</p>
+
+<h3 id="conclusiones">Lo que hemos aprendido</h3>
+<p>La idea resuelve un problema real y medible, escala desde el tejado de una vivienda hasta una nave industrial y encaja con la Smart City por su componente de datos y sostenibilidad. El Canvas nos hizo ver algo clave: el cliente no compra «baterías de segunda vida», compra ahorro, tranquilidad y una forma sencilla de aprovechar su energía.</p>
+<p>Quedan dos preguntas abiertas que responderemos en la siguiente fase: si la segunda vida es más competitiva en precio que las baterías nuevas en cada segmento, y qué exige la normativa para venderla con garantías.</p>
+</div>
+
+<section class="soon" id="proximamente" aria-labelledby="soon-title">
+  <div class="ghost" aria-hidden="true"><div><strong>Análisis PESTEL</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>5 fuerzas de Porter</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>DAFO y estrategias</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Ahorro real por kWh</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Canvas actualizado</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Subvenciones</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Vídeo de 3 minutos</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Presentación final</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div></div>
+  <div class="veil">
+    <svg class="lock" id="lock" viewBox="0 0 140 170" role="button" tabindex="0" aria-label="Contenido bloqueado">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2C45A"/><stop offset="1" stop-color="#B7790B"/></linearGradient>
+    <linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9D6D6"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset="1" stop-color="#8FA3A8"/></linearGradient>
+    <clipPath id="bodyclip"><rect x="14" y="66" width="112" height="96" rx="16"/></clipPath>
+  </defs>
+  <path class="shackle" d="M38 70 V48 a32 32 0 0 1 64 0 V70" fill="none" stroke="url(#sg)" stroke-width="14" stroke-linecap="round"/>
+  <rect x="14" y="66" width="112" height="96" rx="16" fill="url(#lg)"/>
+  <g clip-path="url(#bodyclip)"><rect class="shine" x="10" y="60" width="26" height="110" fill="#fff" opacity=".35" transform="skewX(-20)"/></g>
+  <rect x="24" y="76" width="92" height="76" rx="10" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+  <path d="M74 92 L60 116 H70 L66 136 L82 110 H72 Z" fill="#16303A"/>
+</svg>
+    <h2 id="soon-title">Próximamente</h2>
+    <p>Estamos cargando la siguiente fase del proyecto: análisis del entorno, del mercado y la presentación final.</p>
+    <div class="chips"><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Análisis PESTEL</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>5 fuerzas de Porter</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>DAFO y estrategias</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Ahorro real por kWh</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Canvas actualizado</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Subvenciones</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Vídeo de 3 minutos</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Presentación final</span></div>
+    <div class="hint" id="hint" aria-live="polite">Se desbloquea con la Práctica 2</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><div class="prose">
+    <p><strong>Segunda Carga</strong> es una idea de negocio desarrollada para las prácticas de Fundamentos de Organización y Gestión de Empresas del Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación (ETSIT-UPV), en el marco de València Ciudad Inteligente (VLCi) y el ODS 11.</p>
+    <p>Fuentes: Ayuntamiento de València (VLCi); Naciones Unidas, Agenda 2030; guías de precios de baterías domésticas en España 2026; documento interno «Proyecto BESS industrial con baterías Tesla reutilizadas». Las cifras son de prefactibilidad.</p>
+  </div></div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  function upd(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?(h.scrollTop/m*100):0)+'%';}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+  var lock=document.getElementById('lock'),hint=document.getElementById('hint');
+  var msgs=['Se desbloquea con la Práctica 2','Todavía no… ¡paciencia!','Cargando al 70 %…','Vuelve pronto'];var i=0;
+  function knock(){lock.classList.remove('shake');void lock.getBoundingClientRect();lock.classList.add('shake');i=(i+1)%msgs.length;hint.textContent=msgs[i];}
+  lock.addEventListener('click',knock);
+  lock.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();knock();}});
+})();
+</script>
+</body>
+</html>
