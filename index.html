@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Segunda Carga — Prácticas FOGE (Smart City)</title>
+<title>Segunda Carga — Baterías de coche con segunda vida para València</title>
+<meta name="description" content="Segunda Carga: almacenamiento energético con baterías de coches eléctricos de segunda vida para hogares, pymes e industria de València. Idea de negocio y Lean Canvas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&display=swap" rel="stylesheet">
@@ -119,47 +120,115 @@ footer{margin-top:4rem;padding:2rem 0 3rem;border-top:1px solid var(--line);colo
   header.hero{padding-top:1rem}
   #canvas{break-before:page}
 }
+
+/* ---- v2: tono dinámico ---- */
+.hero{position:relative;overflow:hidden}
+.hero .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:2.5rem;align-items:center}
+@media (max-width:860px){.hero .grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(3rem,9vw,6.2rem);line-height:.92;margin:.4rem 0 1rem}
+.hero .lead{font-size:clamp(1.2rem,2.2vw,1.45rem);max-width:34ch;margin:0 0 1.4rem}
+.cta{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{font-family:"Archivo",Arial,sans-serif;font-weight:700;text-decoration:none;padding:.7rem 1.15rem;border-radius:6px;border:2px solid var(--ink);color:var(--ink);transition:background .15s,color .15s}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--cobalt);border-color:var(--cobalt);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink);margin-top:2.4rem}
+.stats div{padding:.9rem .9rem .2rem 0}
+@media (max-width:560px){.stats{grid-template-columns:1fr}.stats div{display:flex;align-items:baseline;gap:.7rem;padding:.6rem 0 0}.stats b{flex:none}}
+.stats b{display:block;font-family:"Archivo",Arial,sans-serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;font-stretch:75%;color:var(--cobalt);line-height:1}
+.stats span{font-family:"Archivo",Arial,sans-serif;font-size:.9rem;color:var(--soft)}
+.hero .cell{margin:0;max-width:none}
+.hero .cell .body{height:120px;border-width:4px;border-radius:12px;padding:7px;gap:6px}
+.hero .cell .tip{width:16px;height:46px}
+.hero .cell .seg{animation:charge 3.2s ease-in-out infinite;transform:none;opacity:.12}
+.hero .cell .seg.keep{opacity:1;animation:none}
+@keyframes charge{0%,15%{opacity:.1}35%,85%{opacity:.45}100%{opacity:.1}}
+.hero .cell .seg:nth-child(8){animation-delay:.2s}.hero .cell .seg:nth-child(9){animation-delay:.4s}.hero .cell .seg:nth-child(10){animation-delay:.6s}
+.soh{display:flex;justify-content:space-between;font-family:"Archivo",Arial,sans-serif;font-size:.88rem;color:var(--soft);margin-top:.6rem}
+.soh strong{color:var(--charge)}
+.brands{font-family:"Archivo",Arial,sans-serif;font-size:.9rem;color:var(--soft);margin-top:1.4rem;line-height:1.9}
+.brands span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.05rem .6rem;margin:0 .25rem .25rem 0;background:var(--panel);color:var(--ink)}
+nav.toc .lockl{color:var(--soft)}
+.progress{position:absolute;left:0;bottom:-1px;height:3px;background:var(--cobalt);width:0}
+/* ---- próximamente ---- */
+.soon{position:relative;margin:4.5rem 0 1rem;border-radius:14px;overflow:hidden;background:#16303A;color:#E3ECEE;isolation:isolate}
+.soon .ghost{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;padding:2rem;filter:blur(5px);opacity:.45;pointer-events:none;user-select:none}
+.soon .ghost div{border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:1rem;min-height:120px;font-family:"Archivo",Arial,sans-serif}
+.soon .ghost i{display:block;height:8px;border-radius:4px;background:rgba(255,255,255,.35);margin:.55rem 0}
+.soon .veil{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.5rem;
+  background:radial-gradient(circle at 50% 42%,rgba(31,79,163,.55),rgba(22,48,58,.92) 62%)}
+.lock{width:112px;height:136px;flex:none;overflow:visible;cursor:pointer;filter:drop-shadow(0 10px 24px rgba(0,0,0,.45));animation:float 4s ease-in-out infinite}
+.lock .shackle{transition:transform .35s cubic-bezier(.5,-0.6,.4,1.6);transform-origin:70px 60px}
+.lock:focus{outline:none}.lock:focus-visible{outline:3px solid #E0AE45;outline-offset:6px;border-radius:8px}
+.lock:hover .shackle{transform:translateY(-7px)}
+.lock.shake{animation:shake .5s}
+.lock .shine{animation:shine 3.5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes shake{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}40%{transform:rotate(10deg)}60%{transform:rotate(-7deg)}80%{transform:rotate(4deg)}}
+@keyframes shine{0%,60%{transform:translateX(-80px)}100%{transform:translateX(120px)}}
+.soon h2{color:#fff;font-size:clamp(2.2rem,6vw,3.6rem);font-stretch:75%;margin:1rem 0 .3rem}
+.soon p{max-width:46ch;color:#C5D6DA;margin:.2rem auto}
+.soon .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:1.2rem;max-width:720px}
+.soon .chips span{font-family:"Archivo",Arial,sans-serif;font-size:.85rem;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:.2rem .7rem;color:#fff}
+.soon .chips svg{width:11px;height:11px;margin-right:.3rem;vertical-align:-1px}
+.soon .hint{font-family:"Archivo",Arial,sans-serif;font-size:.8rem;color:#9FB4BA;margin-top:1rem;min-height:1.2em}
+.soon .ghost{min-height:620px;align-content:center}
+@media (max-width:640px){.soon .ghost{grid-template-columns:1fr 1fr;min-height:720px}}
+@media (prefers-reduced-motion: reduce){.lock,.lock .shine,.hero .cell .seg{animation:none!important}.hero .cell .seg{opacity:1}}
+@media print{.soon{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}.lock{animation:none}.hero .cell .seg{animation:none;opacity:1}.cta{display:none}}
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
-    <div class="meta">Fundamentos de Organización y Gestión de Empresas · GITST · ETSIT-UPV · Prácticas de laboratorio 1, 2 y 3</div>
-    <h1>Segunda Carga</h1>
-    <p class="sub">Almacenamiento energético para hogares con placas, pymes e industria de València, construido con baterías de coches eléctricos de segunda vida de cualquier marca y gestionado con un EMS conectado a la Smart City.</p>
-    <div class="cell" role="img" aria-label="Batería al 70 % de estado de salud">
-      <div class="body">
-        <span class="seg"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span>
-        <span class="seg"></span><span class="seg"></span><span class="seg"></span>
-        <span class="seg off"></span><span class="seg off"></span><span class="seg off"></span>
-      </div><div class="tip"></div>
+    <div class="grid">
+      <div>
+        <div class="meta">Práctica de laboratorio 1 · Fundamentos de Organización y Gestión de Empresas · ETSIT-UPV</div>
+        <h1>Segunda Carga</h1>
+        <p class="lead">Las baterías de los coches eléctricos tienen una segunda vida. Nosotros la ponemos a trabajar en tu casa, tu negocio y tu fábrica.</p>
+        <div class="cta">
+          <a class="btn primary" href="#canvas">Ver el Lean Canvas</a>
+          <a class="btn" href="#idea">Conocer la idea</a>
+        </div>
+      </div>
+      <div>
+        <div class="cell" role="img" aria-label="Batería con un 70 % de capacidad disponible">
+          <div class="body">
+            <span class="seg keep"></span><span class="seg keep"></span><span class="seg keep"></span><span class="seg keep"></span>
+            <span class="seg keep"></span><span class="seg keep"></span><span class="seg keep"></span>
+            <span class="seg"></span><span class="seg"></span><span class="seg"></span>
+          </div><div class="tip"></div>
+        </div>
+        <div class="soh"><span>Retirada del coche</span><span><strong>≈70 %</strong> de capacidad lista para trabajar</span></div>
+        <div class="brands">Compatible con <span>Tesla</span><span>Nissan</span><span>Renault</span><span>BYD</span><span>Hyundai</span><span>Kia</span><span>Volkswagen</span><span>MG</span></div>
+      </div>
     </div>
-    <div class="cell-cap">Una batería que ya no sirve para un coche (≈70 % SOH) todavía guarda gran parte de su energía. Un módulo basta para un hogar; unos pocos packs, para una pyme; veinte, para una fábrica.</div>
-    <p class="meta">Nombre de la empresa provisional · Cifras de prefactibilidad (septiembre 2026)</p>
+    <div class="stats">
+      <div><b>3</b><span>líneas de producto: hogar, pyme e industria</span></div>
+      <div><b>5–700 kWh</b><span>de almacenamiento según el cliente</span></div>
+      <div><b>1 EMS</b><span>propio que decide cuándo cargar y descargar</span></div>
+    </div>
   </div>
 </header>
 
-<nav class="toc" aria-label="Índice">
-  <div class="wrap"><ul>
-    <li><a href="#p1">P1 · Idea y Lean Canvas</a></li>
+<nav class="toc" aria-label="Índice" style="position:sticky">
+  <div class="wrap" style="position:relative"><ul>
+    <li><a href="#p1">Smart City</a></li>
+    <li><a href="#ideacion">Ideación</a></li>
+    <li><a href="#idea">La idea</a></li>
     <li><a href="#canvas">Lean Canvas</a></li>
-    <li><a href="#p2">P2 · PESTEL</a></li>
-    <li><a href="#porter">5 fuerzas</a></li>
-    <li><a href="#dafo">DAFO</a></li>
-    <li><a href="#kwh">¿Cuánto se ahorra por kWh?</a></li>
-    <li><a href="#canvas2">Canvas actualizado</a></li>
-    <li><a href="#ayudas">Subvenciones</a></li>
-    <li><a href="#p3">P3 · Vídeo y PowerPoint</a></li>
-    <li><a href="#eval">Evaluación</a></li>
-  </ul></div>
+    <li><a href="#explicacion">Bloque a bloque</a></li>
+    <li><a href="#conclusiones">Conclusiones</a></li>
+    <li><a class="lockl" href="#proximamente">🔒 Próximamente</a></li>
+  </ul><div class="progress" id="progress"></div></div>
 </nav>
 
 <main class="wrap">
 
+
 <!-- ===================== PRÁCTICA 1 ===================== -->
 <div class="practica" id="p1">Práctica 1 · Generar una idea de negocio y su modelo de negocio</div>
-<h2>Smart City y proceso de ideación</h2>
+<h2>De la ciudad inteligente a una idea de negocio</h2>
 
 <div class="prose">
 <h3>Actividades previas: qué es una Smart City</h3>
@@ -170,8 +239,8 @@ footer{margin-top:4rem;padding:2rem 0 3rem;border-top:1px solid var(--line);colo
 <h3>Actividades previas: qué es un modelo de negocio y el Lean Canvas</h3>
 <p>El <strong>modelo de negocio</strong> describe cómo una empresa crea, entrega y captura valor. El <strong>Lean Canvas</strong> (Ash Maurya) adapta el Business Model Canvas a startups: sustituye socios, actividades y recursos clave por <em>problema</em>, <em>solución</em>, <em>métricas clave</em> y <em>ventaja competitiva</em>, porque en una empresa nueva lo más arriesgado es no entender bien el problema del cliente. Se rellena en orden: segmentos y problema (1), propuesta de valor (2), solución (3), canales (4), ingresos (5), costes (6), métricas (7) y ventaja competitiva (8).</p>
 
-<h3>Proceso grupal de ideación</h3>
-<p>El grupo partió de una pregunta: <em>¿qué problema de la ciudad podemos resolver con telecomunicaciones y datos?</em> Hicimos un brainstorming, puntuamos cada idea de 1 a 5 en creatividad, viabilidad y utilidad (los tres criterios de la rúbrica) y elegimos la de mayor puntuación.</p>
+<h3 id="ideacion">Cómo llegamos a la idea</h3>
+<p>Partimos de una sola pregunta: <em>¿qué problema de València podemos resolver con telecomunicaciones y datos?</em> En una sesión de brainstorming generamos seis ideas, las puntuamos de 1 a 5 en creatividad, viabilidad y utilidad, y nos quedamos con la que mejor combinaba impacto y negocio.</p>
 </div>
 
 <div class="tablewrap"><table>
@@ -186,7 +255,7 @@ footer{margin-top:4rem;padding:2rem 0 3rem;border-top:1px solid var(--line);colo
 </tbody></table></div>
 
 <div class="prose">
-<h3>La idea elegida</h3>
+<h3 id="idea">La idea: Segunda Carga</h3>
 <p><strong>Segunda Carga</strong> diseña, instala y gestiona sistemas de almacenamiento en baterías (BESS) en el área metropolitana de València usando baterías de coches eléctricos que ya no sirven para circular pero conservan en torno al 70 % de su capacidad. Trabajamos con cualquier marca (Tesla, Nissan, Renault, BYD, Hyundai/Kia, Volkswagen, MG…) y todos los sistemas comparten el mismo <strong>EMS</strong> (sistema de gestión energética) propio, que decide en cada momento si cargar, esperar o descargar.</p>
 <p>Ofrecemos tres líneas de producto, que reutilizan desde módulos sueltos hasta packs completos:</p>
 </div>
@@ -202,8 +271,8 @@ footer{margin-top:4rem;padding:2rem 0 3rem;border-top:1px solid var(--line);colo
 <p><strong>Encaje Smart City:</strong> cada instalación es un nodo IoT que mide consumo, generación, estado de las baterías y CO₂ evitado. Los datos agregados y anonimizados pueden alimentar la plataforma VLCi como indicadores de energía del tejido industrial, y en el futuro cientos de baterías domésticas y de empresas podrían coordinarse como una planta virtual que ayude a la red en las horas de más demanda.</p>
 </div>
 
-<h2 id="canvas">Lean Canvas de Segunda Carga</h2>
-<p class="prose">Los números azules indican el orden en que se ha rellenado cada bloque, igual que en la plantilla.</p>
+<h2 id="canvas">El modelo de negocio en una página</h2>
+<p class="prose">Lean Canvas de Segunda Carga. Los números azules marcan el orden en que construimos cada bloque.</p>
 
 <div class="canvas-scroll">
 <div class="canvas">
@@ -296,7 +365,7 @@ footer{margin-top:4rem;padding:2rem 0 3rem;border-top:1px solid var(--line);colo
 </div>
 </div>
 
-<h3>Explicación detallada de cada bloque</h3>
+<h3 id="explicacion">Bloque a bloque</h3>
 <div class="prose">
 <h4>9 · Segmentos de clientes</h4>
 <p>Tenemos tres segmentos con necesidades distintas. El <strong>hogar</strong> quiere usar de noche lo que produce de día y pagar menos que por una batería nueva; decide rápido y compra por precio y confianza. La <strong>empresa mediana</strong> busca bajar la factura y la potencia contratada con una inversión pequeña y un retorno claro. La <strong>industria</strong> necesita recortar picos y cuantifica todo con su curva cuartohoraria. En los tres casos, los early adopters son quienes ya tienen placas solares, porque entienden el lenguaje energético y ya han pasado por una inversión parecida. En el Canvas este bloque lleva el número 9 porque lo cerramos al final, una vez vimos que el producto podía escalar del hogar a la fábrica.</p>
@@ -325,221 +394,53 @@ footer{margin-top:4rem;padding:2rem 0 3rem;border-top:1px solid var(--line);colo
 <h4>8 · Ventaja competitiva</h4>
 <p>Es el bloque más débil de la primera versión: comprar baterías usadas lo puede hacer cualquiera. Lo difícil de copiar es el conocimiento acumulado para diagnosticar y combinar baterías de muchas marcas de forma segura y un EMS que mejora con los datos de cada instalación.</p>
 
-<h3>Reflexiones y conclusiones de la Práctica 1</h3>
-<p>La idea responde a un problema real y cuantificable, sirve a hogares, pymes e industria y encaja con la Smart City por su componente de datos y sostenibilidad. El Canvas nos obligó a ver que el cliente no compra «baterías de segunda vida», sino ahorro y tranquilidad. También deja dos dudas que debemos comprobar con los análisis externos: si las baterías usadas son de verdad más baratas que las nuevas y si la normativa y la seguridad permiten venderlas con garantías.</p>
+<h3 id="conclusiones">Lo que hemos aprendido</h3>
+<p>La idea resuelve un problema real y medible, escala desde el tejado de una vivienda hasta una nave industrial y encaja con la Smart City por su componente de datos y sostenibilidad. El Canvas nos hizo ver algo clave: el cliente no compra «baterías de segunda vida», compra ahorro, tranquilidad y una forma sencilla de aprovechar su energía.</p>
+<p>Quedan dos preguntas abiertas que responderemos en la siguiente fase: si la segunda vida es más competitiva en precio que las baterías nuevas en cada segmento, y qué exige la normativa para venderla con garantías.</p>
 </div>
 
-<!-- ===================== PRÁCTICA 2 ===================== -->
-<div class="practica" id="p2">Práctica 2 · Análisis del entorno, del mercado y DAFO</div>
-<h2>Análisis PESTEL</h2>
-<p class="prose">El PESTEL analiza el macroentorno: factores que la empresa no controla pero que afectan al éxito de la idea.</p>
-
-<div class="tablewrap"><table>
-<thead><tr><th>Factor</th><th>Qué pasa en el entorno</th><th>Efecto</th></tr></thead>
-<tbody>
-<tr><td><strong>Político</strong></td><td>El PNIEC 2023-2030 fija como objetivo 22,5 GW de almacenamiento en España. El IDAE y la Generalitat abren líneas de ayuda a almacenamiento y autoconsumo. La UE impulsa la economía circular y la autonomía estratégica en baterías.</td><td>Oportunidad</td></tr>
-<tr><td><strong>Económico</strong></td><td>La expansión solar hunde los precios del mediodía y amplía la diferencia con las horas caras, lo que favorece el arbitraje. Pero el precio de las baterías nuevas LFP ha caído con fuerza en 2025, lo que reduce la ventaja de precio de las usadas. Tipos de interés y acceso a crédito condicionan la inversión de las pymes.</td><td>Oportunidad y amenaza</td></tr>
-<tr><td><strong>Social</strong></td><td>Tras el apagón de abril de 2025 hogares y empresas valoran más la resiliencia; crece el interés doméstico por el autoconsumo con batería. Clientes, bancos e inversores exigen informes de sostenibilidad. Hay desconfianza hacia lo «de segunda mano» y hacia el riesgo de incendio.</td><td>Oportunidad y amenaza</td></tr>
-<tr><td><strong>Tecnológico</strong></td><td>Las baterías LFP nuevas ofrecen 6.000 ciclos o más. Avanzan los EMS con IA, el IoT industrial y la previsión con datos abiertos (precios de mercado, meteorología). Cada marca usa una química y un BMS distintos: Tesla (NCA/NMC y LFP), Nissan Leaf y Renault Zoe (NMC, módulos fáciles de reutilizar), BYD (LFP Blade, muy adecuada para uso estacionario). Los BMS de fábrica suelen ser cerrados.</td><td>Oportunidad y amenaza</td></tr>
-<tr><td><strong>Ecológico</strong></td><td>Crece el volumen de baterías retiradas de vehículos. Reutilizarlas antes de reciclarlas alarga su vida y reduce la huella de carbono frente a fabricar celdas nuevas.</td><td>Oportunidad</td></tr>
-<tr><td><strong>Legal</strong></td><td>El Reglamento europeo de baterías (UE) 2023/1542 trata a quien reacondiciona una batería como un nuevo fabricante con obligaciones propias, e introduce el pasaporte digital de baterías a partir de febrero de 2027. Hay que cumplir el REBT, la normativa de autoconsumo (RD 244/2019), la de protección contra incendios (RIPCI) y normas técnicas como la IEC 62933 o la UL 1974 (reacondicionamiento de baterías). Algunas ayudas exigen equipos nuevos. En viviendas, la exigencia de seguridad es aún mayor porque la batería está junto a personas.</td><td>Amenaza (barrera de entrada)</td></tr>
-</tbody></table></div>
-
-<h2 id="porter">Análisis de mercado: 5 fuerzas de Porter</h2>
-<div class="porter">
-  <div><strong>Poder de los proveedores</strong> <span class="lvl m">Medio-alto</span>
-    <p>Las baterías usadas llegan de desguaces, aseguradoras y concesionarios en cantidades irregulares y con historiales desconocidos. Ser multimarca amplía mucho la oferta disponible y reduce esta dependencia, aunque conseguir lotes homogéneos sigue siendo difícil. Los fabricantes de inversores y BMS sí son abundantes.</p></div>
-  <div class="center"><strong>Rivalidad entre competidores</strong> <span class="lvl h">Alta</span>
-    <p>En el hogar compiten Huawei, BYD, Pylontech o Tesla Powerwall, vendidas por cientos de instaladoras; en industria, Sungrow, BYD, Tesla o CATL, con armarios listos para instalar y garantías de 10–15 años, más cientos de instaladoras fotovoltaicas que ya los ofrecen. En segunda vida hay pocos actores en España, lo que abre un nicho pero sin mercado ya educado.</p>
-    <p><strong>Nuevos entrantes</strong> <span class="lvl m">Media</span><br>Montar packs es accesible, pero certificar seguridad, conseguir seguros y cumplir el Reglamento de baterías es una barrera alta.</p></div>
-  <div><strong>Poder de los clientes</strong> <span class="lvl h">Alto</span>
-    <p>Las empresas comparan ofertas y piden garantías; una inversión de 200–300.000 € se decide con el banco. Los hogares comparan precios en internet y desconfían de lo usado. Todos pueden elegir no hacer nada.</p>
-    <p><strong>Productos sustitutivos</strong> <span class="lvl h">Alta</span><br>Baterías nuevas LFP (cada vez más baratas), batería virtual de las comercializadoras, ampliar potencia, gestionar la demanda sin baterías, contratos de energía a precio fijo (PPA), grupos electrógenos para respaldo.</p></div>
-</div>
-<p class="prose"><strong>Conclusión:</strong> el mercado es atractivo por su crecimiento, pero muy competitivo. Competir solo por precio de la batería es arriesgado; hay que competir por servicio, ahorro garantizado y valor circular.</p>
-
-<h2 id="dafo">DAFO</h2>
-<div class="dafo">
-  <div class="d"><h4>Debilidades (internas)</h4>
-    <ul><li>Empresa nueva sin casos de éxito ni historial de garantías.</li>
-    <li>Baterías heterogéneas (muchas marcas y químicas), de menor vida restante y con BMS a rediseñar.</li>
-    <li>Necesidad de capital circulante y de atender a la vez tres segmentos distintos.</li>
-    <li>Equipo con perfil técnico y poca experiencia comercial industrial.</li></ul></div>
-  <div class="a"><h4>Amenazas (externas)</h4>
-    <ul><li>Caída del precio de las baterías LFP nuevas: la ventaja de coste de las usadas casi desaparece.</li>
-    <li>Exigencias del Reglamento (UE) 2023/1542, certificaciones y aseguradoras.</li>
-    <li>Riesgo de incendio y daño reputacional de todo el sector.</li>
-    <li>Ayudas que solo aceptan equipos nuevos.</li>
-    <li>Reducción futura de la diferencia de precios horarios.</li></ul></div>
-  <div class="f"><h4>Fortalezas (internas)</h4>
-    <ul><li>Conocimiento TIC propio: EMS, IoT, datos y software (base de la titulación).</li>
-    <li>Propuesta combinada: ahorro + resiliencia + economía circular, escalable del hogar a la fábrica.</li>
-    <li>Proveedores multimarca y trabajo a nivel de módulo.</li>
-    <li>Modelo con ingresos recurrentes (mantenimiento y software).</li>
-    <li>Cercanía al cliente y conocimiento del tejido industrial valenciano.</li>
-    <li>Vínculo con la UPV y el ecosistema emprendedor de València.</li></ul></div>
-  <div class="o"><h4>Oportunidades (externas)</h4>
-    <ul><li>Objetivos nacionales de almacenamiento y convocatorias de ayudas.</li>
-    <li>Interés en resiliencia tras el apagón de 2025 y auge del autoconsumo doméstico.</li>
-    <li>Diferencia grande entre el precio de la celda y el de la batería doméstica instalada.</li>
-    <li>Deducción autonómica por autoconsumo en vivienda.</li>
-    <li>Precios del mediodía muy bajos por el crecimiento solar.</li>
-    <li>Estrategia VLCi y plataformas de datos urbanos.</li>
-    <li>Presión ESG sobre la industria y demanda de productos circulares.</li></ul></div>
-</div>
-
-<h3>Estrategias que salen del DAFO</h3>
-<ul class="prose plain">
-<li><strong>Ofensiva (F+O):</strong> posicionarnos como empresa de software y gestión energética que usa hardware circular en los tres segmentos, apoyada en ayudas y en el interés por la resiliencia.</li>
-<li><strong>Defensiva (F+A):</strong> no depender del precio de la batería; vender ahorro garantizado y ofrecer también packs nuevos cuando convenga.</li>
-<li><strong>Reorientación (D+O):</strong> empezar por hogares y pymes (proyectos pequeños, rápidos y con más margen) mientras se prepara un piloto industrial subvencionado junto a la UPV o un instituto tecnológico para conseguir el primer caso de éxito.</li>
-<li><strong>Supervivencia (D+A):</strong> certificar la seguridad desde el día uno y solo comprar packs por debajo del precio de equilibrio calculado abajo.</li>
-</ul>
-
-<h2 id="kwh">¿Cuánto ahorramos por kWh con baterías usadas?</h2>
-<div class="prose">
-<p>Comparamos el coste de la <strong>parte batería</strong> por kWh <strong>útil</strong>. Supuestos: pack usado de 50 kWh al 70 % de SOH = 35 kWh útiles; al usado hay que sumarle un BMS nuevo (≈18.000 € ÷ 700 kWh ≈ 26 €/kWh) y el diagnóstico de cada pack (≈4 €/kWh). Los packs estacionarios nuevos ya incluyen su BMS y permiten usar ~95 % de su capacidad. Tipo de cambio aproximado: 1 € ≈ 1,16 $.</p>
-<p>Referencias de precio de packs nuevos: BloombergNEF sitúa el pack estacionario en 70 $/kWh de media mundial en 2025 (≈60 €/kWh), y en Europa las celdas LFP rondan los 89 €/kWh.</p>
-</div>
-
-<div class="bars" role="img" aria-label="Coste de batería por kWh útil: usado entre 101 y 187 euros, nuevo entre 63 y 94 euros">
-  <div class="bar"><span>Usado · 2.500 €/pack</span><div class="track"><div class="fillb" style="width:54%;background:var(--amber)"></div></div><span class="v">101 €/kWh</span></div>
-  <div class="bar"><span>Usado · 3.000 €/pack (central)</span><div class="track"><div class="fillb" style="width:62%;background:var(--amber)"></div></div><span class="v">116 €/kWh</span></div>
-  <div class="bar"><span>Usado · 4.000 €/pack</span><div class="track"><div class="fillb" style="width:77%;background:var(--amber)"></div></div><span class="v">144 €/kWh</span></div>
-  <div class="bar"><span>Usado · 5.500 €/pack</span><div class="track"><div class="fillb" style="width:100%;background:var(--risk)"></div></div><span class="v">187 €/kWh</span></div>
-  <div class="bar"><span>Nuevo LFP · media mundial</span><div class="track"><div class="fillb" style="width:34%;background:var(--charge)"></div></div><span class="v">63 €/kWh</span></div>
-  <div class="bar"><span>Nuevo LFP · referencia Europa</span><div class="track"><div class="fillb" style="width:50%;background:var(--charge)"></div></div><span class="v">94 €/kWh</span></div>
-</div>
-
-<div class="tablewrap"><table>
-<thead><tr><th>Concepto</th><th class="n">Usado (central)</th><th class="n">Nuevo LFP</th><th class="n">Diferencia</th></tr></thead>
-<tbody>
-<tr><td>Coste batería por kWh útil</td><td class="n">≈116 €</td><td class="n">63–94 €</td><td class="n">usado 22–53 € más caro</td></tr>
-<tr><td>Coste batería para 700 kWh útiles</td><td class="n">≈81.000 €</td><td class="n">44.000–66.000 €</td><td class="n">+15.000 a +37.000 €</td></tr>
-<tr><td>Ciclos restantes estimados</td><td class="n">1.500–2.500</td><td class="n">≈5.000 (limitado por 15 años de vida)</td><td class="n">≈2–3 veces más en nuevo</td></tr>
-<tr><td>Coste batería por kWh entregado a lo largo de su vida</td><td class="n">≈0,06–0,10 €</td><td class="n">≈0,02 €</td><td class="n">usado 3–5 veces más caro</td></tr>
-<tr><td>Coste de sistema completo por kWh útil</td><td class="n">≈343 € (240.000 € ÷ 700)</td><td class="n">≈175–300 € (rango de fabricante)</td><td class="n">el usado no es más barato</td></tr>
-<tr class="total"><td>Precio máximo de compra para empatar con uno nuevo</td><td class="n" colspan="3">≈1.150–2.250 € por pack (sin contar la menor vida útil; contándola, por debajo de ~1.000 €)</td></tr>
-</tbody></table></div>
-
-<div class="note risk prose">
-<p><strong>Conclusión honesta:</strong> con los precios de 2026, comprar packs Tesla a 2.500–5.500 € <strong>no ahorra dinero</strong> frente a baterías LFP nuevas; en el escenario central sale unos 15.000–37.000 € más caro en la parte de baterías y bastante más caro por kWh entregado, porque la vida útil restante es menor. Hace tres años la cuenta sí salía; la caída de precio de 2025 la ha cambiado.</p>
-<p>Solo hay ahorro real si conseguimos packs por debajo de ~1.000–1.500 € (lotes de siniestros, flotas, acuerdos con desguaces) o reutilizando módulos sueltos. Este resultado es exactamente lo que el análisis externo debe detectar y justifica actualizar el modelo de negocio.</p>
-</div>
-
-<h3>¿Y en el hogar y la pyme?</h3>
-<div class="prose">
-<p>En sistemas pequeños la cuenta cambia: el coste de la celda es una parte mínima del precio final, porque una batería doméstica nueva instalada cuesta unos 450–580 €/kWh, mientras la celda vale menos de 100 €/kWh. Un armario de 10 kWh útiles con módulos reacondicionados podría tener un coste de materiales cercano al de un sistema nuevo, pero hay mucho más margen para competir en precio final.</p>
-</div>
-<div class="tablewrap"><table>
-<thead><tr><th>Batería doméstica de 10 kWh útiles</th><th class="n">Nueva instalada</th><th class="n">Objetivo segunda vida</th><th class="n">Ahorro para el cliente</th></tr></thead>
-<tbody>
-<tr><td>Precio instalado</td><td class="n">4.500–5.800 €</td><td class="n">3.000–3.800 €</td><td class="n">≈1.500–2.000 € (30–35 %)</td></tr>
-<tr><td>Precio por kWh útil</td><td class="n">450–580 €</td><td class="n">300–380 €</td><td class="n">≈150–200 €/kWh</td></tr>
-<tr><td>Garantía típica</td><td class="n">10 años</td><td class="n">5–7 años (propia)</td><td class="n">menor, hay que compensarla con servicio</td></tr>
-</tbody></table></div>
-<div class="note ok prose"><p><strong>Conclusión:</strong> el segmento doméstico y de pyme es donde la segunda vida tiene más sentido económico, siempre que el armario esté certificado y la garantía sea creíble. En industria, solo compensa comprando baterías muy baratas o como opción híbrida. Los precios objetivo de segunda vida son una hipótesis a validar con presupuestos reales.</p></div>
-
-<h2 id="canvas2">Actualización del modelo de negocio tras la Práctica 2</h2>
-<div class="tablewrap"><table>
-<thead><tr><th>Bloque</th><th>Versión inicial</th><th>Versión actualizada y motivo</th></tr></thead>
-<tbody>
-<tr><td>Propuesta de valor</td><td>Almacenamiento barato con baterías usadas</td><td>Ahorro medido y garantizado + resiliencia + huella circular certificada. El precio ya no es el argumento principal (DAFO: caída del precio LFP).</td></tr>
-<tr><td>Solución</td><td>Solo packs Tesla de segunda vida</td><td>Baterías multimarca en tres tamaños; en industria, sistema híbrido: packs usados cuando su precio esté bajo el umbral de equilibrio y módulos LFP nuevos para el resto, todo con el mismo EMS.</td></tr>
-<tr><td>Ventaja competitiva</td><td>Comprar packs baratos</td><td>EMS propio con datos de muchas fábricas + protocolo de diagnóstico certificado (UL 1974 / IEC 62933) + pasaporte digital de baterías listo para 2027.</td></tr>
-<tr><td>Ingresos</td><td>Mayoría por venta de hardware</td><td>Más peso de energía como servicio y del software EMS (licenciable también a instaladoras con BESS nuevos).</td></tr>
-<tr><td>Costes</td><td>Sin partida de certificación</td><td>Añadir certificación, seguros, pasaporte de baterías y reserva de packs de sustitución.</td></tr>
-<tr><td>Segmentos</td><td>Solo fábricas grandes</td><td>Tres segmentos: hogares con placas y pymes como entrada (más margen para la segunda vida) e industria con sistemas híbridos; después, comunidades energéticas y edificios municipales.</td></tr>
-<tr><td>Métricas</td><td>Ahorro y SOH</td><td>Añadir coste de compra por kWh útil de cada lote (nunca por encima del umbral) y coste por kWh entregado.</td></tr>
-</tbody></table></div>
-
-<h2 id="ayudas">Subvenciones y financiación a estudiar</h2>
-<div class="note prose"><p>Antes de planificar con ninguna ayuda hay que confirmar que la convocatoria está abierta. Casi todas exigen <strong>pedirla antes de empezar el proyecto</strong>, y varias exigen <strong>equipos nuevos</strong>, algo crítico para nuestra idea.</p></div>
-
-<div class="tablewrap"><table>
-<thead><tr><th>Ayuda</th><th>Para qué sirve</th><th>Encaje con Segunda Carga</th></tr></thead>
-<tbody>
-<tr><td><strong>IDAE · Proyectos innovadores de almacenamiento (FEDER 21-27)</strong></td><td>Proyectos de almacenamiento innovadores y de gran impacto. La primera convocatoria se resolvió en diciembre de 2025.</td><td>Vigilar nuevas convocatorias. El carácter innovador de la segunda vida es un buen argumento, aunque suele orientarse a proyectos grandes.</td></tr>
-<tr><td><strong>IDAE · I+D de almacenamiento (PRTR)</strong></td><td>Proyectos precomerciales (TRL 6–8) de al menos 1 MW o 1 MWh conectados a red.</td><td>Nuestro piloto de 700 kWh no llega; con ~29 packs (≈1 MWh) sí alcanzaría el mínimo. Buena vía para un piloto con la UPV.</td></tr>
-<tr><td><strong>IDAE · RENOINN 2, RENOVAL 2 y similares</strong></td><td>Innovación renovable y capacidad industrial en tecnologías limpias (plazos cerrados en febrero de 2026).</td><td>Vigilar próximas ediciones, sobre todo para una futura planta de reacondicionamiento de baterías.</td></tr>
-<tr><td><strong>IVACE · Autoconsumo en municipios 2026</strong></td><td>Autoconsumo con o sin almacenamiento, solo para entidades locales y con equipos nuevos.</td><td>No sirve para packs usados, pero sí para vender la versión con módulos nuevos a ayuntamientos (encaje Smart City).</td></tr>
-<tr><td><strong>CDTI · NEOTEC</strong> <em>(a confirmar)</em></td><td>Subvención para empresas tecnológicas jóvenes con desarrollo propio.</td><td>Muy buen encaje para financiar el EMS y el protocolo de diagnóstico.</td></tr>
-<tr><td><strong>ENISA · Jóvenes Emprendedores / Emprendedores</strong> <em>(a confirmar)</em></td><td>Préstamo participativo sin garantías personales para startups.</td><td>Capital circulante para comprar packs y ejecutar el primer proyecto.</td></tr>
-<tr><td><strong>IVACE+i · emprendimiento e innovación</strong> <em>(a confirmar)</em></td><td>Ayudas autonómicas a startups innovadoras y proyectos de I+D empresarial.</td><td>Desarrollo del software y del banco de pruebas.</td></tr>
-<tr><td><strong>MITECO · PERTE de Economía Circular</strong> <em>(a confirmar)</em></td><td>Proyectos de reutilización y valorización de residuos, incluidas baterías.</td><td>Encaja directamente con la segunda vida.</td></tr>
-<tr><td><strong>Programa LIFE y Horizon Europe (Batt4EU)</strong> <em>(a confirmar)</em></td><td>Fondos europeos para economía circular y baterías, normalmente en consorcio.</td><td>A medio plazo, junto con la UPV o un instituto tecnológico.</td></tr>
-<tr><td><strong>Ecosistema València</strong> <em>(a confirmar)</em></td><td>Programas del Ayuntamiento (VIT Emprende, València Innovation Capital), IDEAS UPV / StartUPV, aceleradoras como Lanzadera.</td><td>Mentoría, espacio y visibilidad para el piloto.</td></tr>
-<tr><td><strong>Deducción autonómica por autoconsumo en vivienda (Comunitat Valenciana)</strong></td><td>Deducción en el IRPF del 40 % en vivienda habitual y 20 % en segunda residencia, con base máxima de 8.000 € anuales; requiere certificación del IVACE.</td><td>Argumento de venta clave para la línea Hogar (verificar que admite equipos reacondicionados).</td></tr>
-<tr><td><strong>Incentivos fiscales</strong></td><td>Deducción por I+D+i en el Impuesto sobre Sociedades.</td><td>Para el desarrollo del EMS y el diagnóstico de packs.</td></tr>
-</tbody></table></div>
-
-<!-- ===================== PRÁCTICA 3 ===================== -->
-<div class="practica" id="p3">Práctica 3 · Compilación y comunicación del trabajo</div>
-<h2>Guion del vídeo (3 minutos)</h2>
-<p class="prose">El vídeo debe defender la <strong>propuesta de valor</strong>. La rúbrica valora formato, contenido, originalidad, lenguaje, grabación y edición, y ajuste al tiempo.</p>
-<div class="tablewrap"><table>
-<thead><tr><th>Tiempo</th><th>Imagen</th><th>Texto hablado (resumen)</th></tr></thead>
-<tbody>
-<tr><td>0:00–0:20</td><td>Coche eléctrico en un desguace; zoom a la batería</td><td>«Esta batería ya no sirve para un coche. Pero todavía guarda el 70 % de su energía.»</td></tr>
-<tr><td>0:20–0:50</td><td>Tejado de una casa con placas, un comercio y una nave industrial</td><td>El problema: sol desperdiciado a mediodía, baterías nuevas caras, picos de potencia y miedo a otro apagón.</td></tr>
-<tr><td>0:50–1:40</td><td>Animación: baterías de varias marcas → módulos → armario de casa, de pyme y de fábrica</td><td>La solución: almacenamiento multimarca de segunda vida en tres tamaños y un cerebro digital común.</td></tr>
-<tr><td>1:40–2:15</td><td>Maqueta del panel web con euros ahorrados y CO₂ evitado</td><td>La propuesta de valor: ahorro medido, resiliencia y economía circular. Datos que alimentan la Smart City.</td></tr>
-<tr><td>2:15–2:45</td><td>Mapa de València con casas, comercios y polígonos</td><td>Clientes, modelo de ingresos y lo que aprendimos: la batería no es lo más barato, el servicio es lo que vale.</td></tr>
-<tr><td>2:45–3:00</td><td>Todo el equipo</td><td>Frase final y logo de Segunda Carga.</td></tr>
-</tbody></table></div>
-
-<h2>Estructura del PowerPoint (50 % de la nota)</h2>
-<ol class="prose steps">
-<li>Portada: nombre, equipo, grupo de prácticas, asignatura.</li>
-<li>Smart City, VLCi y ODS implicados.</li>
-<li>Proceso de ideación: tabla de ideas y criterio de elección.</li>
-<li>La idea: qué es, las tres líneas (hogar, pyme, industria) y qué problema social resuelve.</li>
-<li>Lean Canvas completo (una diapositiva).</li>
-<li>Detalle del Canvas: problema, segmentos y propuesta de valor.</li>
-<li>Detalle del Canvas: solución, canales, métricas y ventaja.</li>
-<li>Números: costes, ingresos y retorno para el cliente.</li>
-<li>PESTEL.</li>
-<li>5 fuerzas de Porter.</li>
-<li>DAFO y estrategias.</li>
-<li>Comparativa €/kWh usado frente a nuevo en industria y en hogar (el hallazgo clave).</li>
-<li>Canvas actualizado: qué cambió y por qué.</li>
-<li>Subvenciones y financiación.</li>
-<li>Reflexiones, aprendizajes y trabajo en equipo.</li>
-<li>Bibliografía y fuentes web.</li>
-</ol>
-<p class="prose">La rúbrica valora extensión y formato, estructura, expresión escrita, contenidos, gráficos e imágenes, colaboración, fuentes y entrega. Conviene usar pocas palabras por diapositiva, gráficos como los de esta página y una diapositiva de fuentes completa.</p>
-
-<h2>Exposición oral (20 %)</h2>
-<ul class="prose plain">
-<li>Hablan <strong>todos</strong> los miembros; repartid bloques de igual duración (idea y Canvas / PESTEL y Porter / DAFO y €/kWh / actualización, ayudas y reflexiones).</li>
-<li>Se valora aplicar los conceptos teóricos, organización, expresión oral, lenguaje no verbal, tiempo, soporte y coherencia del equipo.</li>
-<li>Ensayad con cronómetro y preparad respuestas a tres preguntas probables: «¿no es peligroso?», «¿por qué no usar baterías nuevas?» y «¿qué tiene de Smart City?».</li>
-</ul>
-
-<h3>Reflexión grupal sobre los aprendizajes</h3>
-<p class="prose">La herramienta más útil fue el análisis externo: una idea que parecía obvia («baterías usadas = más barato») cambió al contrastarla con datos de mercado actuales, y nos llevó a abrir el proyecto a hogares y pymes, donde la segunda vida sí tiene margen. Aprendimos a separar lo que el cliente compra (ahorro y seguridad) de lo que nosotros fabricamos, a cuantificar hipótesis antes de defenderlas y a buscar la ventaja competitiva en lo que es difícil de copiar: conocimiento, software y datos.</p>
-
-<h2 id="eval">Cómo se evalúa y qué entregar</h2>
-<div class="tablewrap"><table>
-<thead><tr><th>Entregable</th><th>Práctica</th><th class="n">Peso en prácticas</th><th>Dónde</th></tr></thead>
-<tbody>
-<tr><td>Cuestionarios previos (Smart City, modelo de negocio, PESTEL, Porter, DAFO)</td><td>P1 y P2</td><td class="n">parte del trabajo continuo</td><td>PoliformaT · Lessons</td></tr>
-<tr><td>Presentación de la idea + informe con el Canvas explicado y conclusiones</td><td>P1</td><td class="n">parte del trabajo continuo</td><td>PoliformaT · Tareas</td></tr>
-<tr><td>Informe PESTEL, Porter, DAFO y Canvas actualizado</td><td>P2</td><td class="n">parte del trabajo continuo</td><td>PoliformaT · Tareas</td></tr>
-<tr><td>Vídeo de 3 minutos (entregar la URL)</td><td>P3</td><td class="n">20 %</td><td>Polimedia / Stream + Tareas</td></tr>
-<tr><td>PowerPoint</td><td>P3</td><td class="n">50 %</td><td>PoliformaT · Tareas</td></tr>
-<tr><td>Exposición oral</td><td>P3</td><td class="n">20 %</td><td>Clase / Teams</td></tr>
-<tr><td>Trabajo continuo</td><td>Todas</td><td class="n">10 %</td><td>—</td></tr>
-</tbody></table></div>
-<p class="prose">Las prácticas suponen el 20 % de la nota de la asignatura y no son recuperables.</p>
+<section class="soon" id="proximamente" aria-labelledby="soon-title">
+  <div class="ghost" aria-hidden="true"><div><strong>Análisis PESTEL</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>5 fuerzas de Porter</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>DAFO y estrategias</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Ahorro real por kWh</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Canvas actualizado</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Subvenciones</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Vídeo de 3 minutos</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div><div><strong>Presentación final</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div></div>
+  <div class="veil">
+    <svg class="lock" id="lock" viewBox="0 0 140 170" role="button" tabindex="0" aria-label="Contenido bloqueado">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2C45A"/><stop offset="1" stop-color="#B7790B"/></linearGradient>
+    <linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9D6D6"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset="1" stop-color="#8FA3A8"/></linearGradient>
+    <clipPath id="bodyclip"><rect x="14" y="66" width="112" height="96" rx="16"/></clipPath>
+  </defs>
+  <path class="shackle" d="M38 70 V48 a32 32 0 0 1 64 0 V70" fill="none" stroke="url(#sg)" stroke-width="14" stroke-linecap="round"/>
+  <rect x="14" y="66" width="112" height="96" rx="16" fill="url(#lg)"/>
+  <g clip-path="url(#bodyclip)"><rect class="shine" x="10" y="60" width="26" height="110" fill="#fff" opacity=".35" transform="skewX(-20)"/></g>
+  <rect x="24" y="76" width="92" height="76" rx="10" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+  <path d="M74 92 L60 116 H70 L66 136 L82 110 H72 Z" fill="#16303A"/>
+</svg>
+    <h2 id="soon-title">Próximamente</h2>
+    <p>Estamos cargando la siguiente fase del proyecto: análisis del entorno, del mercado y la presentación final.</p>
+    <div class="chips"><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Análisis PESTEL</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>5 fuerzas de Porter</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>DAFO y estrategias</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Ahorro real por kWh</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Canvas actualizado</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Subvenciones</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Vídeo de 3 minutos</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Presentación final</span></div>
+    <div class="hint" id="hint" aria-live="polite">Se desbloquea con la Práctica 2</div>
+  </div>
+</section>
 
 </main>
 
 <footer>
-  <div class="wrap prose">
-    <p><strong>Fuentes consultadas (septiembre 2026):</strong> BloombergNEF, <em>Lithium-Ion Battery Price Survey 2025</em> y <em>Energy Storage Systems Cost Survey 2025</em>; EV Renting vía evenergia.com (precio LFP en €/kWh, 2026); CNTE Power, análisis de costes de almacenamiento 2026; sede electrónica del IDAE (convocatorias de almacenamiento FEDER 21-27, I+D PRTR y bombeo); IVACE y sede de la Generalitat Valenciana (ayudas de autoconsumo en municipios 2026); Ayuntamiento de València, VLCi; Reglamento (UE) 2023/1542 de baterías; documento interno «Proyecto BESS industrial con baterías Tesla reutilizadas»; guías de precios de baterías domésticas en España 2026 (origensostenible.net); deducción autonómica por autoconsumo (enchufesolar.com).</p>
-    <p>Todas las cifras económicas son de prefactibilidad y deben validarse con datos reales de clientes, proveedores y convocatorias.</p>
-  </div>
+  <div class="wrap"><div class="prose">
+    <p><strong>Segunda Carga</strong> es una idea de negocio desarrollada para las prácticas de Fundamentos de Organización y Gestión de Empresas del Grado en Ingeniería de Tecnologías y Servicios de Telecomunicación (ETSIT-UPV), en el marco de València Ciudad Inteligente (VLCi) y el ODS 11.</p>
+    <p>Fuentes: Ayuntamiento de València (VLCi); Naciones Unidas, Agenda 2030; guías de precios de baterías domésticas en España 2026; documento interno «Proyecto BESS industrial con baterías Tesla reutilizadas». Las cifras son de prefactibilidad.</p>
+  </div></div>
 </footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  function upd(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?(h.scrollTop/m*100):0)+'%';}
+  window.addEventListener('scroll',upd,{passive:true});upd();
+  var lock=document.getElementById('lock'),hint=document.getElementById('hint');
+  var msgs=['Se desbloquea con la Práctica 2','Todavía no… ¡paciencia!','Cargando al 70 %…','Vuelve pronto'];var i=0;
+  function knock(){lock.classList.remove('shake');void lock.getBoundingClientRect();lock.classList.add('shake');i=(i+1)%msgs.length;hint.textContent=msgs[i];}
+  lock.addEventListener('click',knock);
+  lock.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();knock();}});
+})();
+</script>
 </body>
 </html>
