@@ -1492,6 +1492,235 @@
                 position: static
             }
         }
+
+        /* ================= Práctica 2 ================= */
+        .navsec{font-family:"Archivo",Arial,sans-serif;font-size:.74rem;font-weight:800;color:var(--cobalt);
+            letter-spacing:.06em;align-self:center;padding-left:.7rem;border-left:1px solid var(--line)}
+        .navsec:first-child{border-left:0;padding-left:0}
+        .badge{display:inline-block;font-family:"Archivo",Arial,sans-serif;font-weight:700;font-size:.76rem;
+            padding:.08rem .5rem;border-radius:999px;white-space:nowrap}
+        .badge.op{background:rgba(46,139,87,.16);color:var(--charge)}
+        .badge.am{background:rgba(176,58,46,.15);color:var(--risk)}
+        .badge.mx{background:rgba(183,121,11,.18);color:var(--amber)}
+        .legend{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem;
+            font-family:"Archivo",Arial,sans-serif;font-size:.8rem;color:var(--soft)}
+        .legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:.3rem;vertical-align:-1px}
+        /* --- 5 fuerzas de Porter --- */
+        .p5{display:grid;grid-template-columns:1fr 1.1fr 1fr;gap:1.6rem 1.9rem;margin:1.4rem 0 1rem}
+        .force{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:10px;
+            padding:.85rem .95rem;font-family:"Archivo",Arial,sans-serif;font-size:.87rem;line-height:1.42}
+        .force h4{margin:0 0 .35rem;font-size:1rem;display:flex;align-items:center;justify-content:space-between;gap:.6rem}
+        .force p{margin:.3rem 0 0;color:var(--soft)}
+        .force .imp{display:block;margin-top:.55rem;padding-top:.5rem;border-top:1px dashed var(--line);color:var(--ink)}
+        .force.mid{border:2px solid var(--ink);background:var(--chip)}
+        .f-new{grid-column:2;grid-row:1}
+        .f-sup{grid-column:1;grid-row:2}
+        .f-riv{grid-column:2;grid-row:2}
+        .f-buy{grid-column:3;grid-row:2}
+        .f-sub{grid-column:2;grid-row:3}
+        .force:not(.mid)::after{content:"";position:absolute;width:0;height:0;border:9px solid transparent}
+        .p5 .force.f-new::after{bottom:-26px;left:50%;margin-left:-9px;border-top-color:var(--cobalt)}
+        .p5 .force.f-sub::after{top:-26px;left:50%;margin-left:-9px;border-bottom-color:var(--cobalt)}
+        .p5 .force.f-sup::after{right:-30px;top:50%;margin-top:-9px;border-left-color:var(--cobalt)}
+        .p5 .force.f-buy::after{left:-30px;top:50%;margin-top:-9px;border-right-color:var(--cobalt)}
+        @media (max-width:860px){
+            .p5{grid-template-columns:1fr;gap:.8rem}
+            .f-new,.f-sup,.f-riv,.f-buy,.f-sub{grid-column:1;grid-row:auto}
+            .force:not(.mid)::after{display:none}
+        }
+        /* --- matriz de estrategias (CAME) --- */
+        .crossmat{display:grid;grid-template-columns:auto 1fr 1fr;gap:2px;background:var(--line);
+            border:2px solid var(--ink);margin:1rem 0;font-family:"Archivo",Arial,sans-serif;font-size:.88rem}
+        .crossmat > *{background:var(--panel);padding:.75rem .85rem}
+        .crossmat .hd{background:var(--chip);font-weight:800;text-align:center;align-self:stretch}
+        .crossmat .rh{background:var(--chip);font-weight:800;writing-mode:vertical-rl;transform:rotate(180deg);
+            text-align:center;padding:.5rem .35rem}
+        .crossmat b{display:block;margin-bottom:.25rem}
+        .crossmat .s-fo b{color:var(--charge)}.crossmat .s-fa b{color:var(--cobalt)}
+        .crossmat .s-do b{color:var(--amber)}.crossmat .s-da b{color:var(--risk)}
+        @media (max-width:760px){
+            .crossmat{grid-template-columns:1fr}
+            .crossmat .hd{display:none}
+            .crossmat .rh{writing-mode:horizontal-tb;transform:none;padding:.5rem .85rem;text-align:left}
+        }
+        /* --- canvas actualizado --- */
+        .mini div.chg{background:var(--amber);color:#fff;box-shadow:inset 0 0 0 2px var(--ink)}
+        .mini div.chg small{color:#fff}
+        .verdict{background:var(--ink);color:var(--paper);border-radius:12px;padding:1.1rem 1.2rem;
+            font-family:"Archivo",Arial,sans-serif}
+        .verdict b{display:block;font-size:1.5rem;font-stretch:80%;margin-bottom:.4rem;color:#fff}
+        .verdict span{color:#C5D6DA;font-size:.92rem;line-height:1.5;display:block}
+        @media print{.p5 .force::after{display:none}.p5,.crossmat,.force{break-inside:avoid}}
+        /* ================= Presentación ================= */
+        .deck{position:fixed;inset:0;z-index:1000;background:#0B171C;
+            --paper:#F3F6F5;--panel:#FFFFFF;--ink:#16303A;--soft:#4F6670;--line:#C9D6D6;
+            --cobalt:#1F4FA3;--charge:#2E8B57;--amber:#B7790B;--risk:#B03A2E;--chip:#E4EEF0;
+            --pc:#16303A;color:var(--ink)}
+        .deck[hidden]{display:none}
+        .stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;background:var(--paper);
+            transform:translate(-50%,-50%) scale(var(--k,1));overflow:hidden;border-radius:6px;
+            box-shadow:0 30px 80px rgba(0,0,0,.45)}
+        .band{position:absolute;left:0;top:0;bottom:0;width:22px;background:var(--pc);transition:background .35s}
+        .deck.team .band{background:linear-gradient(to bottom,#2F6FDB 0 16.6%,#1E9E6A 0 33.3%,#E08A1E 0 50%,#8B5CF6 0 66.6%,#D9485F 0 83.3%,#0E9FB0 0)}
+        .who{position:absolute;top:26px;right:40px;display:flex;align-items:center;gap:10px;z-index:3;
+            font:700 17px/1 "Archivo",Arial,sans-serif;color:var(--pc);transition:color .35s}
+        .who i{width:14px;height:14px;border-radius:50%;background:var(--pc)}
+        .who span{color:var(--soft);font-weight:500}
+        .deck.team .who{color:var(--ink)}
+        .deck.team .who i{background:conic-gradient(#2F6FDB 0 60deg,#1E9E6A 0 120deg,#E08A1E 0 180deg,#8B5CF6 0 240deg,#D9485F 0 300deg,#0E9FB0 0)}
+        .prog{position:absolute;left:62px;right:130px;bottom:26px;display:flex;gap:5px;z-index:3}
+        .prog b{flex:1;height:6px;border-radius:3px;background:var(--c);opacity:.18;transition:opacity .3s}
+        .prog b.done{opacity:.55}.prog b.now{opacity:1}
+        .count{position:absolute;right:40px;bottom:19px;font:700 16px "Archivo",Arial,sans-serif;color:var(--soft);z-index:3;font-variant-numeric:tabular-nums}
+        .sl{position:absolute;inset:0;padding:70px 90px 76px 104px;opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;display:flex;flex-direction:column}
+        .sl.on{opacity:1;visibility:visible}
+        .sl .kick{font:800 19px "Archivo",Arial,sans-serif;color:var(--pc);margin:0 0 6px}
+        .sl h2{font:800 58px/1.02 "Archivo",Arial,sans-serif;font-stretch:80%;margin:0 0 30px;letter-spacing:-.01em;max-width:960px}
+        .sl .body{flex:1;min-height:0;display:flex;gap:44px;align-items:center}
+        .sl .col{flex:1;min-width:0}
+        .sl .in{opacity:0}
+        .sl.on .in{animation:dkrise .55s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0) * 90ms + 120ms)}
+        @keyframes dkrise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+        .sl svg{display:block;width:100%;height:auto}
+        .sl .note{font:500 22px/1.35 "Archivo",Arial,sans-serif;color:var(--soft);margin:18px 0 0;border:0;background:none;padding:0}
+        .bignum{font:800 110px/.9 "Archivo",Arial,sans-serif;font-stretch:75%;color:var(--pc)}
+        .bigcap{font:500 26px/1.3 "Archivo",Arial,sans-serif;color:var(--ink);margin-top:14px;max-width:420px}
+        /* portada / cierre */
+        .cover h1{font:800 128px/.88 "Archivo",Arial,sans-serif;font-stretch:75%;margin:10px 0 18px;letter-spacing:-.02em}
+        .cover .sub{font:400 34px/1.25 "Newsreader",Georgia,serif;color:var(--soft);max-width:560px;margin:0}
+        .dkcell{display:flex;align-items:center;gap:10px}
+        .dkcell .bd{flex:1;height:190px;border:7px solid var(--ink);border-radius:18px;padding:11px;display:flex;gap:9px}
+        .dkcell .bd s{flex:1;border-radius:6px;background:#2E8B57;text-decoration:none}
+        .dkcell .bd s.off{background:transparent;border:2px dashed var(--line)}
+        .dkcell .tp{width:24px;height:76px;background:var(--ink);border-radius:0 8px 8px 0}
+        .team6{display:flex;flex-wrap:wrap;gap:12px;margin-top:auto}
+        .team6 span{display:flex;align-items:center;gap:9px;font:700 19px "Archivo",Arial,sans-serif;
+            background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:9px 18px 9px 12px}
+        .team6 i{width:16px;height:16px;border-radius:50%}
+        /* piezas visuales */
+        .ods-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+        .ods-row b{font:800 26px/1 "Archivo",Arial,sans-serif;color:#fff;border-radius:10px;padding:14px 16px}
+        .ods-row b small{display:block;font-size:14px;font-weight:600;margin-top:5px;opacity:.9}
+        .hbars{width:100%}
+        .hbars div{display:grid;grid-template-columns:250px 1fr 70px;align-items:center;gap:18px;margin:15px 0;font:600 24px "Archivo",Arial,sans-serif}
+        .hbars i{display:block;height:34px;border-radius:6px;background:var(--line);transform-origin:left}
+        .hbars .v{font-weight:800;text-align:right}
+        .hbars .win{color:var(--pc)}
+        .hbars .win i{background:var(--pc)}
+        .sl.on .hbars i{animation:dkgrow .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--d,0) * 90ms + 200ms)}
+        @keyframes dkgrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+        .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;width:100%}
+        .tile{background:var(--panel);border:1px solid var(--line);border-top:6px solid var(--pc);border-radius:12px;padding:26px 22px;min-height:330px;display:flex;flex-direction:column}
+        .tile svg{width:64px;height:64px;margin-bottom:22px}
+        .tile b{font:800 40px/1 "Archivo",Arial,sans-serif;font-stretch:80%;color:var(--ink)}
+        .tile p{font:500 21px/1.3 "Archivo",Arial,sans-serif;color:var(--soft);margin:14px 0 0}
+        .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;width:100%}
+        .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px 26px 28px;text-align:left}
+        .card svg{width:120px;height:92px;margin-bottom:18px}
+        .card h3{font:800 32px "Archivo",Arial,sans-serif;margin:0 0 6px;color:var(--pc)}
+        .card .kwh{font:800 48px/1 "Archivo",Arial,sans-serif;font-stretch:78%}
+        .card p{font:500 20px/1.35 "Archivo",Arial,sans-serif;color:var(--soft);margin:12px 0 0}
+        .pts{list-style:none;margin:0;padding:0}
+        .pts li{display:flex;align-items:center;gap:18px;font:600 27px/1.25 "Archivo",Arial,sans-serif;margin:0 0 26px}
+        .pts li i{flex:none;width:52px;height:52px;border-radius:12px;background:var(--pc);color:#fff;display:flex;align-items:center;justify-content:center;font:800 24px "Archivo",Arial,sans-serif;font-style:normal}
+        .lc{display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:1fr 1fr .8fr;gap:4px;background:var(--ink);border:4px solid var(--ink);border-radius:8px;overflow:hidden;width:100%;height:460px}
+        .lc div{background:var(--panel);padding:14px 40px 14px 16px;position:relative;font:500 19px/1.28 "Archivo",Arial,sans-serif}
+        .lc div b{display:block;font:800 15px "Archivo",Arial,sans-serif;color:var(--risk);margin-bottom:6px}
+        .lc div em{position:absolute;right:10px;top:4px;font:800 34px "Archivo",Arial,sans-serif;font-style:normal;color:var(--cobalt);font-stretch:75%}
+        .lc .x1{grid-column:1/3;grid-row:1/3}.lc .x3{grid-column:3/5;grid-row:1}.lc .x7{grid-column:3/5;grid-row:2}
+        .lc .x2{grid-column:5/7;grid-row:1/3;background:var(--chip)}.lc .x8{grid-column:7/9;grid-row:1}.lc .x4{grid-column:7/9;grid-row:2}
+        .lc .x9{grid-column:9/11;grid-row:1/3}.lc .x6{grid-column:1/6;grid-row:3}.lc .x5{grid-column:6/11;grid-row:3}
+        .lc .x2 span{font:italic 400 25px/1.3 "Newsreader",Georgia,serif}
+        .lc.fix div{color:var(--soft);font-size:22px}.lc.fix div b{font-size:17px}.lc.fix div em{font-size:26px}.lc.fix div b{color:var(--soft)}.lc.fix div em{color:var(--line)}.lc.fix div.chg{opacity:1;background:var(--pc);color:#fff}
+        .lc.fix div.chg b,.lc.fix div.chg em{color:#fff}
+        .quoteXL{font:italic 400 58px/1.18 "Newsreader",Georgia,serif;margin:0;max-width:1000px}
+        .quoteXL::before{content:"«";color:var(--pc)}.quoteXL::after{content:"»";color:var(--pc)}
+        .chips3{display:flex;gap:16px;margin-top:40px}
+        .chips3 span{font:700 23px "Archivo",Arial,sans-serif;border:2px solid var(--pc);color:var(--pc);border-radius:999px;padding:10px 24px}
+        .money{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}
+        .money div{border-left:6px solid var(--pc);padding:4px 0 4px 22px}
+        .money b{display:block;font:800 46px/1 "Archivo",Arial,sans-serif;font-stretch:76%}
+        .money span{display:block;font:600 21px/1.3 "Archivo",Arial,sans-serif;color:var(--soft);margin-top:10px}
+        .stack{display:flex;height:58px;border-radius:8px;overflow:hidden;margin-top:34px;width:100%}
+        .stack i{display:flex;align-items:center;justify-content:center;font:700 15px "Archivo",Arial,sans-serif;color:#fff;font-style:normal;white-space:nowrap;overflow:hidden}
+        .stackcap{display:flex;justify-content:space-between;font:600 19px "Archivo",Arial,sans-serif;color:var(--soft);margin-top:10px;width:100%}
+        .legendXL{list-style:none;padding:0;margin:0}
+        .legendXL li{display:flex;align-items:center;gap:18px;font:600 27px "Archivo",Arial,sans-serif;margin:0 0 26px}
+        .legendXL b{font:800 60px/1 "Archivo",Arial,sans-serif;width:70px;text-align:right}
+        .pushpull{display:grid;grid-template-columns:1fr 1fr;gap:28px;width:100%}
+        .pushpull>div{border-radius:14px;padding:24px 28px}
+        .pushpull h3{font:800 28px "Archivo",Arial,sans-serif;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+        .pp-go{background:rgba(46,139,87,.1)}.pp-go h3{color:#2E8B57}
+        .pp-no{background:rgba(176,58,46,.09)}.pp-no h3{color:#B03A2E}
+        .pushpull p{display:grid;grid-template-columns:190px 1fr;align-items:baseline;gap:14px;margin:0 0 20px;font:500 23px/1.3 "Archivo",Arial,sans-serif;color:var(--soft)}
+        .pushpull p b{white-space:nowrap;font:800 36px/1 "Archivo",Arial,sans-serif;font-stretch:76%;color:var(--ink)}
+        .dia{display:grid;grid-template-columns:1fr 1.15fr 1fr;grid-template-rows:auto auto auto;gap:24px 34px;width:100%}
+        .dia div{border-radius:14px;padding:18px 24px;color:#fff;font:600 22px/1.3 "Archivo",Arial,sans-serif}
+        .dia div b{display:flex;justify-content:space-between;gap:12px;font:800 29px "Archivo",Arial,sans-serif;margin-bottom:4px}
+        .dia .hi{background:#B03A2E}.dia .md{background:#B7790B}
+        .dia .c{grid-column:2;grid-row:2;outline:4px solid var(--ink);outline-offset:3px}
+        .dia .t{grid-column:2;grid-row:1}.dia .l{grid-column:1;grid-row:2}.dia .r{grid-column:3;grid-row:2}.dia .b{grid-column:2;grid-row:3}
+        .dafoXL{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:100%;background:var(--ink);border:6px solid var(--ink);border-radius:12px;overflow:hidden}
+        .dafoXL div{background:var(--panel);padding:22px 30px;min-height:215px}
+        .dafoXL h3{display:flex;align-items:center;gap:14px;font:800 34px "Archivo",Arial,sans-serif;margin:0 0 12px}
+        .dafoXL h3 em{font-style:normal;width:46px;height:46px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center}
+        .dafoXL p{margin:0 0 8px;font:600 25px/1.25 "Archivo",Arial,sans-serif;color:var(--soft)}
+        .strat{display:grid;grid-template-columns:1fr 1fr;gap:22px;width:100%}
+        .strat div{border-radius:14px;padding:24px 28px;background:var(--panel);border:2px solid var(--line);min-height:180px}
+        .strat small{display:block;font:800 18px "Archivo",Arial,sans-serif;letter-spacing:.04em;margin-bottom:10px}
+        .strat b{font:800 34px/1.12 "Archivo",Arial,sans-serif;font-stretch:84%}
+        .strat .star{border:4px solid var(--pc);background:rgba(217,72,95,.07);position:relative}
+        .strat .star::after{content:"Prioridad";position:absolute;top:-16px;right:22px;background:var(--pc);color:#fff;font:800 16px "Archivo",Arial,sans-serif;padding:6px 14px;border-radius:999px}
+        .road{display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;align-items:center;width:100%}
+        .road .st{background:var(--panel);border:2px solid var(--line);border-radius:16px;padding:24px;text-align:center}
+        .road .st svg{width:120px;height:96px;margin:0 auto 12px}
+        .road .st b{display:block;font:800 34px "Archivo",Arial,sans-serif;color:var(--pc)}
+        .road .st span{display:block;font:500 20px/1.3 "Archivo",Arial,sans-serif;color:var(--soft);margin-top:8px}
+        .road .ar{font:800 44px "Archivo",Arial,sans-serif;color:var(--pc);text-align:center}
+        .road .st .n{display:inline-flex;width:40px;height:40px;border-radius:50%;background:var(--pc);color:#fff;align-items:center;justify-content:center;font:800 20px "Archivo",Arial,sans-serif;margin-bottom:6px}
+        .must{margin-top:30px;width:100%;background:var(--ink);color:#fff;border-radius:12px;padding:18px 26px;font:700 25px "Archivo",Arial,sans-serif;display:flex;align-items:center;gap:16px}
+        .must i{font-style:normal;background:var(--pc);border-radius:8px;padding:4px 12px}
+        .vs{display:grid;grid-template-columns:1fr 1fr;gap:40px;width:100%;align-items:end}
+        .vs .bar2{border-radius:14px 14px 0 0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#fff;transform-origin:bottom}
+        .sl.on .vs .bar2{animation:dkup .8s cubic-bezier(.2,.7,.2,1) both;animation-delay:.3s}
+        @keyframes dkup{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+        .vs .bar2 b{white-space:nowrap;font:800 34px/1 "Archivo",Arial,sans-serif;font-stretch:78%}
+        .vs .bar2 span{font:600 21px "Archivo",Arial,sans-serif;opacity:.92;margin-top:6px}
+        .vs .lbl{font:800 26px "Archivo",Arial,sans-serif;margin-top:12px;text-align:center}
+        .delta{white-space:nowrap;font:800 92px/.9 "Archivo",Arial,sans-serif;font-stretch:72%;color:var(--pc)}
+        /* controles */
+        .dk-btn{position:absolute;z-index:5;width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;
+            background:rgba(255,255,255,.12);color:#fff;font:700 26px/1 "Archivo",Arial,sans-serif;display:flex;align-items:center;justify-content:center;transition:background .15s}
+        .dk-btn:hover{background:rgba(255,255,255,.28)}
+        .dk-btn:focus-visible{outline:3px solid #E0AE45;outline-offset:2px}
+        .dk-prev{left:14px;top:50%;margin-top:-27px}.dk-next{right:14px;top:50%;margin-top:-27px}
+        .dk-close{right:14px;top:14px;width:44px;height:44px;font-size:22px}
+        .dk-fs{right:66px;top:14px;width:44px;height:44px;font-size:18px}
+        .dk-hint{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:5;color:#C5D6DA;
+            font:500 14px "Archivo",Arial,sans-serif;background:rgba(0,0,0,.45);padding:6px 14px;border-radius:999px;transition:opacity .6s;pointer-events:none}
+        .dk-hint.gone{opacity:0}
+        @media (max-width:700px){.dk-prev,.dk-next{top:auto;bottom:14px;margin-top:0}.dk-hint{display:none}}
+        @media (prefers-reduced-motion:reduce){.sl.on .in,.sl.on .hbars i,.sl.on .vs .bar2{animation:none;opacity:1}.sl{transition:none}}
+        @media print{.deck{display:none!important}}
+        /* lanzador en la página */
+        .launch{margin:4rem 0 1rem;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.8rem 1.6rem}
+        .launch-top{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
+        .launch h2{margin:0}
+        .launch p{margin:.4rem 0 0;color:var(--soft);max-width:60ch}
+        .btn-play{display:inline-flex;align-items:center;gap:.6rem;font:700 1.05rem "Archivo",Arial,sans-serif;background:var(--ink);color:var(--paper);
+            border:0;border-radius:8px;padding:.85rem 1.3rem;cursor:pointer;transition:background .15s}
+        .btn-play:hover{background:var(--cobalt);color:#fff}
+        .btn-play svg{width:16px;height:16px}
+        .crew{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.7rem;margin-top:1.4rem}
+        .crew button{all:unset;cursor:pointer;display:block;border-radius:10px;padding:.8rem .9rem .9rem;background:var(--paper);border-top:5px solid var(--c);font-family:"Archivo",Arial,sans-serif;transition:transform .15s}
+        .crew button:hover{transform:translateY(-2px)}
+        .crew button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+        .crew b{display:block;color:var(--c);font-size:1rem}
+        .crew span{display:block;font-size:.9rem;color:var(--ink);margin-top:.25rem;line-height:1.3}
+        .crew small{display:block;font-size:.78rem;color:var(--soft);margin-top:.35rem}
+        button.btn{font:inherit;font-family:"Archivo",Arial,sans-serif;font-weight:700;cursor:pointer;background:transparent}
+
+        .sl .col svg{max-height:430px}
     </style>
 </head>
 
@@ -1501,7 +1730,7 @@
         <div class="wrap">
             <div class="grid">
                 <div>
-                    <div class="meta">Práctica de laboratorio 1 · Fundamentos de Organización y Gestión de Empresas ·
+                    <div class="meta">Prácticas de laboratorio 1 y 2 · Fundamentos de Organización y Gestión de Empresas ·
                         ETSIT-UPV</div>
                     <h1>Segunda Carga</h1>
                     <p class="lead">Las baterías de los coches eléctricos tienen una segunda vida. Nosotros la ponemos a
@@ -1509,6 +1738,8 @@
                     <div class="cta">
                         <a class="btn primary" href="#canvas">Ver el Lean Canvas</a>
                         <a class="btn" href="#idea">Conocer la idea</a>
+                        <a class="btn" href="#p2">Análisis del entorno</a>
+                        <button type="button" class="btn primary" data-deck-open="0">▶ Iniciar presentación</button>
                     </div>
                 </div>
                 <div>
@@ -1547,12 +1778,17 @@
     <nav class="toc" aria-label="Índice" style="position:sticky">
         <div class="wrap navrow">
             <ul>
+                <li class="navsec">P1</li>
                 <li><a href="#p1">Smart City</a></li>
-                <li><a href="#ideacion">Ideación</a></li>
                 <li><a href="#idea">La idea</a></li>
                 <li><a href="#canvas">Lean Canvas</a></li>
                 <li><a href="#explicacion">Bloque a bloque</a></li>
-                <li><a href="#conclusiones">Conclusiones</a></li>
+                <li class="navsec">P2</li>
+                <li><a href="#pestel">PESTEL</a></li>
+                <li><a href="#porter">5 fuerzas</a></li>
+                <li><a href="#dafo">DAFO</a></li>
+                <li><a href="#canvas2">Canvas corregido</a></li>
+                <li><a href="#presentacion">▶ Presentación</a></li>
                 <li><a class="lockl" href="#proximamente">🔒 Próximamente</a></li>
             </ul>
             <a class="scrollbatt" href="#top" id="sbatt" aria-label="Progreso de lectura, volver arriba">
@@ -2151,25 +2387,417 @@
             </aside>
         </div>
 
+
+        <!-- ===================== PRÁCTICA 2 ===================== -->
+        <div class="practica" id="p2">Práctica 2 · Análisis del entorno, del mercado y DAFO</div>
+        <h2>¿Aguanta la idea fuera del papel?</h2>
+
+        <div class="split">
+            <div class="prose">
+                <p>En la Práctica 1 definimos qué vendemos y a quién. Ahora toca lo incómodo: comprobar si el entorno
+                    acompaña, si el mercado deja hueco y qué tenemos nosotros para ocuparlo. Usamos las tres
+                    herramientas de la asignatura en este orden: <strong>PESTEL</strong> para el macroentorno,
+                    <strong>las cinco fuerzas de Porter</strong> para el mercado y el <strong>DAFO</strong> para cruzar
+                    lo de fuera con lo de dentro. El resultado obliga a retocar el modelo de negocio, y eso es
+                    justamente lo que cierra esta práctica.</p>
+
+                <h3>Actividades previas: las tres herramientas</h3>
+                <p><strong>PESTEL</strong> revisa seis fuerzas del macroentorno —política, económica, social,
+                    tecnológica, ecológica y legal— que la empresa no controla pero que condicionan su éxito. Sirve
+                    para anticiparse, no para describir el mundo: cada factor solo cuenta si cambia alguna decisión.</p>
+                <p><strong>Las cinco fuerzas de Porter</strong> miden el atractivo de un sector a partir de la rivalidad
+                    entre competidores, la amenaza de nuevos entrantes, la de productos sustitutivos y el poder de
+                    negociación de proveedores y clientes. Cuanto más intensas son, más se estrecha el margen.</p>
+                <p><strong>El DAFO</strong> reúne en una matriz lo externo (oportunidades y amenazas, que vienen del
+                    PESTEL y de Porter) y lo interno (fortalezas y debilidades). Su utilidad real aparece al cruzar los
+                    cuadrantes y convertirlos en estrategias.</p>
+            </div>
+            <aside class="side">
+                <figure class="fig">
+                    <svg viewBox="-45 8 350 228" role="img"
+                        aria-label="Rueda PESTEL: político y ecológico favorables; económico, social y tecnológico mixtos; legal desfavorable">
+                        <path d="M130.0 86.0 L130.0 24.0 A96 96 0 0 1 213.1 72.0 L159.4 103.0 A34 34 0 0 0 130.0 86.0 Z" fill="var(--charge)" opacity=".88"/>
+                        <text x="162.5" y="77.7" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">P</text>
+                        <text x="186.0" y="27.0" text-anchor="start" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Político</text>
+                        <path d="M159.4 103.0 L213.1 72.0 A96 96 0 0 1 213.1 168.0 L159.4 137.0 A34 34 0 0 0 159.4 103.0 Z" fill="var(--amber)" opacity=".88"/>
+                        <text x="195.0" y="127.0" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">E</text>
+                        <text x="242.0" y="124.0" text-anchor="start" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Económico</text>
+                        <path d="M159.4 137.0 L213.1 168.0 A96 96 0 0 1 130.0 216.0 L130.0 154.0 A34 34 0 0 0 159.4 137.0 Z" fill="var(--amber)" opacity=".88"/>
+                        <text x="162.5" y="176.3" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">S</text>
+                        <text x="186.0" y="221.0" text-anchor="start" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Social</text>
+                        <path d="M130.0 154.0 L130.0 216.0 A96 96 0 0 1 46.9 168.0 L100.6 137.0 A34 34 0 0 0 130.0 154.0 Z" fill="var(--amber)" opacity=".88"/>
+                        <text x="97.5" y="176.3" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">T</text>
+                        <text x="74.0" y="221.0" text-anchor="end" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Tecnológico</text>
+                        <path d="M100.6 137.0 L46.9 168.0 A96 96 0 0 1 46.9 72.0 L100.6 103.0 A34 34 0 0 0 100.6 137.0 Z" fill="var(--charge)" opacity=".88"/>
+                        <text x="65.0" y="127.0" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">E</text>
+                        <text x="18.0" y="124.0" text-anchor="end" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Ecológico</text>
+                        <path d="M100.6 103.0 L46.9 72.0 A96 96 0 0 1 130.0 24.0 L130.0 86.0 A34 34 0 0 0 100.6 103.0 Z" fill="var(--risk)" opacity=".88"/>
+                        <text x="97.5" y="77.7" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">L</text>
+                        <text x="74.0" y="27.0" text-anchor="end" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Legal</text>
+                        <circle cx="130" cy="120" r="34" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/>
+                        <text x="130" y="118" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="13" fill="var(--ink)">PESTEL</text>
+                        <text x="130" y="132" text-anchor="middle" font-family="Archivo,Arial" font-size="9.5" fill="var(--soft)">macroentorno</text>
+                    </svg>
+                    <figcaption>Dos factores empujan, tres van a favor y en contra, uno frena.</figcaption>
+                    <div class="legend">
+                        <span><i style="background:var(--charge)"></i>Oportunidad</span>
+                        <span><i style="background:var(--amber)"></i>Mixto</span>
+                        <span><i style="background:var(--risk)"></i>Amenaza</span>
+                    </div>
+                </figure>
+            </aside>
+        </div>
+
+        <h3 id="pestel">Análisis PESTEL</h3>
+        <div class="tablewrap">
+            <table>
+                <thead>
+                    <tr><th>Factor</th><th>Qué ocurre en el entorno</th><th>Efecto</th><th>Qué significa para Segunda Carga</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Político</strong></td>
+                        <td>El PNIEC 2023-2030 fija un objetivo de 22,5 GW de almacenamiento en España para 2030. El IDAE y la Generalitat mantienen líneas de ayuda a almacenamiento y autoconsumo. La UE impulsa la economía circular y la autonomía estratégica en baterías.</td>
+                        <td><span class="badge op">Oportunidad</span></td>
+                        <td>Hay dinero público y discurso institucional a favor. Conviene alinear la memoria del proyecto con circularidad y con los objetivos del PNIEC.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Económico</strong></td>
+                        <td>La expansión solar hunde el precio de la electricidad al mediodía y amplía la diferencia con las horas caras, lo que favorece el arbitraje. En sentido contrario, el pack de batería nueva para almacenamiento estacionario cayó a 70 $/kWh de media mundial en 2025, un 45 % menos que en 2024. Los tipos de interés condicionan la inversión de hogares y pymes.</td>
+                        <td><span class="badge mx">Mixto</span></td>
+                        <td>El negocio de gestionar energía mejora, pero la ventaja de precio de la batería usada se desploma. No podemos construir la propuesta sobre «usado = barato».</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Social</strong></td>
+                        <td>Tras el apagón ibérico del 28 de abril de 2025 hogares y empresas valoran más la resiliencia, y crece el autoconsumo doméstico. Clientes, bancos e inversores piden informes de sostenibilidad. Al mismo tiempo hay desconfianza hacia lo «de segunda mano» y miedo al incendio de baterías.</td>
+                        <td><span class="badge mx">Mixto</span></td>
+                        <td>La demanda existe, pero se gana con confianza: certificación visible, garantía escrita y casos de éxito locales.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tecnológico</strong></td>
+                        <td>Las baterías LFP nuevas superan los 6.000 ciclos. Avanzan los EMS con IA, el IoT industrial y la previsión con datos abiertos de precios y meteorología. Cada marca usa una química y un BMS distintos: Tesla (NCA/NMC y LFP), Nissan Leaf y Renault Zoe (NMC, módulos fáciles de reutilizar), BYD (LFP Blade, muy adecuada para uso estacionario). Los BMS de fábrica suelen ser cerrados.</td>
+                        <td><span class="badge mx">Mixto</span></td>
+                        <td>El hardware ajeno envejece deprisa; el software y el diagnóstico propios son lo que sí podemos defender. Ser multimarca exige un banco de pruebas serio.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ecológico</strong></td>
+                        <td>Crece cada año el volumen de baterías retiradas de vehículos. Reutilizarlas antes de reciclarlas alarga su vida útil y evita la huella de fabricar celdas nuevas.</td>
+                        <td><span class="badge op">Oportunidad</span></td>
+                        <td>Es nuestra razón de ser y un argumento comercial medible: kWh reutilizados y toneladas de CO₂ evitadas en el panel del cliente.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Legal</strong></td>
+                        <td>El Reglamento (UE) 2023/1542 considera a quien reacondiciona una batería un nuevo fabricante, con obligaciones propias, e introduce el pasaporte digital de baterías desde febrero de 2027. Hay que cumplir además el REBT, el RD 244/2019 de autoconsumo, el RIPCI de protección contra incendios y normas técnicas como la IEC 62933 o la UL 1974. Varias ayudas solo admiten equipos nuevos.</td>
+                        <td><span class="badge am">Amenaza</span></td>
+                        <td>Es el factor que más puede frenarnos y hay que resolverlo antes de vender. Visto de otro modo, esa misma exigencia es la barrera que mantendrá fuera a quien improvise.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="prose"><strong>Lectura del PESTEL:</strong> el entorno empuja la demanda de almacenamiento (político,
+            ecológico y, en parte, social) pero castiga el argumento del precio (económico) y levanta una barrera de
+            entrada alta (legal). La conclusión operativa es doble: el valor tiene que venir del servicio y del
+            software, y la certificación deja de ser un trámite para convertirse en parte del producto.</p>
+
+        <h2 id="porter">El mercado: las cinco fuerzas de Porter</h2>
+        <p class="prose">Analizamos el sector del almacenamiento energético para hogares, pymes e industria en el área
+            metropolitana de València. La intensidad de cada fuerza indica cuánta presión ejerce sobre nuestro margen.</p>
+
+        <div class="p5">
+            <div class="force f-new">
+                <h4>Amenaza de nuevos entrantes <span class="lvl m">Media</span></h4>
+                <p>Ensamblar módulos y venderlos es accesible para cualquier instalador con taller; el capital necesario
+                    es bajo en la línea Hogar.</p>
+                <span class="imp">Lo que frena de verdad es certificar seguridad, conseguir un seguro de producto y
+                    cumplir el Reglamento europeo de baterías. Nos conviene estar del lado difícil de esa barrera.</span>
+            </div>
+
+            <div class="force f-sup">
+                <h4>Poder de los proveedores <span class="lvl m">Media-alta</span></h4>
+                <p>Las baterías usadas llegan de desguaces, aseguradoras y concesionarios en cantidades irregulares,
+                    con precios poco transparentes e historiales desconocidos. Inversores, BMS y armarios, en cambio,
+                    tienen mucha oferta.</p>
+                <span class="imp">Trabajar con varias marcas y a nivel de módulo amplía la oferta y reduce la
+                    dependencia, pero conseguir lotes homogéneos sigue siendo el cuello de botella.</span>
+            </div>
+
+            <div class="force f-riv mid">
+                <h4>Rivalidad entre competidores <span class="lvl h">Alta</span></h4>
+                <p>En el hogar compiten Huawei, BYD, Pylontech o Tesla Powerwall a través de cientos de instaladoras
+                    fotovoltaicas. En industria, Sungrow, BYD, Tesla o CATL venden armarios llave en mano con garantías
+                    de 10 a 15 años. En segunda vida hay pocos actores en España: es un nicho libre, pero con un
+                    mercado que todavía no está educado.</p>
+                <span class="imp">Competir por precio de catálogo contra fabricantes con escala global es perder. El
+                    terreno propio es el servicio cercano, el ahorro medido y el relato circular.</span>
+            </div>
+
+            <div class="force f-buy">
+                <h4>Poder de los clientes <span class="lvl h">Alto</span></h4>
+                <p>Las empresas piden tres ofertas, garantías y un retorno calculado; una inversión de 200.000–300.000 €
+                    pasa por el banco. Los hogares comparan precios en internet y desconfían de lo usado. Y todos
+                    tienen una alternativa cómoda: no hacer nada.</p>
+                <span class="imp">Hay que entrar con una propuesta cuantificada desde la primera visita: auditoría
+                    gratuita, ahorro estimado en euros y garantía por escrito.</span>
+            </div>
+
+            <div class="force f-sub">
+                <h4>Productos sustitutivos <span class="lvl h">Alta</span></h4>
+                <p>Baterías nuevas LFP cada vez más baratas, la «batería virtual» de las comercializadoras, ampliar la
+                    potencia contratada, gestionar la demanda sin baterías, contratos a precio fijo o un grupo
+                    electrógeno para el respaldo.</p>
+                <span class="imp">Casi todos sustituyen al hardware, no al servicio. Por eso el EMS y el mantenimiento
+                    deben poder venderse también sobre baterías nuevas.</span>
+            </div>
+        </div>
+
+        <div class="split">
+            <div class="prose">
+                <p><strong>Lectura de Porter:</strong> cuatro de las cinco fuerzas son intensas, así que el sector es
+                    atractivo por crecimiento pero duro en márgenes. Nuestra posición defendible no está en el producto
+                    físico, donde los grandes fabricantes ganan siempre, sino en tres cosas que ellos no hacen bien en
+                    un mercado local: diagnosticar y combinar baterías de distintas marcas, gestionar la energía con un
+                    software que mejora con cada instalación y responder rápido cuando algo falla.</p>
+                <p>La fuerza que más debemos vigilar es la de los sustitutivos, porque depende de un precio que no
+                    controlamos. La que mejor nos protege es la de los nuevos entrantes: la misma normativa que nos
+                    complica la vida deja fuera al aficionado.</p>
+            </div>
+            <aside class="side">
+                <figure class="fig">
+                    <div class="scorebars" role="img"
+                        aria-label="Intensidad de las cinco fuerzas: rivalidad, clientes y sustitutivos altas; proveedores media-alta; nuevos entrantes media">
+                        <div><span>Rivalidad</span><i style="width:100%;background:var(--risk)"></i><span>Alta</span></div>
+                        <div><span>Clientes</span><i style="width:100%;background:var(--risk)"></i><span>Alta</span></div>
+                        <div><span>Sustitutivos</span><i style="width:100%;background:var(--risk)"></i><span>Alta</span></div>
+                        <div><span>Proveedores</span><i style="width:75%;background:var(--amber)"></i><span>M-A</span></div>
+                        <div><span>Nuevos entrantes</span><i style="width:55%;background:var(--amber)"></i><span>Media</span></div>
+                    </div>
+                    <figcaption>Sector en crecimiento, pero con presión alta en casi todos los frentes.</figcaption>
+                </figure>
+            </aside>
+        </div>
+
+        <h2 id="dafo">DAFO</h2>
+        <p class="prose">Las oportunidades y amenazas salen del PESTEL y de Porter; las fortalezas y debilidades, de
+            mirarnos a nosotros: un equipo de teleco sin historial comercial, con software propio y sin fábrica.</p>
+
+        <div class="dafo">
+            <div class="d">
+                <h4>Debilidades (internas)</h4>
+                <ul>
+                    <li>Empresa nueva, sin casos de éxito ni historial de garantías que enseñar.</li>
+                    <li>Materia prima heterogénea: muchas marcas y químicas, menos vida restante y un BMS que hay que rediseñar.</li>
+                    <li>Necesidad de capital circulante para comprar baterías antes de cobrar.</li>
+                    <li>Atender a la vez tres segmentos muy distintos dispersa un equipo pequeño.</li>
+                    <li>Perfil técnico con poca experiencia en venta industrial.</li>
+                </ul>
+            </div>
+            <div class="a">
+                <h4>Amenazas (externas)</h4>
+                <ul>
+                    <li>Caída del precio de las baterías LFP nuevas: la ventaja de coste de las usadas casi desaparece.</li>
+                    <li>Exigencias del Reglamento (UE) 2023/1542, certificaciones y aseguradoras.</li>
+                    <li>Un incendio en cualquier instalación de segunda vida dañaría la reputación de todo el sector.</li>
+                    <li>Ayudas públicas que solo admiten equipos nuevos.</li>
+                    <li>Si se estrecha la diferencia de precios entre horas, el arbitraje pierde valor.</li>
+                </ul>
+            </div>
+            <div class="f">
+                <h4>Fortalezas (internas)</h4>
+                <ul>
+                    <li>Conocimiento TIC propio: EMS, IoT, datos y software, que es la base de nuestra titulación.</li>
+                    <li>Propuesta que combina ahorro, resiliencia y economía circular, escalable del hogar a la fábrica.</li>
+                    <li>Red de proveedores multimarca y capacidad de trabajar a nivel de módulo.</li>
+                    <li>Modelo con ingresos recurrentes de mantenimiento y suscripción al EMS.</li>
+                    <li>Cercanía al cliente y conocimiento del tejido industrial valenciano.</li>
+                    <li>Vínculo con la UPV y con el ecosistema emprendedor de València.</li>
+                </ul>
+            </div>
+            <div class="o">
+                <h4>Oportunidades (externas)</h4>
+                <ul>
+                    <li>Objetivo nacional de 22,5 GW de almacenamiento y convocatorias de ayuda abiertas.</li>
+                    <li>Interés por la resiliencia tras el apagón de 2025 y auge del autoconsumo doméstico.</li>
+                    <li>Margen enorme entre el precio de la celda y el de una batería doméstica instalada.</li>
+                    <li>Deducción autonómica por autoconsumo en vivienda en la Comunitat Valenciana.</li>
+                    <li>Precios muy bajos al mediodía por el crecimiento solar.</li>
+                    <li>Estrategia VLCi y plataformas de datos urbanos donde encajan nuestros indicadores.</li>
+                    <li>Presión ESG sobre la industria y demanda de productos circulares.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>De la matriz a la estrategia</h3>
+        <p class="prose">Cruzar los cuadrantes es lo que convierte el DAFO en decisiones. Estas son las cuatro
+            estrategias que salen, y la que marcamos como prioritaria.</p>
+        <div class="crossmat">
+            <div class="hd" style="background:transparent;border:0"></div>
+            <div class="hd">Oportunidades</div>
+            <div class="hd">Amenazas</div>
+            <div class="rh">Fortalezas</div>
+            <div class="s-fo"><b>Ofensiva (F+O)</b>Presentarnos como empresa de software y gestión energética que usa
+                hardware circular, en los tres segmentos, apoyados en las ayudas y en el interés por la resiliencia.
+                Medir y enseñar el CO₂ evitado para entrar en el discurso ESG y en la plataforma VLCi.</div>
+            <div class="s-fa"><b>Defensiva (F+A)</b>No depender del precio de la batería: vender ahorro garantizado por
+                contrato y ofrecer también módulos nuevos cuando salgan mejor. El EMS y el mantenimiento se venden
+                igual sobre hardware nuevo o reutilizado.</div>
+            <div class="rh">Debilidades</div>
+            <div class="s-do"><b>Reorientación (D+O) · prioritaria</b>Empezar por hogares y pymes, donde los proyectos
+                son pequeños, rápidos y con más margen, y usar esas primeras instalaciones como casos de éxito.
+                Mientras tanto, preparar un piloto industrial con la UPV o un instituto tecnológico.</div>
+            <div class="s-da"><b>Supervivencia (D+A)</b>Certificar la seguridad desde el primer día, contratar el seguro
+                antes de la primera venta y no comprar ningún lote por encima del precio de equilibrio calculado abajo.</div>
+        </div>
+
+        <h2 id="evidencia">La evidencia que obliga a cambiar el modelo</h2>
+        <div class="split">
+            <div class="prose">
+                <p>La amenaza económica del DAFO no es una intuición, así que la comprobamos con números. Comparamos el
+                    coste de la <strong>parte batería</strong> por kWh <strong>útil</strong>. Supuestos: un pack usado
+                    de 50 kWh al 70 % de estado de salud da 35 kWh útiles, y hay que sumarle un BMS nuevo (≈26 €/kWh)
+                    y el diagnóstico de cada pack (≈4 €/kWh). Los packs estacionarios nuevos ya traen su BMS y permiten
+                    usar alrededor del 95 % de su capacidad.</p>
+                <p>Referencias: BloombergNEF sitúa el pack estacionario nuevo en 70 $/kWh de media mundial en 2025
+                    (≈60 €/kWh) y en Europa las celdas LFP rondan los 89 €/kWh.</p>
+            </div>
+            <aside class="side">
+                <div class="verdict"><b>Usado ≠ barato</b><span>Con los precios de 2026, montar 700 kWh con packs de
+                    coche cuesta entre 15.000 y 37.000 € más que con baterías nuevas, y el kWh entregado sale 3–5 veces
+                    más caro porque quedan menos ciclos. Hace tres años la cuenta salía; la caída de precios de 2025 la
+                    ha dado la vuelta.</span></div>
+            </aside>
+        </div>
+
+        <div class="bars" role="img"
+            aria-label="Coste de batería por kWh útil: usado entre 101 y 187 euros, nuevo entre 63 y 94 euros">
+            <div class="bar"><span>Usado · 2.500 €/pack</span><div class="track"><div class="fillb" style="width:54%;background:var(--amber)"></div></div><span class="v">101 €/kWh</span></div>
+            <div class="bar"><span>Usado · 3.000 €/pack (central)</span><div class="track"><div class="fillb" style="width:62%;background:var(--amber)"></div></div><span class="v">116 €/kWh</span></div>
+            <div class="bar"><span>Usado · 4.000 €/pack</span><div class="track"><div class="fillb" style="width:77%;background:var(--amber)"></div></div><span class="v">144 €/kWh</span></div>
+            <div class="bar"><span>Usado · 5.500 €/pack</span><div class="track"><div class="fillb" style="width:100%;background:var(--risk)"></div></div><span class="v">187 €/kWh</span></div>
+            <div class="bar"><span>Nuevo LFP · media mundial</span><div class="track"><div class="fillb" style="width:34%;background:var(--charge)"></div></div><span class="v">63 €/kWh</span></div>
+            <div class="bar"><span>Nuevo LFP · referencia Europa</span><div class="track"><div class="fillb" style="width:50%;background:var(--charge)"></div></div><span class="v">94 €/kWh</span></div>
+        </div>
+
+        <div class="tablewrap">
+            <table>
+                <thead><tr><th>Concepto</th><th class="n">Usado (central)</th><th class="n">Nuevo LFP</th><th class="n">Diferencia</th></tr></thead>
+                <tbody>
+                    <tr><td>Coste de batería por kWh útil</td><td class="n">≈116 €</td><td class="n">63–94 €</td><td class="n">usado 22–53 € más caro</td></tr>
+                    <tr><td>Coste de batería para 700 kWh útiles</td><td class="n">≈81.000 €</td><td class="n">44.000–66.000 €</td><td class="n">+15.000 a +37.000 €</td></tr>
+                    <tr><td>Ciclos restantes estimados</td><td class="n">1.500–2.500</td><td class="n">≈5.000</td><td class="n">2–3 veces más en nuevo</td></tr>
+                    <tr><td>Coste por kWh entregado a lo largo de su vida</td><td class="n">≈0,06–0,10 €</td><td class="n">≈0,02 €</td><td class="n">usado 3–5 veces más caro</td></tr>
+                    <tr class="total"><td>Precio máximo de compra para empatar con uno nuevo</td><td class="n" colspan="3">≈1.150–2.250 € por pack; contando la menor vida útil, por debajo de ~1.000 €</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>En el hogar la cuenta cambia</h3>
+        <div class="prose">
+            <p>En sistemas pequeños el precio final no lo marca la celda, sino el montaje y el canal: una batería
+                doméstica nueva instalada cuesta 450–580 €/kWh mientras la celda vale menos de 100 €/kWh. Ahí sí hay
+                sitio para competir.</p>
+        </div>
+        <div class="tablewrap">
+            <table>
+                <thead><tr><th>Batería doméstica de 10 kWh útiles</th><th class="n">Nueva instalada</th><th class="n">Objetivo segunda vida</th><th class="n">Ahorro para el cliente</th></tr></thead>
+                <tbody>
+                    <tr><td>Precio instalado</td><td class="n">4.500–5.800 €</td><td class="n">3.000–3.800 €</td><td class="n">≈1.500–2.000 € (30–35 %)</td></tr>
+                    <tr><td>Precio por kWh útil</td><td class="n">450–580 €</td><td class="n">300–380 €</td><td class="n">≈150–200 €/kWh</td></tr>
+                    <tr><td>Garantía típica</td><td class="n">10 años</td><td class="n">5–7 años, propia</td><td class="n">menor: hay que compensarla con servicio</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="note ok prose">
+            <p><strong>Conclusión:</strong> el hogar y la pyme son los segmentos donde la segunda vida tiene sentido
+                económico, siempre con armario certificado y una garantía creíble. En industria solo compensa comprando
+                lotes muy baratos o combinando módulos nuevos y usados. Los precios objetivo de segunda vida son una
+                hipótesis que hay que validar con presupuestos reales de proveedor.</p>
+        </div>
+
+        <h2 id="canvas2">El modelo de negocio, corregido</h2>
+        <div class="split">
+            <div class="prose">
+                <p>Los tres análisis apuntan a lo mismo, así que volvemos al Lean Canvas de la Práctica 1 y tocamos
+                    siete de los nueve bloques. El cambio de fondo es uno: dejamos de vender baterías baratas y pasamos
+                    a vender energía bien gestionada, con el hardware reutilizado como ventaja ambiental y de precio
+                    solo donde de verdad lo es.</p>
+                <p>El orden de entrada al mercado también cambia. La Práctica 1 apuntaba a la fábrica; el análisis dice
+                    que hay que empezar por el tejado de casa.</p>
+            </div>
+            <aside class="side">
+                <figure class="fig">
+                    <div class="mini" aria-hidden="true">
+                        <div class="m1">1<small>Problema</small></div>
+                        <div class="m3 chg">3<small>Solución</small></div>
+                        <div class="m7 chg">7<small>Métricas</small></div>
+                        <div class="m2 chg">2<small>Propuesta</small></div>
+                        <div class="m8 chg">8<small>Ventaja</small></div>
+                        <div class="m4">4<small>Canales</small></div>
+                        <div class="m9 chg">9<small>Segmentos</small></div>
+                        <div class="m6 chg">6<small>Costes</small></div>
+                        <div class="m5 chg">5<small>Ingresos</small></div>
+                    </div>
+                    <figcaption>Siete de los nueve bloques cambian tras el análisis externo.</figcaption>
+                    <div class="legend"><span><i style="background:var(--amber)"></i>Bloque modificado</span></div>
+                </figure>
+            </aside>
+        </div>
+
+        <div class="tablewrap">
+            <table>
+                <thead><tr><th>Bloque</th><th>Versión de la Práctica 1</th><th>Versión corregida y por qué</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>2 · Propuesta de valor</strong></td><td>Almacenamiento barato con baterías usadas.</td><td>Ahorro medido y garantizado, resiliencia y huella circular certificada. El precio deja de ser el argumento principal porque el PESTEL económico lo ha desactivado.</td></tr>
+                    <tr><td><strong>3 · Solución</strong></td><td>Packs de segunda vida.</td><td>Baterías multimarca en tres tamaños y, en industria, sistema híbrido: packs usados solo por debajo del precio de equilibrio y módulos LFP nuevos para el resto, todos con el mismo EMS.</td></tr>
+                    <tr><td><strong>5 · Fuentes de ingresos</strong></td><td>Sobre todo venta de hardware.</td><td>Más peso de la energía como servicio y de la suscripción al EMS, licenciable incluso a instaladoras que montan baterías nuevas. Así los sustitutivos dejan de ser una amenaza directa.</td></tr>
+                    <tr><td><strong>6 · Estructura de costes</strong></td><td>Sin partida de certificación.</td><td>Se añaden certificación, seguro de producto, pasaporte digital de baterías y una reserva de módulos de sustitución, que el factor legal convierte en obligatorios.</td></tr>
+                    <tr><td><strong>7 · Métricas clave</strong></td><td>Ahorro y estado de salud.</td><td>Se añaden el coste de compra por kWh útil de cada lote, que nunca debe superar el umbral, y el coste por kWh entregado.</td></tr>
+                    <tr><td><strong>8 · Ventaja competitiva</strong></td><td>Comprar packs baratos.</td><td>Protocolo de diagnóstico certificado (UL 1974 / IEC 62933), EMS propio que mejora con los datos de cada instalación y pasaporte digital listo antes de 2027. Es lo único difícil de copiar.</td></tr>
+                    <tr><td><strong>9 · Segmentos de clientes</strong></td><td>Fábricas grandes primero.</td><td>Entramos por hogares y pymes, donde la segunda vida sí es más barata y el ciclo de venta es corto; la industria llega después con sistemas híbridos.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="prose">Los bloques 1 (problema), 4 (canales) y el conjunto del Lean Canvas siguen siendo válidos:
+            el análisis no ha cambiado a quién le duele qué, sino cómo se lo resolvemos y en qué orden.</p>
+
+        <div class="split">
+            <div class="prose">
+                <h3 id="conclusiones2">Conclusiones de la Práctica 2</h3>
+                <p>La herramienta más útil ha sido el análisis externo, porque desmontó la premisa con la que
+                    empezamos. «Batería usada igual a batería barata» era cierto hace tres años y ha dejado de serlo:
+                    comprobarlo con datos de mercado nos ahorró construir todo el negocio sobre una ventaja que ya no
+                    existe.</p>
+                <p>Porter nos enseñó que en un sector con cuatro fuerzas intensas no se compite de frente. El DAFO
+                    ordenó la salida: empezar pequeño, por hogares y pymes, y certificar antes de vender.</p>
+                <p>Y sobre todo aprendimos a separar lo que fabricamos de lo que el cliente compra. Nosotros montamos
+                    baterías; él compra una factura más baja y la tranquilidad de que su instalación es segura. Esa
+                    distinción es la que ha reescrito siete bloques del Canvas.</p>
+            </div>
+            <aside class="side">
+                <div class="quote">
+                    <p>«El análisis no cambió nuestra idea: cambió el argumento con el que la vendemos y el orden en
+                        que salimos al mercado.»</p><span>La lección de la Práctica 2</span>
+                </div>
+            </aside>
+        </div>
+
+        <section class="launch" id="presentacion" aria-labelledby="launch-title">
+            <div class="launch-top">
+                <div>
+                    <h2 id="launch-title">La presentación</h2>
+                    <p>20 diapositivas repartidas entre seis personas, tres cada una. Cada ponente tiene su color en la
+                        banda lateral y en la barra de progreso. Se pasa con las flechas del teclado.</p>
+                </div>
+                <button type="button" class="btn-play" data-deck-open="0"><svg viewBox="0 0 16 16"><path d="M3 1.5v13L14 8z" fill="currentColor"/></svg>Iniciar presentación</button>
+            </div>
+            <div class="crew" id="crew"></div>
+        </section>
+
         <section class="soon" id="proximamente" aria-labelledby="soon-title">
             <div class="ghost" aria-hidden="true">
-                <div><strong>Análisis PESTEL</strong><i style="width:90%"></i><i style="width:70%"></i><i
-                        style="width:82%"></i><i style="width:55%"></i></div>
-                <div><strong>5 fuerzas de Porter</strong><i style="width:90%"></i><i style="width:70%"></i><i
-                        style="width:82%"></i><i style="width:55%"></i></div>
-                <div><strong>DAFO y estrategias</strong><i style="width:90%"></i><i style="width:70%"></i><i
-                        style="width:82%"></i><i style="width:55%"></i></div>
-                <div><strong>Ahorro real por kWh</strong><i style="width:90%"></i><i style="width:70%"></i><i
-                        style="width:82%"></i><i style="width:55%"></i></div>
-                <div><strong>Canvas actualizado</strong><i style="width:90%"></i><i style="width:70%"></i><i
-                        style="width:82%"></i><i style="width:55%"></i></div>
-                <div><strong>Subvenciones</strong><i style="width:90%"></i><i style="width:70%"></i><i
-                        style="width:82%"></i><i style="width:55%"></i></div>
-                <div><strong>Vídeo de 3 minutos</strong><i style="width:90%"></i><i style="width:70%"></i><i
-                        style="width:82%"></i><i style="width:55%"></i></div>
-                <div><strong>Presentación final</strong><i style="width:90%"></i><i style="width:70%"></i><i
-                        style="width:82%"></i><i style="width:55%"></i></div>
-            </div>
+                <div><strong>Vídeo de 3 minutos</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div>
+                <div><strong>Exposición oral</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div>
+                <div><strong>Subvenciones y financiación</strong><i style="width:90%"></i><i style="width:70%"></i><i style="width:82%"></i><i style="width:55%"></i></div>
+                </div>
             <div class="veil">
                 <svg class="lock" id="lock" viewBox="0 0 140 170" role="button" tabindex="0"
                     aria-label="Contenido bloqueado">
@@ -2199,42 +2827,10 @@
                     <path d="M74 92 L60 116 H70 L66 136 L82 110 H72 Z" fill="#16303A" />
                 </svg>
                 <h2 id="soon-title">Próximamente</h2>
-                <p>Estamos cargando la siguiente fase del proyecto: análisis del entorno, del mercado y la presentación
-                    final.</p>
-                <div class="chips"><span><svg viewBox="0 0 12 12">
-                            <rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor" />
-                            <path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4"
-                                fill="none" />
-                        </svg>Análisis PESTEL</span><span><svg viewBox="0 0 12 12">
-                            <rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor" />
-                            <path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4"
-                                fill="none" />
-                        </svg>5 fuerzas de Porter</span><span><svg viewBox="0 0 12 12">
-                            <rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor" />
-                            <path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4"
-                                fill="none" />
-                        </svg>DAFO y estrategias</span><span><svg viewBox="0 0 12 12">
-                            <rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor" />
-                            <path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4"
-                                fill="none" />
-                        </svg>Ahorro real por kWh</span><span><svg viewBox="0 0 12 12">
-                            <rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor" />
-                            <path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4"
-                                fill="none" />
-                        </svg>Canvas actualizado</span><span><svg viewBox="0 0 12 12">
-                            <rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor" />
-                            <path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4"
-                                fill="none" />
-                        </svg>Subvenciones</span><span><svg viewBox="0 0 12 12">
-                            <rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor" />
-                            <path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4"
-                                fill="none" />
-                        </svg>Vídeo de 3 minutos</span><span><svg viewBox="0 0 12 12">
-                            <rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor" />
-                            <path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4"
-                                fill="none" />
-                        </svg>Presentación final</span></div>
-                <div class="hint" id="hint" aria-live="polite">Se desbloquea con la Práctica 2</div>
+                <p>Ya está la idea, el modelo de negocio y el análisis del entorno. Queda la última fase: compilar y contar
+                    todo el trabajo.</p>
+                <div class="chips"><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Vídeo de 3 minutos</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Exposición oral</span><span><svg viewBox="0 0 12 12"><rect x="1.5" y="5" width="9" height="6.5" rx="1.5" fill="currentColor"/><path d="M3.5 5V3.6a2.5 2.5 0 0 1 5 0V5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg>Subvenciones y financiación</span></div>
+                <div class="hint" id="hint" aria-live="polite">Se desbloquea con la Práctica 3</div>
             </div>
         </section>
 
@@ -2246,12 +2842,577 @@
                 <p><strong>Segunda Carga</strong> es una idea de negocio desarrollada para las prácticas de Fundamentos
                     de Organización y Gestión de Empresas del Grado en Ingeniería de Tecnologías y Servicios de
                     Telecomunicación (ETSIT-UPV), en el marco de València Ciudad Inteligente (VLCi) y el ODS 11.</p>
-                <p>Fuentes: Ayuntamiento de València (VLCi); Naciones Unidas, Agenda 2030; guías de precios de baterías
-                    domésticas en España 2026; documento interno «Proyecto BESS industrial con baterías Tesla
-                    reutilizadas». Las cifras son de prefactibilidad.</p>
+                <p>Fuentes: Ayuntamiento de València (VLCi); Naciones Unidas, Agenda 2030; PNIEC 2023-2030; BloombergNEF, <em>Lithium-Ion Battery Price Survey 2025</em> y <em>Energy Storage Systems Cost Survey 2025</em>; Reglamento (UE) 2023/1542 de baterías; IEC 62933 y UL 1974; sede electrónica del IDAE e IVACE; guías de precios de baterías domésticas en España 2026; documento interno «Proyecto BESS industrial con baterías Tesla reutilizadas». Las cifras son de prefactibilidad y deben validarse con datos reales de clientes y proveedores.</p>
             </div>
         </div>
     </footer>
+
+    <!-- ===================== PRESENTACIÓN ===================== -->
+    <div id="deck" class="deck team" hidden role="dialog" aria-modal="true" aria-label="Presentación de Segunda Carga" tabindex="-1">
+        <div class="stage">
+            <div class="band"></div>
+            <div class="who"><i></i><strong id="dkWho">Todo el equipo</strong><span id="dkTopic"></span></div>
+
+            <!-- 0 · Portada -->
+            <section class="sl cover" data-p="0" aria-label="Portada">
+                <div class="body" style="gap:70px">
+                    <div class="col">
+                        <p class="kick in" style="color:var(--soft)">FOGE · ETSIT-UPV · Prácticas 1 y 2</p>
+                        <h1 class="in" style="--d:1">Segunda Carga</h1>
+                        <p class="sub in" style="--d:2">Baterías de coche con segunda vida para València</p>
+                    </div>
+                    <div class="col in" style="--d:3;flex:.8">
+                        <div class="dkcell"><div class="bd"><s></s><s></s><s></s><s></s><s></s><s></s><s></s><s class="off"></s><s class="off"></s><s class="off"></s></div><div class="tp"></div></div>
+                        <p class="note">≈70 % de capacidad cuando el coche ya no la quiere</p>
+                    </div>
+                </div>
+                <div class="team6 in" style="--d:4" data-team></div>
+            </section>
+
+            <!-- ============ PERSONA 1 · Smart City y problema ============ -->
+            <section class="sl" data-p="1" aria-label="Smart City">
+                <p class="kick in">Smart City</p>
+                <h2 class="in" style="--d:1">València quiere ser una ciudad inteligente</h2>
+                <div class="body">
+                    <div class="col in" style="--d:2;flex:1.15"><svg viewBox="0 0 360 240" role="img"
+                        aria-label="Ciudad conectada con placas solares, sensores y baterías">
+                        <rect x="0" y="0" width="360" height="240" rx="8" fill="var(--chip)" />
+                        <circle cx="300" cy="46" r="20" fill="#F2C45A" />
+                        <g fill="var(--ink)" opacity=".9">
+                            <rect x="20" y="120" width="44" height="100" />
+                            <rect x="72" y="80" width="38" height="140" />
+                            <rect x="118" y="140" width="56" height="80" />
+                            <rect x="182" y="100" width="40" height="120" />
+                            <rect x="230" y="130" width="50" height="90" />
+                            <rect x="288" y="150" width="52" height="70" />
+                            <rect x="89" y="56" width="4" height="24" />
+                        </g>
+                        <g fill="#F2C45A" opacity=".85">
+                            <rect x="28" y="132" width="8" height="10" />
+                            <rect x="46" y="150" width="8" height="10" />
+                            <rect x="80" y="96" width="8" height="10" />
+                            <rect x="94" y="130" width="8" height="10" />
+                            <rect x="190" y="116" width="8" height="10" />
+                            <rect x="206" y="150" width="8" height="10" />
+                            <rect x="240" y="146" width="8" height="10" />
+                            <rect x="262" y="170" width="8" height="10" />
+                        </g>
+                        <g fill="var(--cobalt)">
+                            <path d="M120 138 L172 138 L166 128 L126 128 Z" />
+                            <path d="M232 128 L278 128 L272 118 L238 118 Z" />
+                            <path d="M290 148 L338 148 L332 138 L296 138 Z" />
+                        </g>
+                        <rect x="300" y="186" width="30" height="20" rx="3" fill="var(--charge)" />
+                        <rect x="330" y="192" width="4" height="8" fill="var(--charge)" />
+                        <g stroke="var(--cobalt)" stroke-width="2" fill="none">
+                            <path class="flow" d="M91 56 Q140 20 202 100" />
+                            <path class="flow" d="M91 56 Q180 40 255 118" />
+                            <path class="flow" d="M91 56 Q220 70 315 186" />
+                        </g>
+                        <g fill="var(--cobalt)">
+                            <circle class="pulse" cx="91" cy="54" r="6" />
+                            <circle class="pulse" cx="202" cy="100" r="4" style="animation-delay:.4s" />
+                            <circle class="pulse" cx="255" cy="118" r="4" style="animation-delay:.8s" />
+                            <circle class="pulse" cx="315" cy="186" r="4" style="animation-delay:1.2s" />
+                        </g>
+                        <rect x="0" y="220" width="360" height="20" fill="var(--ink)" />
+                    </svg></div>
+                    <div class="col in" style="--d:3">
+                        <div class="bignum">VLCi</div>
+                        <p class="bigcap">Datos y tecnología al servicio de la ciudad</p>
+                        <div class="ods-row">
+                            <b style="background:#FCC30B;color:#16303A">7<small>Energía</small></b>
+                            <b style="background:#FD6925">9<small>Industria</small></b>
+                            <b style="background:#FD9D24">11<small>Ciudades</small></b>
+                            <b style="background:#BF8B2E">12<small>Consumo</small></b>
+                            <b style="background:#3F7E44">13<small>Clima</small></b>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="1" aria-label="Ideación">
+                <p class="kick in">Ideación</p>
+                <h2 class="in" style="--d:1">Seis ideas, una ganadora</h2>
+                <div class="body">
+                    <div class="hbars">
+                        <div class="win in" style="--d:2"><span>Segunda Carga</span><i style="width:100%"></i><span class="v">13</span></div>
+                        <div class="in" style="--d:3"><span>Contenedores</span><i style="width:85%"></i><span class="v">11</span></div>
+                        <div class="in" style="--d:4"><span>Recarga vecinal</span><i style="width:77%"></i><span class="v">10</span></div>
+                        <div class="in" style="--d:5"><span>Comunidad energética</span><i style="width:77%"></i><span class="v">10</span></div>
+                        <div class="in" style="--d:6"><span>Riego inteligente</span><i style="width:69%"></i><span class="v">9</span></div>
+                        <div class="in" style="--d:7"><span>Mapa de ruido</span><i style="width:69%"></i><span class="v">9</span></div>
+                        <p class="note in" style="--d:8">Creatividad + viabilidad + utilidad · máximo 15</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="1" aria-label="El problema">
+                <p class="kick in">El problema</p>
+                <h2 class="in" style="--d:1">Energía que se paga y se pierde</h2>
+                <div class="body">
+                    <div class="tiles">
+                        <div class="tile in" style="--d:2"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="13" fill="#F2B632"/><g stroke="#F2B632" stroke-width="5" stroke-linecap="round"><path d="M32 4v9M32 51v9M4 32h9M51 32h9M12 12l6 6M46 46l6 6M12 52l6-6M46 18l6-6"/></g></svg><b>Mediodía</b><p>El sol que sobra se regala a la red</p></div>
+                        <div class="tile in" style="--d:3"><svg viewBox="0 0 64 64"><rect x="6" y="16" width="46" height="32" rx="5" fill="none" stroke="var(--pc)" stroke-width="5"/><rect x="52" y="26" width="7" height="12" rx="2" fill="var(--pc)"/><text x="29" y="41" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="22" fill="var(--pc)">€</text></svg><b>450–580 €/kWh</b><p>Lo que cuesta una batería doméstica nueva</p></div>
+                        <div class="tile in" style="--d:4"><svg viewBox="0 0 64 64"><path d="M4 50 L18 44 L26 48 L34 12 L42 46 L50 40 L60 42" fill="none" stroke="var(--risk)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/></svg><b>Picos</b><p>Potencia que se paga todo el año por unos minutos</p></div>
+                        <div class="tile in" style="--d:5"><svg viewBox="0 0 64 64"><path d="M22 6v14M42 6v14" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/><path d="M14 20h36v10a18 18 0 0 1-36 0z" fill="var(--ink)"/><path d="M32 48v12" stroke="var(--ink)" stroke-width="5"/><path d="M8 8 L56 56" stroke="var(--risk)" stroke-width="5" stroke-linecap="round"/></svg><b>28-A</b><p>El apagón de 2025 nos recordó lo frágiles que somos</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ PERSONA 2 · La idea ============ -->
+            <section class="sl" data-p="2" aria-label="La idea">
+                <p class="kick in">La idea</p>
+                <h2 class="in" style="--d:1">Una batería, dos vidas</h2>
+                <div class="body">
+                    <div class="col in" style="--d:2;flex:1.1"><svg viewBox="0 0 360 300" role="img"
+                        aria-label="De la batería del coche a hogar, pyme e industria">
+                        <g transform="translate(20,20)">
+                            <rect x="0" y="22" width="110" height="34" rx="14" fill="var(--ink)" />
+                            <path d="M18 22 Q30 0 55 0 Q80 0 92 22 Z" fill="var(--ink)" />
+                            <circle cx="24" cy="58" r="11" fill="var(--panel)" stroke="var(--ink)" stroke-width="5" />
+                            <circle cx="86" cy="58" r="11" fill="var(--panel)" stroke="var(--ink)" stroke-width="5" />
+                            <rect x="22" y="32" width="66" height="12" rx="3" fill="var(--charge)" />
+                            <text x="130" y="36" font-family="Archivo,Arial" font-size="13" fill="var(--soft)">1ª vida:
+                                el coche</text>
+                            <text x="130" y="54" font-family="Archivo,Arial" font-size="12" fill="var(--soft)">100 % →
+                                70 %</text>
+                        </g>
+                        <path class="flow" d="M75 92 V124" stroke="var(--cobalt)" stroke-width="3" fill="none" />
+                        <g transform="translate(40,128)">
+                            <rect x="0" y="0" width="70" height="30" rx="4" fill="none" stroke="var(--ink)"
+                                stroke-width="3" />
+                            <rect x="70" y="9" width="6" height="12" fill="var(--ink)" />
+                            <rect x="5" y="5" width="11" height="20" fill="var(--charge)" />
+                            <rect x="19" y="5" width="11" height="20" fill="var(--charge)" />
+                            <rect x="33" y="5" width="11" height="20" fill="var(--charge)" />
+                            <rect x="47" y="5" width="11" height="20" fill="var(--charge)" class="pulse" />
+                            <text x="92" y="14" font-family="Archivo,Arial" font-size="13" font-weight="700"
+                                fill="var(--ink)">Diagnóstico + EMS</text>
+                            <text x="92" y="30" font-family="Archivo,Arial" font-size="12" fill="var(--soft)">2ª vida:
+                                almacenamiento</text>
+                        </g>
+                        <g stroke="var(--cobalt)" stroke-width="3" fill="none">
+                            <path class="flow" d="M75 162 Q75 190 60 214" />
+                            <path class="flow" d="M75 162 Q120 190 180 214" />
+                            <path class="flow" d="M75 162 Q200 180 300 214" />
+                        </g>
+                        <g transform="translate(30,218)">
+                            <path d="M0 26 L30 2 L60 26 Z" fill="var(--cobalt)" />
+                            <rect x="8" y="26" width="44" height="30" fill="var(--ink)" />
+                            <rect x="24" y="38" width="12" height="18" fill="#F2C45A" />
+                            <text x="30" y="74" text-anchor="middle" font-family="Archivo,Arial" font-size="12"
+                                font-weight="700" fill="var(--ink)">Hogar</text>
+                        </g>
+                        <g transform="translate(150,218)">
+                            <rect x="0" y="12" width="60" height="44" fill="var(--ink)" />
+                            <path d="M-4 12 H64 L58 0 H2 Z" fill="var(--amber)" />
+                            <rect x="8" y="24" width="20" height="14" fill="#F2C45A" />
+                            <rect x="36" y="28" width="16" height="28" fill="var(--chip)" />
+                            <text x="30" y="74" text-anchor="middle" font-family="Archivo,Arial" font-size="12"
+                                font-weight="700" fill="var(--ink)">Pyme</text>
+                        </g>
+                        <g transform="translate(262,214)">
+                            <path d="M0 60 V24 L20 34 V24 L40 34 V24 L60 34 V60 Z" fill="var(--ink)" />
+                            <rect x="46" y="0" width="10" height="30" fill="var(--ink)" />
+                            <circle cx="51" cy="-6" r="5" fill="var(--line)" class="pulse" />
+                            <text x="30" y="78" text-anchor="middle" font-family="Archivo,Arial" font-size="12"
+                                font-weight="700" fill="var(--ink)">Industria</text>
+                        </g>
+                    </svg></div>
+                    <div class="col in" style="--d:3">
+                        <div class="bignum">≈70 %</div>
+                        <p class="bigcap">de capacidad sigue útil cuando el coche la retira</p>
+                        <p class="note">Tesla · Nissan · Renault · BYD · Hyundai · Kia · VW · MG</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="2" aria-label="Tres líneas de producto">
+                <p class="kick in">Producto</p>
+                <h2 class="in" style="--d:1">Tres tamaños, un mismo cerebro</h2>
+                <div class="body">
+                    <div class="cards3">
+                        <div class="card in" style="--d:2"><svg viewBox="0 0 120 92"><path d="M14 46 L60 8 L106 46 Z" fill="var(--pc)"/><rect x="26" y="46" width="68" height="44" fill="var(--ink)"/><rect x="52" y="62" width="16" height="28" fill="#F2C45A"/><rect x="34" y="18" width="30" height="8" fill="#1F4FA3" transform="rotate(-38 49 22)"/></svg><h3>Hogar</h3><div class="kwh">5–15 kWh</div><p>El sol del mediodía, para la noche</p></div>
+                        <div class="card in" style="--d:3"><svg viewBox="0 0 120 92"><rect x="16" y="28" width="88" height="62" fill="var(--ink)"/><path d="M10 28 H110 L100 8 H20 Z" fill="var(--amber)"/><rect x="26" y="44" width="30" height="22" fill="#F2C45A"/><rect x="68" y="50" width="24" height="40" fill="var(--chip)"/></svg><h3>Pyme</h3><div class="kwh">30–200 kWh</div><p>Menos potencia contratada y factura</p></div>
+                        <div class="card in" style="--d:4"><svg viewBox="0 0 120 92"><path d="M8 90 V40 L36 54 V40 L64 54 V40 L92 54 V90 Z" fill="var(--ink)"/><rect x="96" y="14" width="14" height="76" fill="var(--ink)"/><rect x="20" y="66" width="12" height="12" fill="#F2C45A"/><rect x="48" y="66" width="12" height="12" fill="#F2C45A"/><rect x="76" y="66" width="12" height="12" fill="#F2C45A"/></svg><h3>Industria</h3><div class="kwh">≈700 kWh</div><p>Recorta picos y guarda excedentes</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="2" aria-label="Encaje Smart City">
+                <p class="kick in">Encaje Smart City</p>
+                <h2 class="in" style="--d:1">Cada batería es un nodo de la ciudad</h2>
+                <div class="body">
+                    <div class="col in" style="--d:2;flex:1.1"><svg viewBox="0 0 360 170" role="img"
+                        aria-label="Red de instalaciones conectadas a la plataforma VLCi">
+                        <g stroke="var(--cobalt)" stroke-width="2">
+                            <path class="flow" d="M180 85 L60 35" />
+                            <path class="flow" d="M180 85 L60 135" />
+                            <path class="flow" d="M180 85 L300 35" />
+                            <path class="flow" d="M180 85 L300 135" />
+                            <path class="flow" d="M180 85 L180 20" />
+                            <path class="flow" d="M180 85 L180 150" />
+                        </g>
+                        <circle cx="180" cy="85" r="34" fill="var(--ink)" /><text x="180" y="82" text-anchor="middle"
+                            font-family="Archivo,Arial" font-weight="800" font-size="15" fill="#fff">VLCi</text>
+                        <text x="180" y="99" text-anchor="middle" font-family="Archivo,Arial" font-size="9"
+                            fill="#C5D6DA">datos abiertos</text>
+                        <g fill="var(--charge)">
+                            <circle class="pulse" cx="60" cy="35" r="11" />
+                            <circle class="pulse" cx="60" cy="135" r="11" style="animation-delay:.3s" />
+                            <circle class="pulse" cx="300" cy="35" r="11" style="animation-delay:.6s" />
+                            <circle class="pulse" cx="300" cy="135" r="11" style="animation-delay:.9s" />
+                            <circle class="pulse" cx="180" cy="20" r="9" style="animation-delay:1.2s" />
+                            <circle class="pulse" cx="180" cy="150" r="9" style="animation-delay:1.5s" />
+                        </g>
+                    </svg></div>
+                    <div class="col">
+                        <ul class="pts">
+                            <li class="in" style="--d:3"><i>1</i>Mide consumo y sol</li>
+                            <li class="in" style="--d:4"><i>2</i>Cuenta el CO₂ evitado</li>
+                            <li class="in" style="--d:5"><i>3</i>Juntas, una planta virtual</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ PERSONA 3 · Modelo de negocio ============ -->
+            <section class="sl" data-p="3" aria-label="Lean Canvas">
+                <p class="kick in">Lean Canvas</p>
+                <h2 class="in" style="--d:1">El negocio en una página</h2>
+                <div class="body in" style="--d:2">
+                    <div class="lc">
+                        <div class="x1"><em>1</em><b>Problema</b>Sol perdido, baterías caras, picos</div>
+                        <div class="x3"><em>3</em><b>Solución</b>2ª vida + EMS + app</div>
+                        <div class="x7"><em>7</em><b>Métricas</b>€ ahorrados, SOH, CO₂</div>
+                        <div class="x2"><em>2</em><b>Propuesta de valor</b><span>Paga menos luz con baterías que merecen otra vida</span></div>
+                        <div class="x8"><em>8</em><b>Ventaja</b>Diagnóstico multimarca + datos</div>
+                        <div class="x4"><em>4</em><b>Canales</b>Instaladoras, web, venta directa</div>
+                        <div class="x9"><em>9</em><b>Segmentos</b>Hogar<br>Pyme<br>Industria</div>
+                        <div class="x6"><em>6</em><b>Costes</b>Baterías, electrónica, instalación, certificación</div>
+                        <div class="x5"><em>5</em><b>Ingresos</b>Venta, energía como servicio, suscripción</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="3" aria-label="Propuesta de valor">
+                <p class="kick in">Propuesta de valor</p>
+                <div class="body" style="flex-direction:column;align-items:flex-start;justify-content:center">
+                    <p class="quoteXL in" style="--d:1">Aprovecha todo tu sol y paga menos luz con baterías que merecen una segunda vida.</p>
+                    <div class="chips3 in" style="--d:3"><span>Ahorro medido</span><span>Resiliencia</span><span>Circular</span></div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="3" aria-label="Ingresos y costes">
+                <p class="kick in">Ingresos y costes</p>
+                <h2 class="in" style="--d:1">Cómo ganamos dinero</h2>
+                <div class="body" style="flex-direction:column;align-items:stretch;justify-content:center;gap:0">
+                    <div class="money">
+                        <div class="in" style="--d:2"><b>3.000–3.800 €</b><span>Batería de hogar de 10 kWh, instalada</span></div>
+                        <div class="in" style="--d:3"><b>≈300.000 €</b><span>Sistema industrial · 20 % de margen</span></div>
+                        <div class="in" style="--d:4"><b>Cada mes</b><span>Mantenimiento + suscripción al EMS</span></div>
+                    </div>
+                    <div class="stack in" style="--d:5">
+                        <i style="flex:60;background:var(--pc)">Baterías 25 %</i>
+                        <i style="flex:45;background:#16303A">Inversor</i>
+                        <i style="flex:30;background:#4F6670">Instalación</i>
+                        <i style="flex:22;background:#6E8790">Armarios</i>
+                        <i style="flex:18;background:#8FA3A8">BMS</i>
+                        <i style="flex:18;background:#A7B8BC">Seguridad</i>
+                        <i style="flex:18;background:#BCCACD"></i>
+                        <i style="flex:17;background:#CDD8DA"></i>
+                        <i style="flex:12;background:#DCE5E6"></i>
+                    </div>
+                    <div class="stackcap in" style="--d:5"><span>Coste de un sistema industrial ≈ 240.000 €</span><span>La batería es solo ¼</span></div>
+                </div>
+            </section>
+
+            <!-- ============ PERSONA 4 · Entorno ============ -->
+            <section class="sl" data-p="4" aria-label="PESTEL">
+                <p class="kick in">Análisis PESTEL</p>
+                <h2 class="in" style="--d:1">¿Cómo está el entorno?</h2>
+                <div class="body">
+                    <div class="col in" style="--d:2;flex:1.1"><svg viewBox="-45 8 350 228" role="img"
+                        aria-label="Rueda PESTEL: político y ecológico favorables; económico, social y tecnológico mixtos; legal desfavorable">
+                        <path d="M130.0 86.0 L130.0 24.0 A96 96 0 0 1 213.1 72.0 L159.4 103.0 A34 34 0 0 0 130.0 86.0 Z" fill="var(--charge)" opacity=".88"/>
+                        <text x="162.5" y="77.7" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">P</text>
+                        <text x="186.0" y="27.0" text-anchor="start" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Político</text>
+                        <path d="M159.4 103.0 L213.1 72.0 A96 96 0 0 1 213.1 168.0 L159.4 137.0 A34 34 0 0 0 159.4 103.0 Z" fill="var(--amber)" opacity=".88"/>
+                        <text x="195.0" y="127.0" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">E</text>
+                        <text x="242.0" y="124.0" text-anchor="start" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Económico</text>
+                        <path d="M159.4 137.0 L213.1 168.0 A96 96 0 0 1 130.0 216.0 L130.0 154.0 A34 34 0 0 0 159.4 137.0 Z" fill="var(--amber)" opacity=".88"/>
+                        <text x="162.5" y="176.3" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">S</text>
+                        <text x="186.0" y="221.0" text-anchor="start" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Social</text>
+                        <path d="M130.0 154.0 L130.0 216.0 A96 96 0 0 1 46.9 168.0 L100.6 137.0 A34 34 0 0 0 130.0 154.0 Z" fill="var(--amber)" opacity=".88"/>
+                        <text x="97.5" y="176.3" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">T</text>
+                        <text x="74.0" y="221.0" text-anchor="end" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Tecnológico</text>
+                        <path d="M100.6 137.0 L46.9 168.0 A96 96 0 0 1 46.9 72.0 L100.6 103.0 A34 34 0 0 0 100.6 137.0 Z" fill="var(--charge)" opacity=".88"/>
+                        <text x="65.0" y="127.0" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">E</text>
+                        <text x="18.0" y="124.0" text-anchor="end" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Ecológico</text>
+                        <path d="M100.6 103.0 L46.9 72.0 A96 96 0 0 1 130.0 24.0 L130.0 86.0 A34 34 0 0 0 100.6 103.0 Z" fill="var(--risk)" opacity=".88"/>
+                        <text x="97.5" y="77.7" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="21" fill="#fff">L</text>
+                        <text x="74.0" y="27.0" text-anchor="end" font-family="Archivo,Arial" font-size="11.5" fill="var(--soft)">Legal</text>
+                        <circle cx="130" cy="120" r="34" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/>
+                        <text x="130" y="118" text-anchor="middle" font-family="Archivo,Arial" font-weight="800" font-size="13" fill="var(--ink)">PESTEL</text>
+                        <text x="130" y="132" text-anchor="middle" font-family="Archivo,Arial" font-size="9.5" fill="var(--soft)">macroentorno</text>
+                    </svg></div>
+                    <div class="col">
+                        <ul class="legendXL">
+                            <li class="in" style="--d:3"><b style="color:#2E8B57">2</b>a favor</li>
+                            <li class="in" style="--d:4"><b style="color:#B7790B">3</b>a favor y en contra</li>
+                            <li class="in" style="--d:5"><b style="color:#B03A2E">1</b>en contra: la ley</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="4" aria-label="Qué empuja y qué frena">
+                <p class="kick in">Análisis PESTEL</p>
+                <h2 class="in" style="--d:1">Lo que empuja y lo que frena</h2>
+                <div class="body">
+                    <div class="pushpull">
+                        <div class="pp-go in" style="--d:2"><h3>▲ Empuja</h3>
+                            <p><b>22,5 GW</b>de almacenamiento para 2030</p>
+                            <p><b>28-A</b>el apagón disparó el interés</p>
+                            <p><b>↑ cada año</b>más baterías retiradas de coches</p></div>
+                        <div class="pp-no in" style="--d:3"><h3>▼ Frena</h3>
+                            <p><b>−45 %</b>precio del pack nuevo en 2025</p>
+                            <p><b>Ley UE</b>reacondicionar = fabricar</p>
+                            <p><b>Incendio</b>miedo a lo «de segunda mano»</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="4" aria-label="Cinco fuerzas de Porter">
+                <p class="kick in">5 fuerzas de Porter</p>
+                <h2 class="in" style="--d:1">Crece, pero aprieta el margen</h2>
+                <div class="body">
+                    <div class="dia">
+                        <div class="t md in" style="--d:2"><b>Nuevos entrantes<span>Media</span></b>La normativa los frena</div>
+                        <div class="l md in" style="--d:3"><b>Proveedores<span>M-A</span></b>Lotes irregulares</div>
+                        <div class="c hi in" style="--d:4"><b>Rivalidad<span>Alta</span></b>Huawei, BYD, Tesla…</div>
+                        <div class="r hi in" style="--d:5"><b>Clientes<span>Alta</span></b>Comparan y exigen garantía</div>
+                        <div class="b hi in" style="--d:6"><b>Sustitutivos<span>Alta</span></b>Baterías nuevas cada vez más baratas</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ PERSONA 5 · DAFO y estrategia ============ -->
+            <section class="sl" data-p="5" aria-label="DAFO">
+                <p class="kick in">DAFO</p>
+                <h2 class="in" style="--d:1">Lo de dentro y lo de fuera</h2>
+                <div class="body in" style="--d:2">
+                    <div class="dafoXL">
+                        <div><h3 style="color:#B03A2E"><em style="background:#B03A2E">D</em>Debilidades</h3><p>Sin historial</p><p>Baterías heterogéneas</p><p>Poco capital</p></div>
+                        <div><h3 style="color:#B7790B"><em style="background:#B7790B">A</em>Amenazas</h3><p>Batería nueva más barata</p><p>Normativa europea</p><p>Riesgo de incendio</p></div>
+                        <div><h3 style="color:#2E8B57"><em style="background:#2E8B57">F</em>Fortalezas</h3><p>Software propio (EMS)</p><p>Multimarca</p><p>Ingresos recurrentes</p></div>
+                        <div><h3 style="color:#1F4FA3"><em style="background:#1F4FA3">O</em>Oportunidades</h3><p>Objetivo 22,5 GW</p><p>Autoconsumo doméstico</p><p>Datos para VLCi</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="5" aria-label="Estrategias">
+                <p class="kick in">Estrategias del DAFO</p>
+                <h2 class="in" style="--d:1">Cruzamos la matriz</h2>
+                <div class="body">
+                    <div class="strat">
+                        <div class="in" style="--d:2"><small style="color:#2E8B57">F + O · OFENSIVA</small><b>Vender software y circularidad</b></div>
+                        <div class="in" style="--d:3"><small style="color:#1F4FA3">F + A · DEFENSIVA</small><b>Ahorro garantizado, no precio</b></div>
+                        <div class="star in" style="--d:4"><small style="color:var(--pc)">D + O · REORIENTACIÓN</small><b>Empezar por hogares y pymes</b></div>
+                        <div class="in" style="--d:5"><small style="color:#B03A2E">D + A · SUPERVIVENCIA</small><b>Certificar antes de vender</b></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="5" aria-label="Hoja de ruta">
+                <p class="kick in">Hoja de ruta</p>
+                <h2 class="in" style="--d:1">Del tejado a la fábrica</h2>
+                <div class="body" style="flex-direction:column;justify-content:center;gap:0">
+                    <div class="road">
+                        <div class="st in" style="--d:2"><span class="n">1</span><svg viewBox="0 0 120 92"><path d="M14 46 L60 8 L106 46 Z" fill="var(--pc)"/><rect x="26" y="46" width="68" height="44" fill="var(--ink)"/><rect x="52" y="62" width="16" height="28" fill="#F2C45A"/></svg><b>Hogar</b><span>Ventas rápidas y primeros casos de éxito</span></div>
+                        <div class="ar in" style="--d:3">→</div>
+                        <div class="st in" style="--d:4"><span class="n">2</span><svg viewBox="0 0 120 92"><rect x="16" y="28" width="88" height="62" fill="var(--ink)"/><path d="M10 28 H110 L100 8 H20 Z" fill="var(--pc)"/><rect x="26" y="44" width="30" height="22" fill="#F2C45A"/></svg><b>Pyme</b><span>Renting y ahorro garantizado</span></div>
+                        <div class="ar in" style="--d:5">→</div>
+                        <div class="st in" style="--d:6"><span class="n">3</span><svg viewBox="0 0 120 92"><path d="M8 90 V40 L36 54 V40 L64 54 V40 L92 54 V90 Z" fill="var(--ink)"/><rect x="96" y="14" width="14" height="76" fill="var(--pc)"/></svg><b>Industria</b><span>Piloto híbrido con la UPV</span></div>
+                    </div>
+                    <div class="must in" style="--d:7"><i>Día 1</i>Certificación y seguro antes de la primera venta</div>
+                </div>
+            </section>
+
+            <!-- ============ PERSONA 6 · Números y Canvas corregido ============ -->
+            <section class="sl" data-p="6" aria-label="Usado no es barato">
+                <p class="kick in">La evidencia</p>
+                <h2 class="in" style="--d:1">Usado ≠ barato</h2>
+                <div class="body">
+                    <div class="col" style="flex:1.35">
+                        <div class="hbars" style="--hb:1">
+                            <div class="in" style="--d:2"><span>Usado · 2.500 €</span><i style="width:54%;background:#B7790B"></i><span class="v">101</span></div>
+                            <div class="in" style="--d:3"><span>Usado · 3.000 €</span><i style="width:62%;background:#B7790B"></i><span class="v">116</span></div>
+                            <div class="in" style="--d:4"><span>Usado · 5.500 €</span><i style="width:100%;background:#B03A2E"></i><span class="v">187</span></div>
+                            <div class="in" style="--d:5"><span>Nuevo · mundial</span><i style="width:34%;background:#2E8B57"></i><span class="v">63</span></div>
+                            <div class="in" style="--d:6"><span>Nuevo · Europa</span><i style="width:50%;background:#2E8B57"></i><span class="v">94</span></div>
+                            <p class="note in" style="--d:7">€ por kWh útil de batería · precio por pack usado</p>
+                        </div>
+                    </div>
+                    <div class="col in" style="--d:8">
+                        <div class="delta">+37.000 €</div>
+                        <p class="bigcap">más caro montar 700 kWh con packs usados (hasta)</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="6" aria-label="En casa sí compensa">
+                <p class="kick in">La evidencia</p>
+                <h2 class="in" style="--d:1">Pero en casa, sí compensa</h2>
+                <div class="body" style="gap:70px">
+                    <div class="col" style="flex:1.2">
+                        <div class="vs">
+                            <div><div class="bar2" style="height:330px;background:#4F6670"><b>4.500–5.800 €</b><span>Batería nueva</span></div><div class="lbl">Nueva</div></div>
+                            <div><div class="bar2" style="height:215px;background:var(--pc)"><b>3.000–3.800 €</b><span>Segunda vida</span></div><div class="lbl">Segunda Carga</div></div>
+                        </div>
+                    </div>
+                    <div class="col in" style="--d:3">
+                        <div class="delta">−30 %</div>
+                        <p class="bigcap">para una batería de hogar de 10 kWh instalada</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="sl" data-p="6" aria-label="Canvas corregido">
+                <p class="kick in">Modelo de negocio corregido</p>
+                <h2 class="in" style="--d:1">Siete de nueve bloques cambian</h2>
+                <div class="body">
+                    <div class="col in" style="--d:2;flex:1.6">
+                        <div class="lc fix" style="height:430px">
+                            <div class="x1"><em>1</em><b>Problema</b></div>
+                            <div class="x3 chg"><em>3</em><b>Solución</b>Híbrida</div>
+                            <div class="x7 chg"><em>7</em><b>Métricas</b>€/kWh por lote</div>
+                            <div class="x2 chg"><em>2</em><b>Propuesta</b>Ahorro garantizado</div>
+                            <div class="x8 chg"><em>8</em><b>Ventaja</b>Certificar</div>
+                            <div class="x4"><em>4</em><b>Canales</b></div>
+                            <div class="x9 chg"><em>9</em><b>Segmentos</b>Hogar primero</div>
+                            <div class="x6 chg"><em>6</em><b>Costes</b>+ seguro</div>
+                            <div class="x5 chg"><em>5</em><b>Ingresos</b>+ servicio</div>
+                        </div>
+                    </div>
+                    <div class="col in" style="--d:4">
+                        <p class="quoteXL" style="font-size:40px">De vender baterías baratas a vender energía bien gestionada.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cierre -->
+            <section class="sl cover" data-p="0" aria-label="Gracias">
+                <div class="body" style="flex-direction:column;align-items:flex-start;justify-content:center;gap:0">
+                    <h1 class="in">Gracias</h1>
+                    <p class="sub in" style="--d:1">¿Preguntas?</p>
+                    <p class="note in" style="--d:2">segundacarga.perifulles.es</p>
+                </div>
+                <div class="team6 in" style="--d:3" data-team></div>
+            </section>
+
+            <div class="prog" id="dkProg"></div>
+            <div class="count" id="dkCount">1 / 1</div>
+        </div>
+        <button class="dk-btn dk-prev" id="dkPrev" aria-label="Diapositiva anterior">‹</button>
+        <button class="dk-btn dk-next" id="dkNext" aria-label="Diapositiva siguiente">›</button>
+        <button class="dk-btn dk-fs" id="dkFs" aria-label="Pantalla completa">⛶</button>
+        <button class="dk-btn dk-close" id="dkClose" aria-label="Cerrar presentación">✕</button>
+        <div class="dk-hint" id="dkHint">← → para pasar · F pantalla completa · Esc para salir</div>
+    </div>
+
+    <script>
+        (function () {
+            /* ---- Cambiad aquí los nombres de cada ponente ---- */
+            var PONENTES = ['Persona 1', 'Persona 2', 'Persona 3', 'Persona 4', 'Persona 5', 'Persona 6'];
+            var TEMAS = ['Smart City y problema', 'La idea', 'Modelo de negocio', 'PESTEL y Porter', 'DAFO y estrategia', 'Evidencia y Canvas corregido'];
+            var COLORES = ['#2F6FDB', '#1E9E6A', '#E08A1E', '#8B5CF6', '#D9485F', '#0E9FB0'];
+
+            var deck = document.getElementById('deck'), stage = deck.querySelector('.stage');
+            var slides = [].slice.call(deck.querySelectorAll('.sl')), cur = 0, lastFocus = null;
+            var who = document.getElementById('dkWho'), topic = document.getElementById('dkTopic');
+            var prog = document.getElementById('dkProg'), count = document.getElementById('dkCount'), hint = document.getElementById('dkHint');
+
+            // equipo en portada y cierre
+            [].forEach.call(deck.querySelectorAll('[data-team]'), function (el) {
+                el.innerHTML = PONENTES.map(function (n, i) { return '<span><i style="background:' + COLORES[i] + '"></i>' + n + '</span>'; }).join('');
+            });
+            // barra de progreso coloreada por ponente
+            prog.innerHTML = slides.map(function (s) {
+                var p = +s.dataset.p; return '<b style="--c:' + (p ? COLORES[p - 1] : '#16303A') + '"></b>';
+            }).join('');
+            var segs = [].slice.call(prog.children);
+
+            // tarjetas del reparto en la página
+            var crew = document.getElementById('crew');
+            if (crew) {
+                crew.innerHTML = PONENTES.map(function (n, i) {
+                    var idx = slides.map(function (s, k) { return +s.dataset.p === i + 1 ? k + 1 : 0; }).filter(Boolean);
+                    return '<button type="button" style="--c:' + COLORES[i] + '" data-deck-open="' + (idx[0] - 1) + '"><b>' + n + '</b><span>' + TEMAS[i] +
+                        '</span><small>Diapositivas ' + idx[0] + '–' + idx[idx.length - 1] + '</small></button>';
+                }).join('');
+            }
+
+            function fit() { stage.style.setProperty('--k', Math.min(innerWidth / 1280, innerHeight / 720) * .96); }
+            function go(i) {
+                i = Math.max(0, Math.min(slides.length - 1, i));
+                slides[cur].classList.remove('on'); cur = i; slides[cur].classList.add('on');
+                var p = +slides[cur].dataset.p;
+                deck.classList.toggle('team', !p);
+                deck.style.setProperty('--pc', p ? COLORES[p - 1] : '#16303A');
+                who.textContent = p ? PONENTES[p - 1] : 'Todo el equipo';
+                topic.textContent = p ? TEMAS[p - 1] : '';
+                count.textContent = (cur + 1) + ' / ' + slides.length;
+                segs.forEach(function (s, k) { s.className = k < cur ? 'done' : k === cur ? 'now' : ''; });
+            }
+            function fsOn() { return document.fullscreenElement || document.webkitFullscreenElement; }
+            function fsToggle() {
+                try {
+                    if (fsOn()) { var x = (document.exitFullscreen || document.webkitExitFullscreen).call(document); if (x && x.catch) x.catch(function () { }); }
+                    else { var r = deck.requestFullscreen || deck.webkitRequestFullscreen; if (r) { var q = r.call(deck); if (q && q.catch) q.catch(function () { }); } }
+                } catch (e) { }
+            }
+            function open(i) {
+                lastFocus = document.activeElement;
+                deck.hidden = false; document.body.style.overflow = 'hidden';
+                fit(); go(i || 0); deck.focus();
+                if (!fsOn()) fsToggle();
+                hint.classList.remove('gone'); setTimeout(function () { hint.classList.add('gone'); }, 3500);
+            }
+            function close() {
+                if (fsOn()) fsToggle();
+                deck.hidden = true; document.body.style.overflow = '';
+                if (lastFocus && lastFocus.focus) lastFocus.focus();
+            }
+            document.addEventListener('click', function (e) {
+                var b = e.target.closest('[data-deck-open]');
+                if (b) { e.preventDefault(); open(+b.getAttribute('data-deck-open') || 0); }
+            });
+            document.getElementById('dkPrev').onclick = function () { go(cur - 1); };
+            document.getElementById('dkNext').onclick = function () { go(cur + 1); };
+            document.getElementById('dkClose').onclick = close;
+            document.getElementById('dkFs').onclick = fsToggle;
+            document.addEventListener('keydown', function (e) {
+                if (deck.hidden) return;
+                var k = e.key;
+                if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ' || k === 'Enter') { e.preventDefault(); go(cur + 1); }
+                else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp' || k === 'Backspace') { e.preventDefault(); go(cur - 1); }
+                else if (k === 'Home') { e.preventDefault(); go(0); }
+                else if (k === 'End') { e.preventDefault(); go(slides.length - 1); }
+                else if (k === 'Escape') { e.preventDefault(); close(); }
+                else if (k === 'f' || k === 'F') { e.preventDefault(); fsToggle(); }
+            });
+            var tx = null;
+            deck.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+            deck.addEventListener('touchend', function (e) {
+                if (tx === null) return; var dx = e.changedTouches[0].clientX - tx; tx = null;
+                if (Math.abs(dx) > 40) go(cur + (dx < 0 ? 1 : -1));
+            });
+            window.addEventListener('resize', function () { if (!deck.hidden) fit(); });
+            if (location.hash === '#presentar') open(0);
+        })();
+    </script>
 
     <script>
         (function () {
@@ -2272,7 +3433,7 @@
             window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(upd) } }, { passive: true });
             window.addEventListener('resize', upd); upd();
             var lock = document.getElementById('lock'), hint = document.getElementById('hint');
-            var msgs = ['Se desbloquea con la Práctica 2', 'Todavía no… ¡paciencia!', 'Cargando al 70 %…', 'Vuelve pronto']; var i = 0;
+            var msgs = ['Se desbloquea con la Práctica 3', 'Todavía no… ¡paciencia!', 'Cargando al 70 %…', 'Vuelve pronto']; var i = 0;
             function knock() { lock.classList.remove('shake'); void lock.getBoundingClientRect(); lock.classList.add('shake'); i = (i + 1) % msgs.length; hint.textContent = msgs[i]; }
             lock.addEventListener('click', knock);
             lock.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); knock(); } });
