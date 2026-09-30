@@ -1620,6 +1620,8 @@
         .card h3{font:800 32px "Archivo",Arial,sans-serif;margin:0 0 6px;color:var(--pc)}
         .card .kwh{font:800 48px/1 "Archivo",Arial,sans-serif;font-stretch:78%}
         .card p{font:500 20px/1.35 "Archivo",Arial,sans-serif;color:var(--soft);margin:12px 0 0}
+        .card .bt{display:inline-block;margin-top:14px;padding:6px 14px;border-radius:999px;font:800 17px "Archivo",Arial,sans-serif;background:var(--pc);color:#fff}
+        .card .bt.nw{background:var(--ink)}
         .pts{list-style:none;margin:0;padding:0}
         .pts li{display:flex;align-items:center;gap:18px;font:600 27px/1.25 "Archivo",Arial,sans-serif;margin:0 0 26px}
         .pts li i{flex:none;width:52px;height:52px;border-radius:12px;background:var(--pc);color:#fff;display:flex;align-items:center;justify-content:center;font:800 24px "Archivo",Arial,sans-serif;font-style:normal}
@@ -1734,7 +1736,8 @@
                         ETSIT-UPV</div>
                     <h1>Segunda Carga</h1>
                     <p class="lead">Las baterías de los coches eléctricos tienen una segunda vida. Nosotros la ponemos a
-                        trabajar en tu casa, tu negocio y tu fábrica.</p>
+                        trabajar en tu casa y en tu negocio, y gestionamos la energía de tu fábrica con el mismo
+                        cerebro.</p>
                     <div class="cta">
                         <a class="btn primary" href="#canvas">Ver el Lean Canvas</a>
                         <a class="btn" href="#idea">Conocer la idea</a>
@@ -1787,7 +1790,7 @@
                 <li><a href="#pestel">PESTEL</a></li>
                 <li><a href="#porter">5 fuerzas</a></li>
                 <li><a href="#dafo">DAFO</a></li>
-                <li><a href="#canvas2">Canvas corregido</a></li>
+                <li><a href="#encaje">Conclusiones</a></li>
                 <li><a href="#presentacion">▶ Presentación</a></li>
                 <li><a class="lockl" href="#proximamente">🔒 Próximamente</a></li>
             </ul>
@@ -1949,8 +1952,8 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Almacenamiento con baterías de coche de segunda vida (hogar, pyme e industria) + EMS
-                                conectado</strong></td>
+                        <td><strong>Almacenamiento con baterías de coche de segunda vida para hogares y pymes, con un EMS
+                                conectado que también gestiona la industria</strong></td>
                         <td>Factura eléctrica, excedentes solares, residuos de baterías</td>
                         <td class="n">5</td>
                         <td class="n">3</td>
@@ -2005,16 +2008,19 @@
             <div class="prose">
                 <h3 id="idea">La idea: Segunda Carga</h3>
                 <p><strong>Segunda Carga</strong> diseña, instala y gestiona sistemas de almacenamiento en baterías
-                    (BESS) en el área metropolitana de València usando baterías de coches eléctricos que ya no sirven
-                    para circular pero conservan en torno al 70 % de su capacidad. Trabajamos con cualquier marca
-                    (Tesla, Nissan, Renault, BYD, Hyundai/Kia, Volkswagen, MG…) y todos los sistemas comparten el mismo
-                    <strong>EMS</strong> (sistema de gestión energética) propio, que decide en cada momento si cargar,
-                    esperar o descargar.</p>
-                <p>Ofrecemos tres líneas de producto, que reutilizan desde módulos sueltos hasta packs completos:</p>
+                    (BESS) en el área metropolitana de València. En <strong>casas y pymes</strong> usamos baterías de
+                    coches eléctricos que ya no sirven para circular pero conservan en torno al 70 % de su capacidad,
+                    de cualquier marca (Tesla, Nissan, Renault, BYD, Hyundai/Kia, Volkswagen, MG…). En la
+                    <strong>industria</strong> instalamos baterías nuevas LFP: a partir de unos cientos de kWh una
+                    batería nueva sale más barata por kWh útil, dura más ciclos y es lo que exige una fábrica que
+                    pide garantía de fabricante.</p>
+                <p>Todos los sistemas comparten el mismo <strong>EMS</strong> (sistema de gestión energética) propio,
+                    que decide en cada momento si cargar, esperar o descargar. Así quedan nuestras tres líneas de
+                    producto:</p>
             </div>
             <aside class="side">
                 <figure class="fig"><svg viewBox="0 0 360 300" role="img"
-                        aria-label="De la batería del coche a hogar, pyme e industria">
+                        aria-label="La batería del coche pasa a hogares y pymes; la industria usa baterías nuevas con el mismo EMS">
                         <g transform="translate(20,20)">
                             <rect x="0" y="22" width="110" height="34" rx="14" fill="var(--ink)" />
                             <path d="M18 22 Q30 0 55 0 Q80 0 92 22 Z" fill="var(--ink)" />
@@ -2043,8 +2049,11 @@
                         <g stroke="var(--cobalt)" stroke-width="3" fill="none">
                             <path class="flow" d="M75 162 Q75 190 60 214" />
                             <path class="flow" d="M75 162 Q120 190 180 214" />
-                            <path class="flow" d="M75 162 Q200 180 300 214" />
                         </g>
+                        <text x="292" y="180" text-anchor="middle" font-family="Archivo,Arial" font-size="11"
+                            font-weight="700" fill="var(--soft)">Batería nueva</text>
+                        <text x="292" y="194" text-anchor="middle" font-family="Archivo,Arial" font-size="11"
+                            fill="var(--soft)">+ mismo EMS</text>
                         <g transform="translate(30,218)">
                             <path d="M0 26 L30 2 L60 26 Z" fill="var(--cobalt)" />
                             <rect x="8" y="26" width="44" height="30" fill="var(--ink)" />
@@ -2068,7 +2077,7 @@
                                 font-weight="700" fill="var(--ink)">Industria</text>
                         </g>
                     </svg>
-                    <figcaption>Una misma batería, tres destinos posibles.</figcaption>
+                    <figcaption>La segunda vida va a hogares y pymes; la industria usa baterías nuevas con el mismo EMS.</figcaption>
                 </figure>
             </aside>
         </div>
@@ -2079,7 +2088,7 @@
                         <th>Línea</th>
                         <th>Cliente</th>
                         <th>Tamaño tipo</th>
-                        <th>Qué reutiliza</th>
+                        <th>Baterías</th>
                         <th>Uso principal</th>
                     </tr>
                 </thead>
@@ -2088,21 +2097,21 @@
                         <td><strong>Segunda Carga Hogar</strong></td>
                         <td>Viviendas con placas solares</td>
                         <td>5–15 kWh útiles, 3–6 kW</td>
-                        <td>Módulos reacondicionados en un armario certificado</td>
+                        <td>Módulos de segunda vida en un armario certificado</td>
                         <td>Guardar el sol del mediodía para la noche y respaldo básico</td>
                     </tr>
                     <tr>
                         <td><strong>Segunda Carga Pyme</strong></td>
                         <td>Comercios, talleres, naves, hostelería, pequeñas industrias</td>
                         <td>30–200 kWh útiles, 20–100 kW</td>
-                        <td>1–6 packs completos o grupos de módulos</td>
+                        <td>Packs de segunda vida completos o grupos de módulos</td>
                         <td>Autoconsumo, reducción de potencia contratada y arbitraje</td>
                     </tr>
                     <tr>
                         <td><strong>Segunda Carga Industria</strong></td>
                         <td>Fábricas de 500–1.000 kW</td>
-                        <td>≈700 kWh útiles, 300–400 kW (≈20 packs)</td>
-                        <td>Packs completos en racks</td>
+                        <td>≈700 kWh útiles, 300–400 kW</td>
+                        <td>Nuevas LFP en contenedor, con garantía de fabricante</td>
                         <td>Peak shaving, autoconsumo, arbitraje y respaldo parcial</td>
                     </tr>
                 </tbody>
@@ -2176,10 +2185,12 @@
                 <div class="bx c-sol"><span class="ord">3</span>
                     <h4>Solución</h4>
                     <ul>
-                        <li>Baterías modulares de segunda vida de cualquier marca, diagnosticadas una a una, en tres
-                            tamaños: hogar, pyme e industria.</li>
-                        <li>EMS común con previsión de consumo, sol y precios que automatiza autoconsumo, arbitraje y
-                            recorte de picos.</li>
+                        <li><strong>Hogar y pyme (hasta 200 kWh):</strong> baterías de coche de segunda vida de cualquier marca,
+                            diagnosticadas módulo a módulo, en armario certificado.</li>
+                        <li><strong>Industria:</strong> baterías nuevas LFP en contenedor, más baratas por kWh a esa
+                            escala y con garantía de fabricante.</li>
+                        <li>EMS común para todas las líneas, con previsión de consumo, sol y precios, que automatiza
+                            autoconsumo, arbitraje y recorte de picos.</li>
                         <li>App y panel web con el ahorro medido en euros y el CO₂ evitado, con datos exportables a la
                             Smart City.</li>
                     </ul>
@@ -2191,6 +2202,8 @@
                         <li>€ ahorrados por cliente al año (por línea) y kW de pico recortados.</li>
                         <li>% de autoconsumo solar alcanzado.</li>
                         <li>SOH y ciclos de cada pack; disponibilidad del sistema (%).</li>
+                        <li>Coste de compra por kWh útil de cada lote usado, siempre por debajo del umbral de
+                            equilibrio.</li>
                         <li>kWh de baterías reutilizados y t de CO₂ evitadas.</li>
                         <li>Conversión de presupuestos, nº de hogares y empresas instalados y margen por línea.</li>
                     </ul>
@@ -2198,22 +2211,22 @@
 
                 <div class="bx c-pv"><span class="ord">2</span>
                     <h4>Propuesta de valor</h4>
-                    <p class="pv">Aprovecha todo tu sol y paga menos luz, en casa o en tu empresa, con baterías de coche
-                        que merecen una segunda vida: te instalamos el almacenamiento y te enseñamos cada mes cuánto has
-                        ahorrado.</p>
-                    <p><strong>Concepto de alto nivel:</strong> «la batería circular de València, del tejado de casa a
-                        la nave industrial».</p>
-                    <p>Diferencia: no vendemos solo hardware; vendemos ahorro medido, gestión continua y un producto de
-                        economía circular que el cliente puede mostrar en su casa o en sus informes de sostenibilidad.
-                    </p>
+                    <p class="pv">Aprovecha todo tu sol y paga menos luz, con un ahorro que te medimos y te garantizamos:
+                        en casa y en tu negocio, con baterías de coche que merecen una segunda vida; en tu fábrica, con
+                        baterías nuevas y el mismo cerebro.</p>
+                    <p><strong>Concepto de alto nivel:</strong> «el cerebro energético de València, con baterías que
+                        merecen una segunda vida».</p>
+                    <p>Diferencia: no vendemos solo hardware; vendemos ahorro medido y garantizado, gestión continua y,
+                        en hogares y pymes, un producto de economía circular que el cliente puede enseñar.</p>
                 </div>
 
                 <div class="bx c-ven"><span class="ord">8</span>
                     <h4>Ventaja competitiva</h4>
                     <ul>
-                        <li>Protocolo propio de diagnóstico y selección de packs (lotes homogéneos).</li>
-                        <li>EMS propio entrenado con datos reales de hogares y empresas locales: cuantas más
-                            instalaciones, mejores previsiones.</li>
+                        <li>Protocolo propio de diagnóstico y certificación multimarca (IEC 62933 / UL 1974) y pasaporte
+                            digital de baterías listo antes de 2027.</li>
+                        <li>EMS propio entrenado con datos reales de hogares y empresas locales, que funciona igual
+                            sobre baterías usadas o nuevas: cuantas más instalaciones, mejores previsiones.</li>
                         <li>Red local de suministro multimarca (desguaces, talleres, concesionarios, flotas).</li>
                         <li>Capacidad de trabajar a nivel de módulo: aprovechamos baterías que otros descartan enteras.
                         </li>
@@ -2237,51 +2250,53 @@
                 <div class="bx c-seg"><span class="ord">9</span>
                     <h4>Segmentos de clientes</h4>
                     <ul>
-                        <li><strong>Hogares:</strong> viviendas unifamiliares con placas solares que vierten excedentes.
-                        </li>
+                        <li><strong>Hogares (primer segmento):</strong> viviendas unifamiliares con placas solares que vierten
+                            excedentes.</li>
                         <li><strong>Empresas medianas:</strong> comercios, talleres, hostelería, bodegas, naves
                             logísticas y pymes con placas.</li>
                         <li><strong>Industria:</strong> fábricas de 500–1.000 kW y 3–10 GWh/año (metal, plástico,
-                            alimentación, química).</li>
+                            alimentación, química), con baterías nuevas y nuestro EMS.</li>
                         <li><strong>Early adopters:</strong> clientes que ya tienen fotovoltaica y conocen su consumo.
                         </li>
                         <li><strong>Futuro:</strong> ayuntamientos y comunidades energéticas.</li>
                     </ul>
-                    <div class="alt"><strong>Zona:</strong> área metropolitana de València (urbanizaciones y polígonos
-                        como Fuente del Jarro, Vara de Quart o Riba-roja).</div>
+                    <div class="alt"><strong>Orden de entrada:</strong> hogar → pyme → industria. <strong>Zona:</strong>
+                        área metropolitana de València (urbanizaciones y polígonos como Fuente del Jarro, Vara de
+                        Quart o Riba-roja).</div>
                 </div>
 
                 <div class="bx c-cos"><span class="ord">6</span>
                     <h4>Estructura de costes</h4>
                     <ul>
-                        <li><strong>Hogar y pyme:</strong> módulos reacondicionados, armario certificado, inversor
-                            híbrido, instalación y legalización.</li>
-                        <li><strong>Industria (objetivo ≈240.000 €):</strong> 20 packs (60.000 €), BMS (18.000 €),
+                        <li><strong>Hogar y pyme:</strong> módulos de segunda vida, BMS y diagnóstico, armario certificado,
+                            inversor híbrido, instalación y legalización.</li>
+                        <li><strong>Industria (objetivo ≈240.000 €):</strong> baterías LFP nuevas, 700 kWh (60.000 €),
+                            BMS de rack y comunicaciones (18.000 €),
                             inversor/PCS 350 kW (45.000 €), armarios y protecciones DC (22.000 €), refrigeración y
                             seguridad contra incendios (18.000 €), cuadro AC (18.000 €), EMS/SCADA (12.000 €),
                             instalación (30.000 €), ingeniería y legalización (17.000 €).</li>
                         <li><strong>Fijos:</strong> ingenieros y técnicos, desarrollo del software EMS, banco de pruebas
-                            multimarca para diagnosticar packs y módulos, nave/almacén, seguros de responsabilidad civil
-                            y producto.</li>
-                        <li><strong>Variables:</strong> transporte de baterías como mercancía peligrosa, packs de
-                            reserva, garantías, certificaciones, comerciales.</li>
+                            multimarca para diagnosticar packs y módulos, nave/almacén, certificación y pasaporte
+                            digital de baterías, seguros de responsabilidad civil y producto.</li>
+                        <li><strong>Variables:</strong> transporte de baterías como mercancía peligrosa, módulos de
+                            reserva, garantías, certificación de cada lote, comerciales.</li>
                     </ul>
                 </div>
 
                 <div class="bx c-ing"><span class="ord">5</span>
                     <h4>Fuentes de ingresos</h4>
                     <ul>
-                        <li><strong>Hogar:</strong> venta instalada por debajo del precio de una batería nueva
-                            equivalente, con cuota opcional de financiación.</li>
-                        <li><strong>Pyme:</strong> venta o renting mensual.</li>
+                        <li><strong>Hogar:</strong> venta instalada un 30 % por debajo de una batería nueva equivalente
+                            (3.000–3.800 € por 10 kWh), con cuota opcional de financiación.</li>
+                        <li><strong>Pyme:</strong> venta o renting mensual con ahorro garantizado.</li>
                         <li><strong>Industria:</strong> ≈300.000 € por sistema → margen bruto ≈60.000 € (20 %). Retorno
                             para el cliente de ~5–7 años con ~45.000 €/año de ahorro.</li>
                         <li><strong>Energía como servicio (pyme e industria):</strong> instalamos sin coste inicial y
                             cobramos un % del ahorro medido durante 8–10 años.</li>
-                        <li><strong>Recurrentes (todas las líneas):</strong> mantenimiento + suscripción a la app/EMS.
-                        </li>
-                        <li><strong>Otros:</strong> auditorías de pago si el cliente no contrata; venta de packs al
-                            final de su vida para reciclaje.</li>
+                        <li><strong>Recurrentes (todas las líneas):</strong> mantenimiento + suscripción a la app/EMS, que
+                            también se puede licenciar a instaladoras que montan baterías nuevas.</li>
+                        <li><strong>Otros:</strong> auditorías de pago si el cliente no contrata; venta de módulos al
+                            final de su segunda vida para reciclaje.</li>
                     </ul>
                 </div>
             </div>
@@ -2297,8 +2312,9 @@
                     una inversión pequeña y un retorno claro. La <strong>industria</strong> necesita recortar picos y
                     cuantifica todo con su curva cuartohoraria. En los tres casos, los early adopters son quienes ya
                     tienen placas solares, porque entienden el lenguaje energético y ya han pasado por una inversión
-                    parecida. En el Canvas este bloque lleva el número 9 porque lo cerramos al final, una vez vimos que
-                    el producto podía escalar del hogar a la fábrica.</p>
+                    parecida. En el Canvas este bloque lleva el número 9 porque lo cerramos al final, cuando ya sabíamos
+                    qué batería encaja en cada cliente: segunda vida para hogares y pymes, nuevas para la industria.
+                    Por eso entramos en ese orden: hogar, pyme e industria.</p>
 
                 <h4 class="bh" data-b="1">1 · Problema</h4>
                 <p>Los problemas son económicos y medibles: regalar la energía solar sobrante, comprar energía en las
@@ -2311,12 +2327,13 @@
                 <p>El mensaje sirve igual para una familia que para una fábrica y combina ahorro (lo que decide la
                     compra), resiliencia (lo que preocupa tras el apagón) y sostenibilidad (lo que ayuda a la empresa
                     ante clientes y bancos). El elemento que nos distingue es que el ahorro se <em>mide</em> y se
-                    enseña, no solo se promete.</p>
+                    <em>garantiza</em> por contrato, no solo se promete. La segunda vida es el medio en hogares y
+                    pymes, no el argumento de venta.</p>
 
                 <h4 class="bh" data-b="3">3 · Solución</h4>
-                <p>Las tres características más importantes son: el hardware reutilizado, multimarca y modular (del
-                    módulo suelto al pack completo), el software que toma decisiones cada 15 minutos y el panel que
-                    traduce kWh en euros. La parte TIC (IoT, comunicaciones Modbus/MQTT, previsiones con datos de
+                <p>Las tres características más importantes son: la batería adecuada a cada escala (segunda vida
+                    multimarca y modular hasta 200 kWh, nueva por encima), el software que toma decisiones cada 15
+                    minutos y el panel que traduce kWh en euros. La parte TIC (IoT, comunicaciones Modbus/MQTT, previsiones con datos de
                     precios del mercado y meteorología) es la que conecta la idea con la Smart City y con nuestra
                     titulación.</p>
 
@@ -2328,26 +2345,30 @@
                     casos, porque ya han instalado placas en nuestros clientes.</p>
 
                 <h4 class="bh" data-b="5">5 · Fuentes de ingresos</h4>
-                <p>El hogar aporta volumen y ventas rápidas; la industria, proyectos grandes y poco frecuentes.
+                <p>El hogar aporta volumen y ventas rápidas; la pyme, contratos de renting con ahorro garantizado; la
+                    industria, proyectos grandes y poco frecuentes.
                     Combinamos ingresos puntuales (la venta) con ingresos recurrentes (mantenimiento y software), que
                     dan estabilidad. El modelo de energía como servicio elimina la barrera de la inversión inicial,
                     aunque exige financiación propia o de un socio.</p>
 
                 <h4 class="bh" data-b="6">6 · Estructura de costes</h4>
                 <p>En la industria las baterías suponen solo una cuarta parte del coste. El resto (electrónica de
-                    potencia, seguridad, instalación, ingeniería) no se abarata por usar packs usados, e incluso el BMS
-                    y el diagnóstico son costes extra frente a un sistema nuevo. Este punto resulta decisivo en la
-                    Práctica 2.</p>
+                    potencia, seguridad, instalación, ingeniería) no se abarata por usar packs usados, y además el BMS
+                    y el diagnóstico serían costes extra. Por eso esa línea se monta con baterías nuevas; en la
+                    Práctica 2 lo comprobamos con números. En hogar y pyme, en cambio, el precio lo marcan el montaje
+                    y el canal, y ahí la segunda vida sí abarata el producto.</p>
 
                 <h4 class="bh" data-b="7">7 · Métricas clave</h4>
                 <p>Medimos lo que le importa al cliente (euros, kW recortados), lo que importa a la seguridad y vida
-                    útil (SOH, temperatura, disponibilidad), el impacto Smart City (CO₂, kWh reutilizados) y la salud
-                    del negocio (conversión comercial y margen).</p>
+                    útil (SOH, temperatura, disponibilidad), lo que nos protege al comprar (coste por kWh útil de cada
+                    lote), el impacto Smart City (CO₂, kWh reutilizados) y la salud del negocio (conversión comercial y
+                    margen).</p>
 
                 <h4 class="bh" data-b="8">8 · Ventaja competitiva</h4>
-                <p>Es el bloque más débil de la primera versión: comprar baterías usadas lo puede hacer cualquiera. Lo
-                    difícil de copiar es el conocimiento acumulado para diagnosticar y combinar baterías de muchas
-                    marcas de forma segura y un EMS que mejora con los datos de cada instalación.</p>
+                <p>Comprar baterías usadas lo puede hacer cualquiera. Lo difícil de copiar es el conocimiento
+                    acumulado para diagnosticar, combinar y certificar baterías de muchas marcas de forma segura, y un
+                    EMS que mejora con los datos de cada instalación y funciona sobre cualquier batería, usada o
+                    nueva.</p>
 
             </div>
             <aside class="side">
@@ -2372,12 +2393,13 @@
             <div class="prose">
                 <h3 id="conclusiones">Lo que hemos aprendido</h3>
                 <p>La idea resuelve un problema real y medible, escala desde el tejado de una vivienda hasta una nave
-                    industrial y encaja con la Smart City por su componente de datos y sostenibilidad. El Canvas nos
+                    industrial con la batería adecuada en cada caso y encaja con la Smart City por su componente de
+                    datos y sostenibilidad. El Canvas nos
                     hizo ver algo clave: el cliente no compra «baterías de segunda vida», compra ahorro, tranquilidad y
                     una forma sencilla de aprovechar su energía.</p>
-                <p>Quedan dos preguntas abiertas que responderemos en la siguiente fase: si la segunda vida es más
-                    competitiva en precio que las baterías nuevas en cada segmento, y qué exige la normativa para
-                    venderla con garantías.</p>
+                <p>En la siguiente fase contrastamos el Canvas con el entorno y con números, sobre todo dos supuestos:
+                    que la segunda vida es más barata en hogar y pyme pero no en industria, y qué exige la normativa
+                    para venderla con garantías.</p>
             </div>
             <aside class="side">
                 <div class="quote">
@@ -2398,8 +2420,8 @@
                     acompaña, si el mercado deja hueco y qué tenemos nosotros para ocuparlo. Usamos las tres
                     herramientas de la asignatura en este orden: <strong>PESTEL</strong> para el macroentorno,
                     <strong>las cinco fuerzas de Porter</strong> para el mercado y el <strong>DAFO</strong> para cruzar
-                    lo de fuera con lo de dentro. El resultado obliga a retocar el modelo de negocio, y eso es
-                    justamente lo que cierra esta práctica.</p>
+                    lo de fuera con lo de dentro. Cerramos comprobando con números los supuestos del Canvas y viendo
+                    cómo encaja cada bloque con lo que dice el entorno.</p>
 
                 <h3>Actividades previas: las tres herramientas</h3>
                 <p><strong>PESTEL</strong> revisa seis fuerzas del macroentorno —política, económica, social,
@@ -2465,7 +2487,7 @@
                         <td><strong>Económico</strong></td>
                         <td>La expansión solar hunde el precio de la electricidad al mediodía y amplía la diferencia con las horas caras, lo que favorece el arbitraje. En sentido contrario, el pack de batería nueva para almacenamiento estacionario cayó a 70 $/kWh de media mundial en 2025, un 45 % menos que en 2024. Los tipos de interés condicionan la inversión de hogares y pymes.</td>
                         <td><span class="badge mx">Mixto</span></td>
-                        <td>El negocio de gestionar energía mejora, pero la ventaja de precio de la batería usada se desploma. No podemos construir la propuesta sobre «usado = barato».</td>
+                        <td>El negocio de gestionar energía mejora, pero la ventaja de precio de la batería usada desaparece a gran escala. Respalda el modelo: segunda vida en hogar y pyme, baterías nuevas en industria, y una propuesta basada en el ahorro, no en «usado = barato».</td>
                     </tr>
                     <tr>
                         <td><strong>Social</strong></td>
@@ -2483,7 +2505,7 @@
                         <td><strong>Ecológico</strong></td>
                         <td>Crece cada año el volumen de baterías retiradas de vehículos. Reutilizarlas antes de reciclarlas alarga su vida útil y evita la huella de fabricar celdas nuevas.</td>
                         <td><span class="badge op">Oportunidad</span></td>
-                        <td>Es nuestra razón de ser y un argumento comercial medible: kWh reutilizados y toneladas de CO₂ evitadas en el panel del cliente.</td>
+                        <td>Es el origen de la idea y un argumento comercial medible en hogares y pymes: kWh reutilizados y toneladas de CO₂ evitadas en el panel del cliente.</td>
                     </tr>
                     <tr>
                         <td><strong>Legal</strong></td>
@@ -2516,7 +2538,7 @@
                 <h4>Poder de los proveedores <span class="lvl m">Media-alta</span></h4>
                 <p>Las baterías usadas llegan de desguaces, aseguradoras y concesionarios en cantidades irregulares,
                     con precios poco transparentes e historiales desconocidos. Inversores, BMS y armarios, en cambio,
-                    tienen mucha oferta.</p>
+                    tienen mucha oferta, igual que las baterías LFP nuevas que usamos en la industria.</p>
                 <span class="imp">Trabajar con varias marcas y a nivel de módulo amplía la oferta y reduce la
                     dependencia, pero conseguir lotes homogéneos sigue siendo el cuello de botella.</span>
             </div>
@@ -2527,7 +2549,8 @@
                     fotovoltaicas. En industria, Sungrow, BYD, Tesla o CATL venden armarios llave en mano con garantías
                     de 10 a 15 años. En segunda vida hay pocos actores en España: es un nicho libre, pero con un
                     mercado que todavía no está educado.</p>
-                <span class="imp">Competir por precio de catálogo contra fabricantes con escala global es perder. El
+                <span class="imp">Competir por precio de catálogo contra fabricantes con escala global es perder. En
+                    industria no competimos con ellos: les compramos la batería y ponemos el EMS y el servicio. El
                     terreno propio es el servicio cercano, el ahorro medido y el relato circular.</span>
             </div>
 
@@ -2545,8 +2568,8 @@
                 <p>Baterías nuevas LFP cada vez más baratas, la «batería virtual» de las comercializadoras, ampliar la
                     potencia contratada, gestionar la demanda sin baterías, contratos a precio fijo o un grupo
                     electrógeno para el respaldo.</p>
-                <span class="imp">Casi todos sustituyen al hardware, no al servicio. Por eso el EMS y el mantenimiento
-                    deben poder venderse también sobre baterías nuevas.</span>
+                <span class="imp">Casi todos sustituyen al hardware, no al servicio. Por eso el EMS y el mantenimiento se
+                    venden también sobre baterías nuevas, como hacemos en la industria.</span>
             </div>
         </div>
 
@@ -2594,7 +2617,7 @@
             <div class="a">
                 <h4>Amenazas (externas)</h4>
                 <ul>
-                    <li>Caída del precio de las baterías LFP nuevas: la ventaja de coste de las usadas casi desaparece.</li>
+                    <li>Caída del precio de las baterías LFP nuevas: la ventaja de coste de las usadas desaparece en sistemas grandes y se estrecha en los pequeños.</li>
                     <li>Exigencias del Reglamento (UE) 2023/1542, certificaciones y aseguradoras.</li>
                     <li>Un incendio en cualquier instalación de segunda vida dañaría la reputación de todo el sector.</li>
                     <li>Ayudas públicas que solo admiten equipos nuevos.</li>
@@ -2605,7 +2628,7 @@
                 <h4>Fortalezas (internas)</h4>
                 <ul>
                     <li>Conocimiento TIC propio: EMS, IoT, datos y software, que es la base de nuestra titulación.</li>
-                    <li>Propuesta que combina ahorro, resiliencia y economía circular, escalable del hogar a la fábrica.</li>
+                    <li>Propuesta que combina ahorro, resiliencia y economía circular, con el mismo EMS del hogar a la fábrica.</li>
                     <li>Red de proveedores multimarca y capacidad de trabajar a nivel de módulo.</li>
                     <li>Modelo con ingresos recurrentes de mantenimiento y suscripción al EMS.</li>
                     <li>Cercanía al cliente y conocimiento del tejido industrial valenciano.</li>
@@ -2635,23 +2658,26 @@
             <div class="hd">Amenazas</div>
             <div class="rh">Fortalezas</div>
             <div class="s-fo"><b>Ofensiva (F+O)</b>Presentarnos como empresa de software y gestión energética que usa
-                hardware circular, en los tres segmentos, apoyados en las ayudas y en el interés por la resiliencia.
+                hardware circular donde compensa, en los tres segmentos, apoyados en las ayudas y en el interés por la resiliencia.
                 Medir y enseñar el CO₂ evitado para entrar en el discurso ESG y en la plataforma VLCi.</div>
             <div class="s-fa"><b>Defensiva (F+A)</b>No depender del precio de la batería: vender ahorro garantizado por
-                contrato y ofrecer también módulos nuevos cuando salgan mejor. El EMS y el mantenimiento se venden
-                igual sobre hardware nuevo o reutilizado.</div>
+                contrato y montar baterías nuevas allí donde salen mejor, como en la industria. El EMS y el
+                mantenimiento se venden igual sobre hardware nuevo o reutilizado.</div>
             <div class="rh">Debilidades</div>
             <div class="s-do"><b>Reorientación (D+O) · prioritaria</b>Empezar por hogares y pymes, donde los proyectos
                 son pequeños, rápidos y con más margen, y usar esas primeras instalaciones como casos de éxito.
-                Mientras tanto, preparar un piloto industrial con la UPV o un instituto tecnológico.</div>
+                Mientras tanto, preparar el primer proyecto industrial, con baterías nuevas y nuestro EMS, de la mano
+                de la UPV o de un instituto tecnológico.</div>
             <div class="s-da"><b>Supervivencia (D+A)</b>Certificar la seguridad desde el primer día, contratar el seguro
                 antes de la primera venta y no comprar ningún lote por encima del precio de equilibrio calculado abajo.</div>
         </div>
 
-        <h2 id="evidencia">La evidencia que obliga a cambiar el modelo</h2>
+        <h2 id="evidencia">Los números: dónde compensa la segunda vida</h2>
         <div class="split">
             <div class="prose">
-                <p>La amenaza económica del DAFO no es una intuición, así que la comprobamos con números. Comparamos el
+                <p>La decisión de usar segunda vida en hogar y pyme y baterías nuevas en industria, y la amenaza
+                    económica del DAFO, no pueden quedarse en intuiciones, así que las comprobamos con números.
+                    Comparamos el
                     coste de la <strong>parte batería</strong> por kWh <strong>útil</strong>. Supuestos: un pack usado
                     de 50 kWh al 70 % de estado de salud da 35 kWh útiles, y hay que sumarle un BMS nuevo (≈26 €/kWh)
                     y el diagnóstico de cada pack (≈4 €/kWh). Los packs estacionarios nuevos ya traen su BMS y permiten
@@ -2660,10 +2686,10 @@
                     (≈60 €/kWh) y en Europa las celdas LFP rondan los 89 €/kWh.</p>
             </div>
             <aside class="side">
-                <div class="verdict"><b>Usado ≠ barato</b><span>Con los precios de 2026, montar 700 kWh con packs de
-                    coche cuesta entre 15.000 y 37.000 € más que con baterías nuevas, y el kWh entregado sale 3–5 veces
-                    más caro porque quedan menos ciclos. Hace tres años la cuenta salía; la caída de precios de 2025 la
-                    ha dado la vuelta.</span></div>
+                <div class="verdict"><b>A gran escala, usado ≠ barato</b><span>Con los precios de 2026, montar 700 kWh con
+                    packs de coche costaría entre 15.000 y 37.000 € más que con baterías nuevas, y el kWh entregado
+                    saldría 3–5 veces más caro porque quedan menos ciclos. Por eso la línea Industria se monta con
+                    baterías nuevas.</span></div>
             </aside>
         </div>
 
@@ -2707,75 +2733,61 @@
             </table>
         </div>
         <div class="note ok prose">
-            <p><strong>Conclusión:</strong> el hogar y la pyme son los segmentos donde la segunda vida tiene sentido
-                económico, siempre con armario certificado y una garantía creíble. En industria solo compensa comprando
-                lotes muy baratos o combinando módulos nuevos y usados. Los precios objetivo de segunda vida son una
-                hipótesis que hay que validar con presupuestos reales de proveedor.</p>
+            <p><strong>Conclusión:</strong> los números respaldan el reparto del Canvas. En hogar y pyme la segunda
+                vida abarata el producto un 30 %, siempre con armario certificado y una garantía creíble. En industria
+                no compensa, y por eso esa línea usa baterías LFP nuevas con nuestro EMS. Los precios objetivo de
+                segunda vida son una hipótesis que hay que validar con presupuestos reales de proveedor.</p>
         </div>
 
-        <h2 id="canvas2">El modelo de negocio, corregido</h2>
+        <h2 id="encaje">Cómo encaja todo: el Canvas frente al entorno</h2>
         <div class="split">
             <div class="prose">
-                <p>Los tres análisis apuntan a lo mismo, así que volvemos al Lean Canvas de la Práctica 1 y tocamos
-                    siete de los nueve bloques. El cambio de fondo es uno: dejamos de vender baterías baratas y pasamos
-                    a vender energía bien gestionada, con el hardware reutilizado como ventaja ambiental y de precio
-                    solo donde de verdad lo es.</p>
-                <p>El orden de entrada al mercado también cambia. La Práctica 1 apuntaba a la fábrica; el análisis dice
-                    que hay que empezar por el tejado de casa.</p>
+                <p>Los tres análisis y los números apuntan en la misma dirección que el Lean Canvas: el cliente compra
+                    ahorro y tranquilidad, la segunda vida compensa en sistemas pequeños y la industria pide baterías
+                    nuevas y un socio serio. La tabla resume qué respalda cada bloque.</p>
+                <p>Los bloques 1 (problema) y 4 (canales) no necesitan más prueba que el propio mercado: el
+                    excedente solar, las facturas y las instaladoras están ahí.</p>
             </div>
             <aside class="side">
-                <figure class="fig">
-                    <div class="mini" aria-hidden="true">
-                        <div class="m1">1<small>Problema</small></div>
-                        <div class="m3 chg">3<small>Solución</small></div>
-                        <div class="m7 chg">7<small>Métricas</small></div>
-                        <div class="m2 chg">2<small>Propuesta</small></div>
-                        <div class="m8 chg">8<small>Ventaja</small></div>
-                        <div class="m4">4<small>Canales</small></div>
-                        <div class="m9 chg">9<small>Segmentos</small></div>
-                        <div class="m6 chg">6<small>Costes</small></div>
-                        <div class="m5 chg">5<small>Ingresos</small></div>
-                    </div>
-                    <figcaption>Siete de los nueve bloques cambian tras el análisis externo.</figcaption>
-                    <div class="legend"><span><i style="background:var(--amber)"></i>Bloque modificado</span></div>
-                </figure>
+                <div class="verdict"><b>Un solo modelo</b><span>Segunda vida para hogares y pymes, baterías nuevas
+                    para la industria y el mismo EMS en todas. El análisis del entorno lo respalda y fija el orden de
+                    entrada: hogar, pyme e industria.</span></div>
             </aside>
         </div>
 
         <div class="tablewrap">
             <table>
-                <thead><tr><th>Bloque</th><th>Versión de la Práctica 1</th><th>Versión corregida y por qué</th></tr></thead>
+                <thead><tr><th>Bloque</th><th>Qué dice el Canvas</th><th>Qué lo respalda</th></tr></thead>
                 <tbody>
-                    <tr><td><strong>2 · Propuesta de valor</strong></td><td>Almacenamiento barato con baterías usadas.</td><td>Ahorro medido y garantizado, resiliencia y huella circular certificada. El precio deja de ser el argumento principal porque el PESTEL económico lo ha desactivado.</td></tr>
-                    <tr><td><strong>3 · Solución</strong></td><td>Packs de segunda vida.</td><td>Baterías multimarca en tres tamaños y, en industria, sistema híbrido: packs usados solo por debajo del precio de equilibrio y módulos LFP nuevos para el resto, todos con el mismo EMS.</td></tr>
-                    <tr><td><strong>5 · Fuentes de ingresos</strong></td><td>Sobre todo venta de hardware.</td><td>Más peso de la energía como servicio y de la suscripción al EMS, licenciable incluso a instaladoras que montan baterías nuevas. Así los sustitutivos dejan de ser una amenaza directa.</td></tr>
-                    <tr><td><strong>6 · Estructura de costes</strong></td><td>Sin partida de certificación.</td><td>Se añaden certificación, seguro de producto, pasaporte digital de baterías y una reserva de módulos de sustitución, que el factor legal convierte en obligatorios.</td></tr>
-                    <tr><td><strong>7 · Métricas clave</strong></td><td>Ahorro y estado de salud.</td><td>Se añaden el coste de compra por kWh útil de cada lote, que nunca debe superar el umbral, y el coste por kWh entregado.</td></tr>
-                    <tr><td><strong>8 · Ventaja competitiva</strong></td><td>Comprar packs baratos.</td><td>Protocolo de diagnóstico certificado (UL 1974 / IEC 62933), EMS propio que mejora con los datos de cada instalación y pasaporte digital listo antes de 2027. Es lo único difícil de copiar.</td></tr>
-                    <tr><td><strong>9 · Segmentos de clientes</strong></td><td>Fábricas grandes primero.</td><td>Entramos por hogares y pymes, donde la segunda vida sí es más barata y el ciclo de venta es corto; la industria llega después con sistemas híbridos.</td></tr>
+                    <tr><td><strong>2 · Propuesta de valor</strong></td><td>Ahorro medido y garantizado, resiliencia y circularidad.</td><td>PESTEL económico (el precio de la batería ya no basta como argumento), social (resiliencia tras el apagón) y ecológico.</td></tr>
+                    <tr><td><strong>3 · Solución</strong></td><td>Segunda vida hasta 200 kWh, baterías nuevas en industria, mismo EMS.</td><td>Los números: el kWh útil usado cuesta 101–187 € frente a 63–94 € nuevo, pero en casa el sistema instalado sale un 30 % más barato.</td></tr>
+                    <tr><td><strong>5 · Fuentes de ingresos</strong></td><td>Venta, renting, energía como servicio y suscripción al EMS.</td><td>Porter: los sustitutivos atacan al hardware, no al servicio; el EMS se vende también sobre baterías nuevas.</td></tr>
+                    <tr><td><strong>6 · Estructura de costes</strong></td><td>Certificación, seguro, pasaporte digital y módulos de reserva.</td><td>PESTEL legal: el Reglamento (UE) 2023/1542 nos trata como fabricantes.</td></tr>
+                    <tr><td><strong>7 · Métricas clave</strong></td><td>Coste de compra por kWh útil de cada lote.</td><td>El precio de equilibrio: por debajo de ~1.000 € por pack usado.</td></tr>
+                    <tr><td><strong>8 · Ventaja competitiva</strong></td><td>Diagnóstico certificado multimarca y EMS propio.</td><td>Porter: la normativa es la barrera que frena a los nuevos entrantes.</td></tr>
+                    <tr><td><strong>9 · Segmentos</strong></td><td>Hogar → pyme → industria.</td><td>DAFO: la estrategia prioritaria (D+O) es empezar por hogares y pymes.</td></tr>
                 </tbody>
             </table>
         </div>
-        <p class="prose">Los bloques 1 (problema), 4 (canales) y el conjunto del Lean Canvas siguen siendo válidos:
-            el análisis no ha cambiado a quién le duele qué, sino cómo se lo resolvemos y en qué orden.</p>
 
         <div class="split">
             <div class="prose">
                 <h3 id="conclusiones2">Conclusiones de la Práctica 2</h3>
-                <p>La herramienta más útil ha sido el análisis externo, porque desmontó la premisa con la que
-                    empezamos. «Batería usada igual a batería barata» era cierto hace tres años y ha dejado de serlo:
-                    comprobarlo con datos de mercado nos ahorró construir todo el negocio sobre una ventaja que ya no
-                    existe.</p>
-                <p>Porter nos enseñó que en un sector con cuatro fuerzas intensas no se compite de frente. El DAFO
-                    ordenó la salida: empezar pequeño, por hogares y pymes, y certificar antes de vender.</p>
+                <p>La herramienta más útil ha sido el análisis económico, porque pone cifras a la decisión clave del
+                    modelo: usar baterías de segunda vida donde de verdad son más baratas (hogar y pyme) y nuevas donde
+                    no lo son (industria). «Usada igual a barata» solo es cierto a pequeña escala, y el Canvas ya lo
+                    tiene en cuenta.</p>
+                <p>Porter muestra que en un sector con cuatro fuerzas intensas no se compite de frente: en industria
+                    compramos la batería a los grandes y ponemos el cerebro. El DAFO ordena la salida: empezar pequeño,
+                    por hogares y pymes, y certificar antes de vender.</p>
                 <p>Y sobre todo aprendimos a separar lo que fabricamos de lo que el cliente compra. Nosotros montamos
-                    baterías; él compra una factura más baja y la tranquilidad de que su instalación es segura. Esa
-                    distinción es la que ha reescrito siete bloques del Canvas.</p>
+                    baterías; él compra una factura más baja y la tranquilidad de que su instalación es segura. Esa idea
+                    recorre todo el Canvas.</p>
             </div>
             <aside class="side">
                 <div class="quote">
-                    <p>«El análisis no cambió nuestra idea: cambió el argumento con el que la vendemos y el orden en
-                        que salimos al mercado.»</p><span>La lección de la Práctica 2</span>
+                    <p>«No vendemos baterías baratas: vendemos energía bien gestionada, con la batería que tiene
+                        sentido en cada caso.»</p><span>La conclusión del proyecto</span>
                 </div>
             </aside>
         </div>
@@ -2842,7 +2854,7 @@
                 <p><strong>Segunda Carga</strong> es una idea de negocio desarrollada para las prácticas de Fundamentos
                     de Organización y Gestión de Empresas del Grado en Ingeniería de Tecnologías y Servicios de
                     Telecomunicación (ETSIT-UPV), en el marco de València Ciudad Inteligente (VLCi) y el ODS 11.</p>
-                <p>Fuentes: Ayuntamiento de València (VLCi); Naciones Unidas, Agenda 2030; PNIEC 2023-2030; BloombergNEF, <em>Lithium-Ion Battery Price Survey 2025</em> y <em>Energy Storage Systems Cost Survey 2025</em>; Reglamento (UE) 2023/1542 de baterías; IEC 62933 y UL 1974; sede electrónica del IDAE e IVACE; guías de precios de baterías domésticas en España 2026; documento interno «Proyecto BESS industrial con baterías Tesla reutilizadas». Las cifras son de prefactibilidad y deben validarse con datos reales de clientes y proveedores.</p>
+                <p>Fuentes: Ayuntamiento de València (VLCi); Naciones Unidas, Agenda 2030; PNIEC 2023-2030; BloombergNEF, <em>Lithium-Ion Battery Price Survey 2025</em> y <em>Energy Storage Systems Cost Survey 2025</em>; Reglamento (UE) 2023/1542 de baterías; IEC 62933 y UL 1974; sede electrónica del IDAE e IVACE; guías de precios de baterías domésticas en España 2026; estudio interno de costes de un BESS industrial de 700 kWh. Las cifras son de prefactibilidad y deben validarse con datos reales de clientes y proveedores.</p>
             </div>
         </div>
     </footer>
@@ -2966,7 +2978,7 @@
                 <h2 class="in" style="--d:1">Una batería, dos vidas</h2>
                 <div class="body">
                     <div class="col in" style="--d:2;flex:1.1"><svg viewBox="0 0 360 300" role="img"
-                        aria-label="De la batería del coche a hogar, pyme e industria">
+                        aria-label="La batería del coche pasa a hogares y pymes; la industria usa baterías nuevas con el mismo EMS">
                         <g transform="translate(20,20)">
                             <rect x="0" y="22" width="110" height="34" rx="14" fill="var(--ink)" />
                             <path d="M18 22 Q30 0 55 0 Q80 0 92 22 Z" fill="var(--ink)" />
@@ -2995,8 +3007,11 @@
                         <g stroke="var(--cobalt)" stroke-width="3" fill="none">
                             <path class="flow" d="M75 162 Q75 190 60 214" />
                             <path class="flow" d="M75 162 Q120 190 180 214" />
-                            <path class="flow" d="M75 162 Q200 180 300 214" />
                         </g>
+                        <text x="292" y="180" text-anchor="middle" font-family="Archivo,Arial" font-size="11"
+                            font-weight="700" fill="var(--soft)">Batería nueva</text>
+                        <text x="292" y="194" text-anchor="middle" font-family="Archivo,Arial" font-size="11"
+                            fill="var(--soft)">+ mismo EMS</text>
                         <g transform="translate(30,218)">
                             <path d="M0 26 L30 2 L60 26 Z" fill="var(--cobalt)" />
                             <rect x="8" y="26" width="44" height="30" fill="var(--ink)" />
@@ -3033,9 +3048,9 @@
                 <h2 class="in" style="--d:1">Tres tamaños, un mismo cerebro</h2>
                 <div class="body">
                     <div class="cards3">
-                        <div class="card in" style="--d:2"><svg viewBox="0 0 120 92"><path d="M14 46 L60 8 L106 46 Z" fill="var(--pc)"/><rect x="26" y="46" width="68" height="44" fill="var(--ink)"/><rect x="52" y="62" width="16" height="28" fill="#F2C45A"/><rect x="34" y="18" width="30" height="8" fill="#1F4FA3" transform="rotate(-38 49 22)"/></svg><h3>Hogar</h3><div class="kwh">5–15 kWh</div><p>El sol del mediodía, para la noche</p></div>
-                        <div class="card in" style="--d:3"><svg viewBox="0 0 120 92"><rect x="16" y="28" width="88" height="62" fill="var(--ink)"/><path d="M10 28 H110 L100 8 H20 Z" fill="var(--amber)"/><rect x="26" y="44" width="30" height="22" fill="#F2C45A"/><rect x="68" y="50" width="24" height="40" fill="var(--chip)"/></svg><h3>Pyme</h3><div class="kwh">30–200 kWh</div><p>Menos potencia contratada y factura</p></div>
-                        <div class="card in" style="--d:4"><svg viewBox="0 0 120 92"><path d="M8 90 V40 L36 54 V40 L64 54 V40 L92 54 V90 Z" fill="var(--ink)"/><rect x="96" y="14" width="14" height="76" fill="var(--ink)"/><rect x="20" y="66" width="12" height="12" fill="#F2C45A"/><rect x="48" y="66" width="12" height="12" fill="#F2C45A"/><rect x="76" y="66" width="12" height="12" fill="#F2C45A"/></svg><h3>Industria</h3><div class="kwh">≈700 kWh</div><p>Recorta picos y guarda excedentes</p></div>
+                        <div class="card in" style="--d:2"><svg viewBox="0 0 120 92"><path d="M14 46 L60 8 L106 46 Z" fill="var(--pc)"/><rect x="26" y="46" width="68" height="44" fill="var(--ink)"/><rect x="52" y="62" width="16" height="28" fill="#F2C45A"/><rect x="34" y="18" width="30" height="8" fill="#1F4FA3" transform="rotate(-38 49 22)"/></svg><h3>Hogar</h3><div class="kwh">5–15 kWh</div><p>El sol del mediodía, para la noche</p><span class="bt">Segunda vida</span></div>
+                        <div class="card in" style="--d:3"><svg viewBox="0 0 120 92"><rect x="16" y="28" width="88" height="62" fill="var(--ink)"/><path d="M10 28 H110 L100 8 H20 Z" fill="var(--amber)"/><rect x="26" y="44" width="30" height="22" fill="#F2C45A"/><rect x="68" y="50" width="24" height="40" fill="var(--chip)"/></svg><h3>Pyme</h3><div class="kwh">30–200 kWh</div><p>Menos potencia contratada y factura</p><span class="bt">Segunda vida</span></div>
+                        <div class="card in" style="--d:4"><svg viewBox="0 0 120 92"><path d="M8 90 V40 L36 54 V40 L64 54 V40 L92 54 V90 Z" fill="var(--ink)"/><rect x="96" y="14" width="14" height="76" fill="var(--ink)"/><rect x="20" y="66" width="12" height="12" fill="#F2C45A"/><rect x="48" y="66" width="12" height="12" fill="#F2C45A"/><rect x="76" y="66" width="12" height="12" fill="#F2C45A"/></svg><h3>Industria</h3><div class="kwh">≈700 kWh</div><p>Recorta picos y guarda excedentes</p><span class="bt nw">Baterías nuevas</span></div>
                     </div>
                 </div>
             </section>
@@ -3083,15 +3098,15 @@
                 <h2 class="in" style="--d:1">El negocio en una página</h2>
                 <div class="body in" style="--d:2">
                     <div class="lc">
-                        <div class="x1"><em>1</em><b>Problema</b>Sol perdido, baterías caras, picos</div>
-                        <div class="x3"><em>3</em><b>Solución</b>2ª vida + EMS + app</div>
-                        <div class="x7"><em>7</em><b>Métricas</b>€ ahorrados, SOH, CO₂</div>
-                        <div class="x2"><em>2</em><b>Propuesta de valor</b><span>Paga menos luz con baterías que merecen otra vida</span></div>
-                        <div class="x8"><em>8</em><b>Ventaja</b>Diagnóstico multimarca + datos</div>
-                        <div class="x4"><em>4</em><b>Canales</b>Instaladoras, web, venta directa</div>
-                        <div class="x9"><em>9</em><b>Segmentos</b>Hogar<br>Pyme<br>Industria</div>
-                        <div class="x6"><em>6</em><b>Costes</b>Baterías, electrónica, instalación, certificación</div>
-                        <div class="x5"><em>5</em><b>Ingresos</b>Venta, energía como servicio, suscripción</div>
+                        <div class="x1"><em>1</em><b>Problema</b>Sol perdido, baterías caras, picos de potencia</div>
+                        <div class="x3"><em>3</em><b>Solución</b>2ª vida en hogar y pyme, nuevas en industria, un EMS</div>
+                        <div class="x7"><em>7</em><b>Métricas</b>€ ahorrados, €/kWh por lote, SOH</div>
+                        <div class="x2"><em>2</em><b>Propuesta de valor</b><span>Paga menos luz con todo tu sol: ahorro medido y garantizado</span></div>
+                        <div class="x8"><em>8</em><b>Ventaja</b>Diagnóstico certificado + EMS propio</div>
+                        <div class="x4"><em>4</em><b>Canales</b>Instaladoras, web, venta consultiva</div>
+                        <div class="x9"><em>9</em><b>Segmentos</b>Hogar<br>→ Pyme<br>→ Industria</div>
+                        <div class="x6"><em>6</em><b>Costes</b>Baterías, electrónica, instalación, certificación y seguro</div>
+                        <div class="x5"><em>5</em><b>Ingresos</b>Venta, renting, energía como servicio, suscripción</div>
                     </div>
                 </div>
             </section>
@@ -3099,8 +3114,8 @@
             <section class="sl" data-p="3" aria-label="Propuesta de valor">
                 <p class="kick in">Propuesta de valor</p>
                 <div class="body" style="flex-direction:column;align-items:flex-start;justify-content:center">
-                    <p class="quoteXL in" style="--d:1">Aprovecha todo tu sol y paga menos luz con baterías que merecen una segunda vida.</p>
-                    <div class="chips3 in" style="--d:3"><span>Ahorro medido</span><span>Resiliencia</span><span>Circular</span></div>
+                    <p class="quoteXL in" style="--d:1">Aprovecha todo tu sol y paga menos luz. Te medimos el ahorro y te lo garantizamos.</p>
+                    <div class="chips3 in" style="--d:3"><span>Ahorro garantizado</span><span>Resiliencia</span><span>Circular</span></div>
                 </div>
             </section>
 
@@ -3110,7 +3125,7 @@
                 <div class="body" style="flex-direction:column;align-items:stretch;justify-content:center;gap:0">
                     <div class="money">
                         <div class="in" style="--d:2"><b>3.000–3.800 €</b><span>Batería de hogar de 10 kWh, instalada</span></div>
-                        <div class="in" style="--d:3"><b>≈300.000 €</b><span>Sistema industrial · 20 % de margen</span></div>
+                        <div class="in" style="--d:3"><b>≈300.000 €</b><span>Sistema industrial con baterías nuevas · 20 % de margen</span></div>
                         <div class="in" style="--d:4"><b>Cada mes</b><span>Mantenimiento + suscripción al EMS</span></div>
                     </div>
                     <div class="stack in" style="--d:5">
@@ -3124,7 +3139,7 @@
                         <i style="flex:17;background:#CDD8DA"></i>
                         <i style="flex:12;background:#DCE5E6"></i>
                     </div>
-                    <div class="stackcap in" style="--d:5"><span>Coste de un sistema industrial ≈ 240.000 €</span><span>La batería es solo ¼</span></div>
+                    <div class="stackcap in" style="--d:5"><span>Coste de un sistema industrial ≈ 240.000 €</span><span>La batería nueva es solo ¼</span></div>
                 </div>
             </section>
 
@@ -3234,16 +3249,16 @@
                         <div class="ar in" style="--d:3">→</div>
                         <div class="st in" style="--d:4"><span class="n">2</span><svg viewBox="0 0 120 92"><rect x="16" y="28" width="88" height="62" fill="var(--ink)"/><path d="M10 28 H110 L100 8 H20 Z" fill="var(--pc)"/><rect x="26" y="44" width="30" height="22" fill="#F2C45A"/></svg><b>Pyme</b><span>Renting y ahorro garantizado</span></div>
                         <div class="ar in" style="--d:5">→</div>
-                        <div class="st in" style="--d:6"><span class="n">3</span><svg viewBox="0 0 120 92"><path d="M8 90 V40 L36 54 V40 L64 54 V40 L92 54 V90 Z" fill="var(--ink)"/><rect x="96" y="14" width="14" height="76" fill="var(--pc)"/></svg><b>Industria</b><span>Piloto híbrido con la UPV</span></div>
+                        <div class="st in" style="--d:6"><span class="n">3</span><svg viewBox="0 0 120 92"><path d="M8 90 V40 L36 54 V40 L64 54 V40 L92 54 V90 Z" fill="var(--ink)"/><rect x="96" y="14" width="14" height="76" fill="var(--pc)"/></svg><b>Industria</b><span>Baterías nuevas + nuestro EMS</span></div>
                     </div>
                     <div class="must in" style="--d:7"><i>Día 1</i>Certificación y seguro antes de la primera venta</div>
                 </div>
             </section>
 
-            <!-- ============ PERSONA 6 · Números y Canvas corregido ============ -->
+            <!-- ============ PERSONA 6 · Números y conclusión ============ -->
             <section class="sl" data-p="6" aria-label="Usado no es barato">
-                <p class="kick in">La evidencia</p>
-                <h2 class="in" style="--d:1">Usado ≠ barato</h2>
+                <p class="kick in">Los números · industria</p>
+                <h2 class="in" style="--d:1">A gran escala, usado ≠ barato</h2>
                 <div class="body">
                     <div class="col" style="flex:1.35">
                         <div class="hbars" style="--hb:1">
@@ -3257,14 +3272,14 @@
                     </div>
                     <div class="col in" style="--d:8">
                         <div class="delta">+37.000 €</div>
-                        <p class="bigcap">más caro montar 700 kWh con packs usados (hasta)</p>
+                        <p class="bigcap">más caro montar 700 kWh con packs usados (hasta). Por eso, en industria, baterías nuevas.</p>
                     </div>
                 </div>
             </section>
 
             <section class="sl" data-p="6" aria-label="En casa sí compensa">
-                <p class="kick in">La evidencia</p>
-                <h2 class="in" style="--d:1">Pero en casa, sí compensa</h2>
+                <p class="kick in">Los números · hogar</p>
+                <h2 class="in" style="--d:1">En casa, sí compensa</h2>
                 <div class="body" style="gap:70px">
                     <div class="col" style="flex:1.2">
                         <div class="vs">
@@ -3279,26 +3294,16 @@
                 </div>
             </section>
 
-            <section class="sl" data-p="6" aria-label="Canvas corregido">
-                <p class="kick in">Modelo de negocio corregido</p>
-                <h2 class="in" style="--d:1">Siete de nueve bloques cambian</h2>
-                <div class="body">
-                    <div class="col in" style="--d:2;flex:1.6">
-                        <div class="lc fix" style="height:430px">
-                            <div class="x1"><em>1</em><b>Problema</b></div>
-                            <div class="x3 chg"><em>3</em><b>Solución</b>Híbrida</div>
-                            <div class="x7 chg"><em>7</em><b>Métricas</b>€/kWh por lote</div>
-                            <div class="x2 chg"><em>2</em><b>Propuesta</b>Ahorro garantizado</div>
-                            <div class="x8 chg"><em>8</em><b>Ventaja</b>Certificar</div>
-                            <div class="x4"><em>4</em><b>Canales</b></div>
-                            <div class="x9 chg"><em>9</em><b>Segmentos</b>Hogar primero</div>
-                            <div class="x6 chg"><em>6</em><b>Costes</b>+ seguro</div>
-                            <div class="x5 chg"><em>5</em><b>Ingresos</b>+ servicio</div>
-                        </div>
+            <section class="sl" data-p="6" aria-label="Conclusión">
+                <p class="kick in">Conclusión</p>
+                <h2 class="in" style="--d:1">Cada batería, donde tiene sentido</h2>
+                <div class="body" style="flex-direction:column;justify-content:center;gap:28px">
+                    <div class="strat" style="grid-template-columns:repeat(3,1fr);gap:18px">
+                        <div class="in" style="--d:2;min-height:150px"><small style="color:#2E8B57">HOGAR Y PYME</small><b style="font-size:29px">Segunda vida</b><span style="display:block;font:500 18px/1.35 'Archivo',Arial,sans-serif;color:var(--soft);margin-top:10px">Hasta 200 kWh: un 30 % más barata que una nueva instalada</span></div>
+                        <div class="in" style="--d:3;min-height:150px"><small style="color:#1F4FA3">INDUSTRIA</small><b style="font-size:29px">Baterías nuevas + nuestro EMS</b><span style="display:block;font:500 18px/1.35 'Archivo',Arial,sans-serif;color:var(--soft);margin-top:10px">Unos 700 kWh: más baratas a esa escala y con garantía de fabricante</span></div>
+                        <div class="in" style="--d:4;min-height:150px"><small style="color:#B03A2E">SIEMPRE</small><b style="font-size:29px">Certificado y asegurado</b><span style="display:block;font:500 18px/1.35 'Archivo',Arial,sans-serif;color:var(--soft);margin-top:10px">Desde el primer día, antes de la primera venta</span></div>
                     </div>
-                    <div class="col in" style="--d:4">
-                        <p class="quoteXL" style="font-size:40px">De vender baterías baratas a vender energía bien gestionada.</p>
-                    </div>
+                    <p class="quoteXL in" style="--d:5;font-size:38px;max-width:none;text-align:center">No vendemos baterías baratas: vendemos energía bien gestionada.</p>
                 </div>
             </section>
 
@@ -3325,7 +3330,8 @@
     <script>
         (function () {
             /* ---- Cambiad aquí los nombres de cada ponente ---- */
-            var PONENTES = ['Miguel', 'Oscar', 'Jaime', 'Vlad', 'Samuel', 'Héctor'];            var TEMAS = ['Smart City y problema', 'La idea', 'Modelo de negocio', 'PESTEL y Porter', 'DAFO y estrategia', 'Evidencia y Canvas corregido'];
+            var PONENTES = ['Miguel', 'Oscar', 'Jaime', 'Vlad', 'Samuel', 'Héctor'];
+            var TEMAS = ['Smart City y problema', 'La idea', 'Modelo de negocio', 'PESTEL y Porter', 'DAFO y estrategia', 'Números y conclusión'];
             var COLORES = ['#2F6FDB', '#1E9E6A', '#E08A1E', '#8B5CF6', '#D9485F', '#0E9FB0'];
 
             var deck = document.getElementById('deck'), stage = deck.querySelector('.stage');
